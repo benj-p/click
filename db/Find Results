@@ -1,0 +1,10 @@
+Searching 155 files for "question_text"
+
+/Users/benjaminpham/click/app/models/card.rb:
+    4    has_one :resource
+    5
+    6:   validates :question, :correct_answer, :wrong_answer, presence: true
+    7  end
+    8
+
+1 match in 1 file

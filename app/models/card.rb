@@ -3,5 +3,5 @@ class Card < ApplicationRecord
   belongs_to :deck
   has_one :resource
 
-  validates :question_text, :correct_answer, :wrong_answer, presence: true
+  validates :question, :correct_answer, :wrong_answer, presence: true
 end

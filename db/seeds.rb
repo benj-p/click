@@ -6,9 +6,9 @@ puts "starting to seed..."
 Attempt.destroy_all
 Card.destroy_all
 Deck.destroy_all
-Curriculum.destroy_all
 Registration.destroy_all
 Section.destroy_all
+Curriculum.destroy_all
 User.destroy_all
 
 students = (1..50).each_with_object({}) do |i, student|
@@ -44,9 +44,9 @@ end
 
 #Deck
 
-financial_statement_basics = Deck.create({curriculum: intro_to_accounting, name: "Financial Statement Basics", date: Date.today()-10})
-journal_entry_basics = Deck.create({curriculum: intro_to_accounting, name: "Basic Journal Entries", date: Date.today()+3})
-fun_facts_taxes = Deck.create({curriculum: intro_to_tax, name: "Fun Facts About Taxes", date: Date.today()+5})
+financial_statement_basics = Deck.create({curriculum: intro_to_accounting, name: "Financial Statement Basics", due_date: Date.today()-10})
+journal_entry_basics = Deck.create({curriculum: intro_to_accounting, name: "Basic Journal Entries", due_date: Date.today()+3})
+fun_facts_taxes = Deck.create({curriculum: intro_to_tax, name: "Fun Facts About Taxes", due_date: Date.today()+5})
 
 #Card
 
