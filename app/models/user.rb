@@ -6,8 +6,8 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :email, presence: true
   validates :email, uniqueness: true
 
-  has_many :section_registrations
-  has_many :sections, through: :section_registrations
+  has_many :registrations
+  has_many :sections, through: :registrations
   has_many :curriculums, -> { where is_teacher: true }
   has_many :attempts
 end

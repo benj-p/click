@@ -1,20 +1,52 @@
+require 'date'
+require 'faker'
+
+puts "starting to seed..."
+
 Attempt.destroy_all
 Card.destroy_all
 Deck.destroy_all
+Registration.destroy_all
+Section.destroy_all
 Curriculum.destroy_all
+User.destroy_all
 
-puts "Starting to seed..."
+students = (1..50).each_with_object({}) do |i, student|
+  student[i] = User.create(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , password: "secret")
+end
+
+teachers = (1..5).each_with_object({}) do |i, teacher|
+  teacher[i] = User.create(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , password: "secret", is_teacher: true)
+end
 
 #Curriculum
 
 intro_to_accounting = Curriculum.create({user: teachers[1], name: "Intro to Accounting"})
 intro_to_tax = Curriculum.create({user: teachers[1], name: "Intro to Taxation"})
 
+sections = (1..5).each_with_object({}) do |i, section|
+  section[i] = Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_accounting)
+end
+
+sections = (6..10).each_with_object({}) do |i, section|
+  section[i] = Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_tax)
+end
+
+students.each_with_index do |student, index|
+  a = (1..10).to_a.shuffle
+  (1..3).to_a.sample.times do
+    registration = Registration.new
+    registration.user = students[index+1]
+    registration.section = sections[a.pop]
+    registration.save
+  end
+end
+
 #Deck
 
-financial_statement_basics = Deck.create({curriculum: intro_to_accounting, name: "Financial Statement Basics"})
-journal_entry_basics = Deck.create({curriculum: intro_to_accounting, name: "Basic Journal Entries"})
-fun_facts_taxes = Deck.create({curriculum: intro_to_tax, name: "Fun Facts About Taxes"})
+financial_statement_basics = Deck.create({curriculum: intro_to_accounting, name: "Financial Statement Basics", due_date: Date.today()-10})
+journal_entry_basics = Deck.create({curriculum: intro_to_accounting, name: "Basic Journal Entries", due_date: Date.today()+3})
+fun_facts_taxes = Deck.create({curriculum: intro_to_tax, name: "Fun Facts About Taxes", due_date: Date.today()+5})
 
 #Card
 
