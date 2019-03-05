@@ -1,5 +1,6 @@
 class DecksController < ApplicationController
   before_action :set_deck, only: [:show, :edit]
+    skip_before_action :authenticate_user!, only: [:edit]
 
   def index
     @decks = policy_scope(Deck).joins(:curriculum).where("decks.curriculum_id = #{params[:curriculum_id]}")
@@ -17,6 +18,9 @@ class DecksController < ApplicationController
 
   def edit
     authorize @deck
+  end
+
+  def update
   end
 
   private
