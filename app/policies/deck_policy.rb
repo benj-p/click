@@ -9,6 +9,10 @@ class DeckPolicy < ApplicationPolicy
     @record.curriculum.user = @user
   end
 
+  def edit?
+    @record.curriculum.user = @user
+  end
+
   def update?
     @record.curriculum.user = @user
   end
