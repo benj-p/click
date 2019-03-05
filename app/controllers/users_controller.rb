@@ -3,6 +3,14 @@ class UsersController < ApplicationController
 
   def dashboard
     authorize @user
+    @sections = @user.sections
+    @curriculums = @sections.each_with_object([]) do |section, array|
+      array << section.curriculum
+    end
+    @decks = @curriculums.each_with_object([]) do |curriculum, array|
+      array << curriculum.decks
+    end
+    raise
   end
 
   private

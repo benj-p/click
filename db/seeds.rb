@@ -24,12 +24,12 @@ end
 intro_to_accounting = Curriculum.create({user: teachers[1], name: "Intro to Accounting"})
 intro_to_tax = Curriculum.create({user: teachers[1], name: "Intro to Taxation"})
 
-sections = (1..5).each_with_object({}) do |i, section|
-  section[i] = Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_accounting)
-end
-
-sections = (6..10).each_with_object({}) do |i, section|
-  section[i] = Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_tax)
+sections = (1..10).each_with_object({}) do |i, section|
+  if (1..2).to_a.sample == 1
+    section[i] = Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_accounting)
+  else
+    section[i] = Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_tax)
+  end
 end
 
 students.each_with_index do |student, index|
