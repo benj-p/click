@@ -8,7 +8,32 @@ class DecksController < ApplicationController
 
   def show
     @section = Section.find(params[:section_id])
-    @attempts = @section.users.map { |user| user.attempts }
+    @results_by_student = []
+    @results = { correct: 0, incorrect: 0, unsure: 0 }
+    attempts = @section.users.map { |user| user.attempts }
+
+    @section.users.each do |student|
+      results = { correct: 0, incorrect: 0, unsure: 0 }
+      student.attempts.each do |attempt|
+        case attempt.response
+        when "Correct" then results[:correct] += 1
+        when "Incorrect" then results[:incorrect] += 1
+        when "I don't know" then results[:unsure] += 1
+        end
+      end
+      @results_by_student << { student: student, results: results }
+    end
+
+    attempts.each do |collection|
+      collection.each do |attempt|
+        case attempt.response
+        when "Correct" then @results[:correct] += 1
+        when "Incorrect" then @results[:incorrect] += 1
+        when "I don't know" then @results[:unsure] += 1
+        end
+      end
+    end
+    # raise
     authorize @deck
   end
 

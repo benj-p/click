@@ -1,10 +1,35 @@
-<h1><%= @deck.name %></h1>
+<div class="container">
+  <div class="row">
+    <h1><%= @deck.name %></h1>
+    <h2>Section <%= @section.name %></h2>
+  </div>
 
-<% @attempts.each do |collection| %>
-  <% unless collection.empty? %>
-    <h2><%= collection.first.user.first_name %></h2>
-    <% collection.each do |attempt| %>
-      <p><%= attempt.card.question %>: <strong><%= attempt.response %></strong></p>
-    <% end %>
-  <% end %>
-<% end %>
+  <div class="row">
+    <div class="col-sm-12 col-md-4">
+      <p>Correct</p>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <p>Incorrect</p>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <p>Not sure</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 col-md-5">
+      <h3>Attention students</h3>
+      <% @results_by_student.each do |result| %>
+        <p><%= result[:student].first_name %>:
+          <%= result[:results][:correct] %> | <%= result[:results][:incorrect] %> | <%= result[:results][:unsure] %>
+        </p>
+      <% end %>
+    </div>
+    <div class="col-sm-12 col-md-5">
+      <h3>Attention cards</h3>
+    </div>
+    <div class="col-sm-12 col-md-2">
+      <h3>Deck info</h3>
+    </div>
+  </div>
+</div>
