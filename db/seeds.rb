@@ -25,7 +25,7 @@ intro_to_accounting = Curriculum.create({user: teachers[1], name: "Intro to Acco
 intro_to_tax = Curriculum.create({user: teachers[1], name: "Intro to Taxation"})
 
 sections = (1..10).each_with_object({}) do |i, section|
-  if (1..2).to_a.sample == 1
+  if i <= 5
     section[i] = Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_accounting)
   else
     section[i] = Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_tax)
@@ -33,12 +33,17 @@ sections = (1..10).each_with_object({}) do |i, section|
 end
 
 students.each_with_index do |student, index|
-  a = (1..10).to_a.shuffle
-  (1..3).to_a.sample.times do
+  a = (1..5).to_a.shuffle
+  b = (6..10).to_a.shuffle
+  (1..2).to_a.sample.times do |indextimes|
     registration = Registration.new
     registration.user = students[index+1]
-    registration.section = sections[a.pop]
-    registration.save
+    if indextimes == 1
+      registration.section = sections[a.pop]
+    else
+      registration.section = sections[b.pop]
+    end
+    registration.save!
   end
 end
 

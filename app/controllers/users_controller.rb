@@ -7,10 +7,9 @@ class UsersController < ApplicationController
     @curriculums = @sections.each_with_object([]) do |section, array|
       array << section.curriculum
     end
-    @decks = @curriculums.each_with_object([]) do |curriculum, array|
-      array << curriculum.decks
-    end
-    raise
+    @decks = @curriculums.map(&:decks).flatten
+    @outstanding_decks = @decks.select { |deck| deck.attempts.where(user: @user).length < deck.cards.count }
+    @completed_decks = @decks.select { |deck| deck.attempts.where(user: @user).length == deck.cards.count }
   end
 
   private
