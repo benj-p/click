@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:dashboard]
+  before_action :set_user, only: [:dashboard, :takedeck]
 
   def dashboard
     authorize @user
@@ -10,6 +10,11 @@ class UsersController < ApplicationController
     @decks = @curriculums.map(&:decks).flatten
     @outstanding_decks = @decks.select { |deck| deck.attempts.where(user: @user).length < deck.cards.count }
     @completed_decks = @decks.select { |deck| deck.attempts.where(user: @user).length == deck.cards.count }
+  end
+
+  def takedeck
+    authorize @user
+    @deck = Deck.find(params[:deck])
   end
 
   private

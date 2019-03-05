@@ -1,0 +1,13 @@
+<h1><%= @deck.name %></h1>
+
+<% @deck.cards.shuffle.each_with_index do |card, index| %>
+  <p><%= index+1 %>. <%= card.question %></p>
+  <% if %w(1,2).shuffle.sample == 1 %>
+    <p>Answer 1: <%= card.wrong_answer %></p>
+    <p>Answer 2: <%= card.correct_answer %></p>
+  <% else %>
+    <p>Answer 1: <%= card.correct_answer %></p>
+    <p>Answer 2: <%= card.wrong_answer %></p>
+  <% end %>
+  <p>I don't know</p>
+<% end %>
