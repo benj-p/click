@@ -1,26 +1,23 @@
-<h1>Hi <%= @user.first_name %></h1>
+<h1>Welcome, <%= @user.first_name %>!</h1>
 
 <% if @decks.all? { |deck| deck.attempts.where(user: @user).empty? == false } %>
-You have completed all your decks !
+You don't have any outstanding deck
+  <% if @completed_decks.count > 0 %>
+    <h2>Completed decks, nice job!</h2>
+    <% @completed_decks.each do |deck| %>
+      <h3 id="outstanding"><%= deck.name %></h3>
+      <strong><%= deck.curriculum.name %></strong>
+      <p>Completion: <%= deck.attempts.where(user: @user).count %> / <%= deck.cards.count %></p>
+      <p>Due date: <%= deck.due_date %></p>
+    <% end %>
+  <% end %>
 <% else %>
 You have <%= @outstanding_decks.count %> outstanding <%= "deck".pluralize(@outstanding_decks.count) %>
-<% end %>
-
-<h2>Outstanding decks</h2>
-
-<% @outstanding_decks.each do |deck| %>
-  <h3 id="outstanding"><%= deck.name %></h3>
-  <strong><%= deck.curriculum.name %></strong>
-  <p>Completion: <%= deck.attempts.where(user: @user).count %> / <%= deck.cards.count %></p>
-  <p>Due date: <%= deck.due_date %></p>
-
-<% end %>
-
-<h2>Completed decks, nice job!</h2>
-
-<% @completed_decks.each do |deck| %>
-  <h3 id="outstanding"><%= deck.name %></h3>
-  <strong><%= deck.curriculum.name %></strong>
-  <p>Completion: <%= deck.attempts.where(user: @user).count %> / <%= deck.cards.count %></p>
-  <p>Due date: <%= deck.due_date %></p>
+  <h2>Outstanding decks</h2>
+  <% @outstanding_decks.each do |deck| %>
+    <h3 id="outstanding"><%= deck.name %></h3>
+    <strong><%= deck.curriculum.name %></strong>
+    <p>Completion: <%= deck.attempts.where(user: @user).count %> / <%= deck.cards.count %></p>
+    <p>Due date: <%= deck.due_date %></p>
+  <% end %>
 <% end %>
