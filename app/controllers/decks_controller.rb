@@ -20,10 +20,12 @@ class DecksController < ApplicationController
     @section.users.each do |student|
       results = { correct: 0, incorrect: 0, unsure: 0 }
       student.attempts.each do |attempt|
-        case attempt.response
-        when "Correct" then results[:correct] += 1
-        when "Incorrect" then results[:incorrect] += 1
-        when "I don't know" then results[:unsure] += 1
+        if attempt.card.deck == @deck
+          case attempt.response
+          when "Correct" then results[:correct] += 1
+          when "Incorrect" then results[:incorrect] += 1
+          when "I don't know" then results[:unsure] += 1
+          end
         end
       end
       @results_by_student << { student: student, results: results }
