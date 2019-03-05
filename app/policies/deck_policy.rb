@@ -8,4 +8,8 @@ class DeckPolicy < ApplicationPolicy
   def show?
     @record.curriculum.user = @user
   end
+
+  def update?
+    @record.curriculum.user = @user
+  end
 end
