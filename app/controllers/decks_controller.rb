@@ -16,6 +16,7 @@ class DecksController < ApplicationController
   end
 
   def edit
+    authorize @deck
   end
 
   private
