@@ -12,6 +12,7 @@ class DecksController < ApplicationController
     @results_by_card = {}
     @results = { correct: 0, incorrect: 0, unsure: 0 }
     attempts = @section.users.map { |user| user.attempts.select { |attempt| attempt.card.deck == @deck } }
+    @attempts_count = attempts.count
 
     @deck.cards.each do |card|
       @results_by_card[card.id] = {card: card, results: { correct: 0, incorrect: 0, unsure: 0 } }
