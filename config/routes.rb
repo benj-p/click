@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :curriculums, only:[:show] do
     resources :sections, only: [:show] do
       resources :decks, only:[:index, :show, :new, :create, :edit] do
-        resources :cards, only[:index, :new, :create, :edit]
+        resources :cards, only:[:index, :new, :create, :edit]
       end
     end
   end
