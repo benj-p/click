@@ -1,0 +1,35 @@
+.deck-completion-card{
+	display:flex;
+	background-color: white;
+	border-radius: 8px;
+	overflow: hidden;
+	height: 50px;
+	margin-top: 15px;
+	box-shadow: 2px 3px 5px 0px rgba(10,9,10,0.1);
+}
+
+.dcc-img{
+	height:50px;
+	width: 50px;
+	display:cover;
+
+}
+
+.image-and-name{
+	display:flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	p {
+		margin-bottom: 0px !important;
+		padding-left: 7px;
+	}
+}
+.progress-holder {
+	flex: 1;
+	height: 50px;
+	padding-bottom: 20px;
+    padding-top: 20px;
+    padding-right: 15px;
+    padding-left: 250px;
+}
