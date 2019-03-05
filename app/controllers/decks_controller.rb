@@ -7,6 +7,8 @@ class DecksController < ApplicationController
   end
 
   def show
+    @section = Section.find(params[:section_id])
+    @attempts = @section.users.map { |user| user.attempts }
     authorize @deck
   end
 

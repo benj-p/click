@@ -1,3 +1,10 @@
-<h1> <%= Deck.find(params[:id]).name %></h1>
-  <h1>Section <%= Section.find(params[:section_id]).name %></h1>
-  <h2> <i class="fas fa-book"></i><%= Curriculum.find(params[:curriculum_id]).name %> </h2>
+<h1><%= @deck.name %></h1>
+
+<% @attempts.each do |collection| %>
+  <% unless collection.empty? %>
+    <h2><%= collection.first.user.first_name %></h2>
+    <% collection.each do |attempt| %>
+      <p><%= attempt.card.question %>: <strong><%= attempt.response %></strong></p>
+    <% end %>
+  <% end %>
+<% end %>
