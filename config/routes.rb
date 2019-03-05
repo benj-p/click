@@ -4,4 +4,9 @@ Rails.application.routes.draw do
   resources :curriculums, only:[:show] do
     resources :decks, only:[:index, :show]
   end
+  resources :users, only: [] do
+    member do
+      get 'dashboard'
+    end
+  end
 end
