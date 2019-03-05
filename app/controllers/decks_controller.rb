@@ -11,16 +11,19 @@ class DecksController < ApplicationController
   end
 
   def new
-    @deck = deck.new
+    @deck = Deck.new
+    @deck.curriculum = Curriculum.find(params[:curriculum_id])
+    @curriculum = @deck.curriculum
     authorize @deck
   end
 
   def create
-    @deck = deck.new(deck_params)
-    @deck.user = current_user
-    authorize @deck
+    @deck = Deck.new(deck_params)
+    @deck.curriculum = Curriculum.find(params[:curriculum_id])
+    @curriculum = @deck.curriculum
     if @deck.save
-      redirect_to deck_path(@deck)
+      authorize @deck
+      redirect_to curriculum_path(@curriculum)
     else
       render :new
     end

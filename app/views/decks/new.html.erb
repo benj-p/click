@@ -1,3 +1,12 @@
-<h1> Add a Deck %></h1>
+<h1> Add a Deck </h1>
 
-<%= render 'form', deck: @deck %>
+<div class="row">
+  <%= simple_form_for [@curriculum, @deck], :method => :post do |f| %>
+    <div class="col-12 col-md-6">
+      <%= f.input :name %>
+    </div>
+    <div class="col-md-12">
+      <%= f.submit "Create Deck"%>
+    </div>
+  <% end %>
+</div>
