@@ -6,43 +6,13 @@
 
   <div class="row">
     <div class="col-sm-12 col-md-4">
-      <svg viewBox="0 0 36 36" class="circular-chart">
-  <path class="circle circle-green"
-    d="M18 2.0845
-      a 15.9155 15.9155 0 0 1 0 31.831
-      a 15.9155 15.9155 0 0 1 0 -31.831"
-    fill="none"
-    stroke="#444";
-    stroke-width="1";
-    stroke-dasharray="<%= (@results[:correct] / @attempts_count.to_f) * 100 %>, 100"
-  />
-  <text x="9" y="20.35" class="circle-label">Correct</text>
-</svg>
+      <%= render 'shared/arc', color: 'green', percentage: (@results[:correct] / @attempts_count.to_f) * 100, text: 'Correct' %>
     </div>
     <div class="col-sm-12 col-md-4">
-      <svg viewBox="0 0 36 36" class="circular-chart">
-        <path class="circle circle-red"
-          d="M18 2.0845
-            a 15.9155 15.9155 0 0 1 0 31.831
-            a 15.9155 15.9155 0 0 1 0 -31.831"
-          stroke-dasharray="<%= (@results[:incorrect] / @attempts_count.to_f) * 100 %>, 100"
-        />
-        <text x="9" y="20.35" class="circle-label">Incorrect</text>
-      </svg>
+      <%= render 'shared/arc', color: 'red', percentage: (@results[:incorrect] / @attempts_count.to_f) * 100, text: 'Incorrect' %>
     </div>
     <div class="col-sm-12 col-md-4">
-      <svg viewBox="0 0 36 36" class="circular-chart">
-  <path class="circle circle-grey"
-    d="M18 2.0845
-      a 15.9155 15.9155 0 0 1 0 31.831
-      a 15.9155 15.9155 0 0 1 0 -31.831"
-    fill="none"
-    stroke="#444";
-    stroke-width="1";
-    stroke-dasharray="75, 100"
-  />
-  <text x="9" y="20.35" class="circle-label">Unsure</text>
-</svg>
+      <%= render 'shared/arc', color: 'grey', percentage: (@results[:unsure] / @attempts_count.to_f) * 100, text: 'Unsure' %>
     </div>
   </div>
 
