@@ -9,8 +9,9 @@
     <div class="row">
 
       <h3><%= curriculum.name %></h3>
+      <div class="col-12">
       <div class="cards">
-      <% curriculum.sections.each do |section| %>
+      <% curriculum.sections.first(3).each do |section| %>
         <div class="card-rating">
           <div class="card">
             <div class="background-image" style="background-image: url(https://picsum.photos/400)">
@@ -18,7 +19,7 @@
 
             <div class="kind-of-container">
               <div class="description">
-                <h2>Section <%= section.name %></h2>
+                <h2><%= link_to "Section #{section.name}", section_path(section) %></h2>
                 <p> </p>
               </div>
 
@@ -40,6 +41,7 @@
         </div>
       <% end %>
     </div>
+  </div>
     </div>
   <% end %>
 </div>
