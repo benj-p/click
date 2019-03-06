@@ -9,7 +9,7 @@
   grid-gap: 20px;
 }
 
-.flashcard, .resource {
+.flashcard, .resource,  {
   display: flex;
   flex-wrap: wrap;
   background-color: white;
@@ -32,12 +32,12 @@
   vertical-align: center;
 }
 
-.fa-plus-circle {
+.fa-plus-circle,{
   font-size: 64px;
   margin-top: 36px;
 }
 
-.edit-link-icon {
+.edit-link-icon,  .fa-external-link-alt {
   position: absolute;
   bottom: 12px;
   right: 12px;

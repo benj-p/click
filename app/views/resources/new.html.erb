@@ -1,2 +1,19 @@
-<h1>Resources#new</h1>
-<p>Find me in app/views/resources/new.html.erb</p>
+<div class="container">
+  <h1> Add a Resource </h1>
+  <div class="row">
+    <%= simple_form_for [@curriculum, @deck, @resource], :method => :post do |f| %>
+      <div class="col-12 col-md-6">
+        <%= f.input :name %>
+      </div>
+      <div class="col-12 col-md-6">
+        <%= f.input :text %>
+      </div>
+      <div class="col-12 col-md-6">
+        <%= f.input :url %>
+      </div>
+      <div class="col-md-12">
+        <%= f.submit "Create Resource"%>
+      </div>
+    <% end %>
+  </div>
+</div>

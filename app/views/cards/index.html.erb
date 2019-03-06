@@ -22,7 +22,7 @@
   <h2>Deck Resources</h2>
   <div class="deck-resources column col-lg-3 col-6">
     <div class="flashcard flashcard-new">
-      <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_curriculum_deck_card_path(@curriculum, @deck) %>
+      <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_curriculum_deck_resource_path(@curriculum, @deck) %>
     </div>
         <% @resources.each do |resource| %>
       <div class="resource">

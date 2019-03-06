@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :curriculums, only:[:show, :index] do
     resources :decks, only:[:index, :edit, :update, :new, :create] do
       resources :cards, only:[:edit, :update, :new, :create, :index, :show]
+      resources :resources, only: [:new, :create, :edit, :update]
     end
   end
 
@@ -19,7 +20,6 @@ Rails.application.routes.draw do
     end
   end
   resources :attempts, only: [:create]
-  resources :resources, only: [:new, :create, :edit, :update]
 
   resources :sections, only: :show do
     resources :decks, only: :show
