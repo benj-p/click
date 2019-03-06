@@ -1,6 +1,10 @@
 class CurriculumsController < ApplicationController
   before_action :set_curriculum, only: [:show]
 
+  def index
+    @curriculums = policy_scope(Curriculum)
+  end
+
   def show
     authorize @curriculum
   end

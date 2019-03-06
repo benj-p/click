@@ -21,7 +21,7 @@
       <h3>Completed Decks</h3>
       <% @section.curriculum.decks.each do |deck| %>
         <% if deck.due_date < Date.today %>
-          <%= link_to curriculum_section_deck_path(@section, deck) do %>
+          <%= link_to section_deck_path(@section, deck) do %>
             <div class="container deck-card">
               <p> <%= deck.name %> </p>
             </div>
