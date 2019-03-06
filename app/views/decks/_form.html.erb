@@ -1,0 +1,10 @@
+<div class="row">
+  <%= simple_form_for [@curriculum, @deck], :method => :patch do |f| %>
+    <div class="col-12 col-md-6">
+      <%= f.input :name %>
+    </div>
+    <div class="col-md-12">
+      <%= f.submit "Submit changes"%>
+    </div>
+  <% end %>
+</div>

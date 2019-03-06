@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'cards/new'
+  get 'cards/edit'
   devise_for :users
   root to: 'pages#home'
   resources :curriculums, only:[:show] do

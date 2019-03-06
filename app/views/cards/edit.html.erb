@@ -1,0 +1,20 @@
+<div class="container">
+  <h1> Edit this Card </h1>
+  <div class="row">
+    <!-- update the file path in line 5  -->
+    <%= simple_form_for [@curriculum, @deck, @card], :method => :patch do |f| %>
+      <div class="col-12 col-md-6">
+        <%= f.input :question %>
+      </div>
+      <div class="col-12 col-md-6">
+        <%= f.input :correct_answer %>
+      </div>
+      <div class="col-12 col-md-6">
+        <%= f.input :wrong_answer %>
+      </div>
+      <div class="col-md-12">
+        <%= f.submit "Update Card"%>
+      </div>
+    <% end %>
+  </div>
+</div>
