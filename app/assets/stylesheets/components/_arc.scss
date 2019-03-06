@@ -1,7 +1,5 @@
 .circular-chart {
   display: block;
-  margin: 10px auto;
-  max-width: 80%;
 }
 
 .circle {
@@ -26,10 +24,14 @@
 
 .circle-small {
   max-height: 16px;
+  max-width: 16px;
+  margin: 10px;
 }
 
 .circle-large {
   max-height: 250px;
+  margin: 10px auto;
+  max-width: 80%;
 }
 
 @keyframes progress {

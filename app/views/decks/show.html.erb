@@ -22,8 +22,9 @@
         <h3>Attention students</h3>
         <% @results_by_student.each do |result| %>
           <p><%= result[:student].first_name %>:
-            <%= render 'shared/arc', color: 'green', percentage: result[:results][:correct] / result[:attempts].to_f) * 100, text: 'Correct', size: 'large' %>
-            <%= result[:results][:correct] %> | <%= result[:results][:incorrect] %> | <%= result[:results][:unsure] %>
+            <%= render 'shared/arc', color: 'green', percentage: (result[:results][:correct] / result[:results][:attempts].to_f) * 100,  size: 'small' %>
+            <%= render 'shared/arc', color: 'red', percentage: (result[:results][:incorrect] / result[:results][:attempts].to_f) * 100,  size: 'small' %>
+            <%= render 'shared/arc', color: 'grey', percentage: (result[:results][:unsure] / result[:results][:attempts].to_f) * 100,  size: 'small' %>
           </p>
         <% end %>
       </div>
