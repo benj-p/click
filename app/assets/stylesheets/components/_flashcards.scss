@@ -37,8 +37,18 @@
   margin-top: 36px;
 }
 
-.edit-link-icon,  .fa-external-link-alt {
+.edit-link-icon, {
   position: absolute;
   bottom: 12px;
   right: 12px;
+}
+
+.fa-external-link-alt {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+}
+
+.heading-edit{
+  font-size: 14px;
 }

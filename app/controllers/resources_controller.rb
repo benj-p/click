@@ -20,10 +20,22 @@ class ResourcesController < ApplicationController
 
   def edit
     @resource = Resource.find(params[:id])
+    @deck = Deck.find(params[:deck_id])
+    authorize @deck
+    @curriculum = @deck.curriculum
   end
 
   def update
-
+    @resource = Resource.find(params[:id])
+    @deck = Deck.find(params[:deck_id])
+    @resource.update(resource_params)
+    authorize @deck
+    @curriculum = @deck.curriculum
+    if @resource.save
+      redirect_to curriculum_deck_cards_path(@curriculum, @deck)
+    else
+      render :edit
+    end
   end
 
   private
