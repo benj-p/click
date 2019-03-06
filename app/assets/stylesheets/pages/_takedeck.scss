@@ -1,0 +1,31 @@
+.question-card {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 2px 2px 4px rgba(220,220,220,0.5);
+  margin-top: 3vh;
+  padding: 8px;
+}
+
+.choice-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-answer {
+  border-radius: 50%;
+  height: 10vh;
+  width: 10vh;
+  background-color: $yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  &.help {
+    background-color: #748DE2;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+}

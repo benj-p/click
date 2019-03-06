@@ -1,13 +1,23 @@
-<h1><%= @deck.name %></h1>
+<div class="container">
+  <h1><span><%= @deck.name %></span></h1>
+  <div class="question-card">
+    <h2>Question <%= params[:question].to_i + 1 %></h2>
+    <p><%= @deck.cards[params[:question].to_i].question %></p>
+    <div class="choice-container">
+        <div class="btn-answer">
+          <%= link_to @deck.cards[params[:question].to_i || 0].wrong_answer, attempts_path(@attempt, response: "Incorrect", card_id: @deck.cards[params[:question].to_i], deck_id: @deck, question: params[:question].to_i), method: :post %>
+        </div>
 
-<p>Question <%= params[:question].to_i + 1 %>: <%= @deck.cards[params[:question].to_i].question %></p>
+        <div class="btn-answer help">
+          <%= link_to "Help!", attempts_path(@attempt, response: "I don't know", card_id: @deck.cards[params[:question].to_i], deck_id: @deck, question: params[:question].to_i), method: :post %>
+        </div>
 
-<ul>
-  <li><%= link_to @deck.cards[params[:question].to_i || 0].wrong_answer, attempts_path(@attempt, response: "Incorrect", card_id: @deck.cards[params[:question].to_i], deck_id: @deck, question: params[:question].to_i), method: :post %></li>
+        <div class="btn-answer">
+          <%= link_to @deck.cards[params[:question].to_i || 0].correct_answer, attempts_path(@attempt, response: "Correct", card_id: @deck.cards[params[:question].to_i], deck_id: @deck, question: params[:question].to_i), method: :post %>
+        </div>
 
-  <li><%= link_to @deck.cards[params[:question].to_i || 0].correct_answer, attempts_path(@attempt, response: "Correct", card_id: @deck.cards[params[:question].to_i], deck_id: @deck, question: params[:question].to_i), method: :post %></li>
+    </div>
+  </div>
 
-  <li><%= link_to "I don't know", attempts_path(@attempt, response: "I don't know", card_id: @deck.cards[params[:question].to_i], deck_id: @deck, question: params[:question].to_i), method: :post %></li>
-</ul>
-
-<p><%= link_to "Back to dashboard", dashboard_user_path(@user) %></p>
+  <p><%= link_to "Back to dashboard", dashboard_user_path(@user) %></p>
+</div>

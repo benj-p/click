@@ -1,7 +1,10 @@
 @media(max-width: 575.98px) {
   h1 {
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 500;
+    span {
+      border-bottom: 0.5vh solid $yellow;
+    }
   }
 
   h2 {
