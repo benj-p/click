@@ -21,8 +21,8 @@ end
 
 #Curriculum
 
-intro_to_accounting = Curriculum.create({user: teachers[1], name: "Intro to Accounting"})
-intro_to_tax = Curriculum.create({user: teachers[1], name: "Intro to Taxation"})
+intro_to_accounting = Curriculum.create({user: teacher, name: "Intro to Accounting"})
+intro_to_tax = Curriculum.create({user: teacher, name: "Intro to Taxation"})
 
 sections = (1..10).each_with_object({}) do |i, section|
   if i <= 5
