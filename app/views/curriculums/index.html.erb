@@ -1,0 +1,8 @@
+<h2>My curriculums</h2>
+
+<% @curriculums.each do |curriculum| %>
+  <p><%= curriculum.name %></p>
+  <% curriculum.sections.each do |section| %>
+    <p>- <%= section.name %></p>
+  <% end %>
+<% end %>
