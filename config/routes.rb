@@ -8,6 +8,16 @@ Rails.application.routes.draw do
       resources :cards, only:[:edit, :update, :new, :create, :index, :show]
     end
   end
+
+  resources :users, only: [] do
+    member do
+      get 'dashboard'
+      get 'takedeck'
+      get 'decksummary'
+    end
+  end
+  resources :attempts, only: [:create]
+
   resources :sections, only: :show do
     resources :decks, only: :show
   end

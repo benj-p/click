@@ -1,0 +1,13 @@
+<h1><%= @deck.name %></h1>
+
+<p>Question <%= params[:question].to_i + 1 %>: <%= @deck.cards[params[:question].to_i].question %></p>
+
+<ul>
+  <li><%= link_to @deck.cards[params[:question].to_i || 0].wrong_answer, attempts_path(@attempt, response: "Incorrect", card_id: @deck.cards[params[:question].to_i], deck_id: @deck, question: params[:question].to_i), method: :post %></li>
+
+  <li><%= link_to @deck.cards[params[:question].to_i || 0].correct_answer, attempts_path(@attempt, response: "Correct", card_id: @deck.cards[params[:question].to_i], deck_id: @deck, question: params[:question].to_i), method: :post %></li>
+
+  <li><%= link_to "I don't know", attempts_path(@attempt, response: "I don't know", card_id: @deck.cards[params[:question].to_i], deck_id: @deck, question: params[:question].to_i), method: :post %></li>
+</ul>
+
+<p><%= link_to "Back to dashboard", dashboard_user_path(@user) %></p>

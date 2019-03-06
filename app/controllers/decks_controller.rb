@@ -64,7 +64,7 @@ class DecksController < ApplicationController
     @curriculum = @deck.curriculum
     if @deck.save
       authorize @deck
-      redirect_to curriculum_path(@curriculum)
+      redirect_to curriculum_deck_cards_path(@curriculum, @deck)
     else
       render :new
     end
@@ -80,7 +80,7 @@ class DecksController < ApplicationController
     authorize @deck
     @curriculum = @deck.curriculum
     if @deck.save
-      redirect_to curriculum_path(@curriculum)
+      redirect_to curriculum_deck_cards_path(@curriculum, @deck)
     else
       render :edit
     end

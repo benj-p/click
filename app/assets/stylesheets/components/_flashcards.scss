@@ -1,0 +1,29 @@
+
+.falshcard-grid{
+  display: grid;
+  grid-gap: 16px;
+  max-width: 1240px;
+  margin: 0 auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 20px;
+}
+
+.flashcard {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 160px;
+  margin-top: 15px;
+  padding: 10px;
+  box-shadow: 2px 3px 5px 0px rgba(10,9,10,0.1);
+  position: relative;
+}
+
+.edit-link-icon {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+}
