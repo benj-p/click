@@ -1,13 +1,13 @@
 class UserPolicy < ApplicationPolicy
   def dashboard?
-    @record == @user
+    @record == @user && @user.is_teacher == false
   end
 
   def takedeck?
-    @record == @user
+    @record == @user && @user.is_teacher == false
   end
 
   def decksummary?
-    @record == @user
+    @record == @user && @user.is_teacher == false
   end
 end
