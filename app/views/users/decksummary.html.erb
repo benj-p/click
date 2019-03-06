@@ -1,0 +1,34 @@
+<h1>Summary: <%= @deck.name %></h1>
+
+<p>Great job, you've completed this deck! 👍</p>
+
+<!-- <h2>Resources for you</h2> -->
+
+<h2>You had <%= pluralize(@wrong_answers.count, 'question') %> wrong</h2>
+
+<% @wrong_answers.each do |wronganswer| %>
+  <p>
+    <p><%= wronganswer.card.question %></p>
+    <p>The correct answer was <strong><%= wronganswer.card.correct_answer %></strong></p>
+  </p>
+<% end %>
+
+<h2>You were unsure about <%= pluralize(@unsure_answers.count, 'question') %></h2>
+
+<% @unsure_answers.each do |unsureanswer| %>
+  <p>
+    <p><%= unsureanswer.card.question %></p>
+    <p>The correct answer was <strong><%= unsureanswer.card.correct_answer %></strong></p>
+  </p>
+<% end %>
+
+<h2>You had <%= pluralize(@correct_answers.count, 'question') %> right</h2>
+
+<% @correct_answers.each do |correctanswer| %>
+  <p>
+    <p><%= correctanswer.card.question %></p>
+    <p>You answered <strong><%= correctanswer.card.correct_answer %></strong></p>
+  </p>
+<% end %>
+
+<p><%= link_to "Back to dashboard", dashboard_user_path(@user) %></p>

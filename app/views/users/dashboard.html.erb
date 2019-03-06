@@ -1,0 +1,52 @@
+<div class="container">
+  <h1>Welcome, <%= @user.first_name %>!</h1>
+
+  <% if @outstanding_decks.count == 0 %>
+  Looks like you've done all your work 💪
+  <% end %>
+
+  <% if @outstanding_decks.count > 0 %>
+  You have <span style="color: #FAC70A;"><%= @outstanding_decks.count %></span> uncomplete <%= "deck".pluralize(@outstanding_decks.count) %>.
+
+  <div class="dashboard-deck-container">
+    <h2>Outstanding decks</h2>
+    <% @outstanding_decks.each do |deck| %>
+      <div class="deck-card">
+        <div class="top-line">
+          <p><i class="fas fa-book"></i> <%= deck.name %></p>
+          <p class="outstanding-due-date">Due: <%= deck.due_date.strftime("%b %d") %></p>
+        </div>
+        <div class="bottom-line">
+          <p class="deck-name"><%= deck.curriculum.name %></p>
+          <%= link_to "Finish now", takedeck_user_path(deck: deck, question: deck.attempts.where(user: @user).count || 0), class: "btn btn-yellow btn-finish" %>
+        </div>
+        <div class="progress mt-3">
+          <div class="progress-bar" role="progressbar" style="width: <%= deck.attempts.where(user: @user).count / deck.cards.count.to_f * 100 %>%" aria-valuenow="<%= deck.attempts.where(user: @user).count / deck.cards.count.to_f * 100 %>" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <% end %>
+
+
+  <% if @completed_decks.count > 0 %>
+  <div class="dashboard-deck-container">
+    <h2>Completed decks, nice job!</h2>
+    <% @completed_decks.each do |deck| %>
+      <div class="deck-card">
+        <div class="top-line">
+          <p><i class="fas fa-book"></i> <%= deck.name %></p>
+          <p class="completed-due-date">Comp: <%= deck.due_date.strftime("%b %d") %></p>
+        </div>
+        <div class="bottom-line">
+          <p class="deck-name"><%= deck.curriculum.name %></p>
+          <%= link_to "Review", decksummary_user_path(@user, deck: deck), class: "btn btn-grey btn-complete" %>
+        </div>
+        <div class="progress mt-3">
+          <div class="progress-bar" role="progressbar" style="width: <%= deck.attempts.where(user: @user).count / deck.cards.count.to_f * 100 %>%" aria-valuenow="<%= deck.attempts.where(user: @user).count / deck.cards.count.to_f * 100 %>" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>

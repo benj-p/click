@@ -1,7 +1,6 @@
 class Card < ApplicationRecord
   has_many :attempts
   belongs_to :deck
-  has_one :resource
-
+  belongs_to :resource, optional: true
   validates :question, :correct_answer, :wrong_answer, presence: true
 end
