@@ -2,7 +2,6 @@
 .student-list-card{
 	background-color: white;
 	border-radius: 8px;
-	margin-top: 30px;
 	width: 250px;
 	box-shadow: $box-shadow-base;
 	min-height: 200px;
@@ -25,8 +24,22 @@
 
 .student-info{
 	display:flex;
+  align-items: center;
+  padding: 8px;
 	p{
 		padding-left: 8px;
-		padding-top: 4px;
 	}
+}
+
+.student-list-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  .student-name {
+    flex-grow: 1;
+    p {
+      margin: 0;
+      font-weight: bold;
+    }
+  }
 }
