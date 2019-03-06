@@ -38,9 +38,7 @@
           <p>There are no registered students for this section</p>
         <% else %>
           <% @section.users.each do |user| %>
-            <% unless user.is_teacher %>
               <p><%= link_to "#{user.first_name} #{user.last_name}", root_path %></p>
-            <% end %>
           <% end %>
         <% end %>
       </div>
