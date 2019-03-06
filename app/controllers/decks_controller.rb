@@ -49,7 +49,7 @@ class DecksController < ApplicationController
         end
       end
     end
-    # raise
+    @results_by_student.sort_by! { |result| result[:results][:incomplete] }
     authorize @deck
   end
 
