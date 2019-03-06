@@ -1,6 +1,6 @@
 class UserPolicy < ApplicationPolicy
   def dashboard?
-    @record == @user
+    @record == @user && @user.is_teacher == false
   end
 
   def takedeck?
