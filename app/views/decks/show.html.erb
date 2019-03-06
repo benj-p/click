@@ -44,6 +44,13 @@
       <div class="section">
         <h3>Attention cards</h3>
         <% @results_by_card.each do |result| %>
+          <div class="student-info border-bottom">
+            <div class="student-list-content">
+              <div class="student-name">
+                <p><%= result[1][:card].question %></p>
+              </div>
+            </div>
+          </div>
           <p><%= result[1][:card].question %>:
             <%= result[1][:results][:correct] %> | <%= result[1][:results][:incorrect] %> | <%= result[1][:results][:unsure] %>
           </p>
