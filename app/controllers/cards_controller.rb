@@ -1,6 +1,10 @@
 class CardsController < ApplicationController
   before_action :set_card, only: [:edit]
 
+  def index
+    @cards = policy_scope(Card).where(deck: Deck.find(params[:deck_id]))
+  end
+
   def new
     @card = Card.new
     @card.deck = Deck.find(params[:deck_id])
@@ -16,7 +20,7 @@ class CardsController < ApplicationController
     @curriculum = @deck.curriculum
     authorize @card
     if @card.save
-      redirect_to curriculum_path(@curriculum)
+      redirect_to curriculum_deck_cards_path(@curriculum, @deck, @card)
     else
       render :new
     end
@@ -34,7 +38,7 @@ class CardsController < ApplicationController
     @deck = @card.deck
     @curriculum = @deck.curriculum
     if @card.save
-      redirect_to curriculum_path(@curriculum)
+      redirect_to curriculum_deck_cards_path(@curriculum, @deck, @card)
     else
       render :edit
     end

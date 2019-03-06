@@ -1,7 +1,7 @@
 class CardPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.joins(:deck).where(decks: { deck_id: deck.id })
+      scope.all
     end
   end
 
