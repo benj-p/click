@@ -32,7 +32,7 @@
 
     <div class="col-sm-12 col-md-3">
       <h3>Students</h3>
-      <h4><%= @section.users.count %> students</h4>
+      <h4><%= pluralize(@section.users.count, 'student') %></h4>
       <div class="container student-list">
         <% @section.users.each do |user| %>
           <% unless user.is_teacher %>
