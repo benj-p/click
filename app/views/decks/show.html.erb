@@ -47,7 +47,7 @@
           <div class="student-info border-bottom">
             <div class="student-list-content">
               <div class="student-name">
-                <p><%= result[1][:card].question %></p>
+                <p><%= truncate(result[1][:card].question, length: 24) %></p>
               </div>
               <%= render 'shared/arc', color: 'green', percentage: (result[1][:results][:correct] / result[1][:results][:attempts].to_f) * 100,  size: 'small' %>
               <%= render 'shared/arc', color: 'red', percentage: (result[1][:results][:incorrect] / result[1][:results][:attempts].to_f) * 100,  size: 'small' %>
