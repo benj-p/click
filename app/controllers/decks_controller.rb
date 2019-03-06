@@ -15,7 +15,7 @@ class DecksController < ApplicationController
     @attempts_count = attempts.count
 
     @deck.cards.each do |card|
-      @results_by_card[card.id] = {card: card, results: { correct: 0, incorrect: 0, unsure: 0 } }
+      @results_by_card[card.id] = {card: card, results: { attempts: 0, correct: 0, incorrect: 0, unsure: 0 } }
     end
 
     @section.users.each do |student|
@@ -35,6 +35,7 @@ class DecksController < ApplicationController
 
     attempts.each do |collection|
       collection.each do |attempt|
+        @results_by_card[attempt.card.id][:results][:attempts] += 1
         case attempt.response
         when "Correct"
           @results[:correct] += 1
