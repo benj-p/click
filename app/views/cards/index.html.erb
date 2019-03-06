@@ -1,11 +1,13 @@
 <div class="container">
   <h1> <%= @deck.name %> </h1>
   <h2><%= link_to '<i class="fas fa-pen"></i>'.html_safe, edit_curriculum_deck_path(@curriculum, @deck) %> Edit</h2>
-  <div class="falshcard-grid">
+  <div class="falshcard-grid column col-lg-3 col-6">
     <% @deck.cards.each do |card| %>
       <div class="flashcard">
         <%= card.question %>
-        <%= link_to '<i class="fas fa-pen"></i>'.html_safe, edit_curriculum_deck_card_path(@curriculum, @deck, card) %>
+        <div class="edit-link-icon">
+          <%= link_to '<i class="fas fa-pen"></i>'.html_safe, edit_curriculum_deck_card_path(@curriculum, @deck, card) %>
+        </div>
       </div>
     <% end %>
   </div>
