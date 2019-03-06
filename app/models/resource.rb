@@ -1,4 +1,4 @@
 class Resource < ApplicationRecord
-  belongs_to :card
-  validates :name, :type, presence: true
+  has_many :cards
+  validates :name, presence: true
 end
