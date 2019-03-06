@@ -5,10 +5,17 @@
     <% @deck.cards.each do |card| %>
       <div class="flashcard">
         <%= card.question %>
+        <div class="resources">
+          <%= card.resource.name %>
+        </div>
         <div class="edit-link-icon">
           <%= link_to '<i class="fas fa-pen"></i>'.html_safe, edit_curriculum_deck_card_path(@curriculum, @deck, card) %>
         </div>
       </div>
     <% end %>
+  </div>
+  <h2>Deck Resources</h2>
+  <div class="deck-resources">
+
   </div>
 </div>

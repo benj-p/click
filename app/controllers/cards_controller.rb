@@ -5,7 +5,6 @@ class CardsController < ApplicationController
     @cards = policy_scope(Card).where(deck: Deck.find(params[:deck_id]))
     @deck = Deck.find(params[:deck_id])
     @curriculum = Curriculum.find(params[:curriculum_id])
-
   end
 
   def new
@@ -14,6 +13,7 @@ class CardsController < ApplicationController
     authorize @card
     @deck = @card.deck
     @curriculum = @deck.curriculum
+    @resources = deck_resources
   end
 
   def create
@@ -33,6 +33,7 @@ class CardsController < ApplicationController
     authorize @card
     @deck = @card.deck
     @curriculum = @deck.curriculum
+    @resources = deck_resources
   end
 
   def update
@@ -55,5 +56,15 @@ class CardsController < ApplicationController
 
   def card_params
     params.require(:card).permit(:name, :question, :correct_answer, :wrong_answer, :resource_id)
+  end
+
+  def deck_resources
+    resources = ["Create New"]
+    Deck.find(params[:deck_id]).cards.each do |card|
+      if card.resource
+        resources << card.resource.name
+      end
+    end
+    resources.uniq
   end
 end
