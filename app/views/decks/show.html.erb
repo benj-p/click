@@ -49,11 +49,11 @@
               <div class="student-name">
                 <p><%= result[1][:card].question %></p>
               </div>
+              <%= render 'shared/arc', color: 'green', percentage: (result[1][:results][:correct] / result[1][:results][:attempts].to_f) * 100,  size: 'small' %>
+              <%= render 'shared/arc', color: 'red', percentage: (result[1][:results][:incorrect] / result[1][:results][:attempts].to_f) * 100,  size: 'small' %>
+              <%= render 'shared/arc', color: 'grey', percentage: (result[1][:results][:unsure] / result[1][:results][:attempts].to_f) * 100,  size: 'small' %>
             </div>
           </div>
-          <p><%= result[1][:card].question %>:
-            <%= result[1][:results][:correct] %> | <%= result[1][:results][:incorrect] %> | <%= result[1][:results][:unsure] %>
-          </p>
         <% end %>
       </div>
     </div>
