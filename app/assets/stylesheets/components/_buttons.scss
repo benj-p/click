@@ -1,15 +1,37 @@
 .btn-yellow{
 	color: white;
 	background-color: $yellow;
+
+
+	a{
+		color: inherit;
+	}
 }
+
+.btn-yellow:hover{
+	color: $gris-foncee;
+}
+
 
 .btn-grey{
 	color: $gris-foncee;
 	background-color: $gris-claire;
+	a{
+		color: inherit;
+	}
+}
+
+.margin-right{
+	margin-right: 7px;
 }
 
 .btn{
 	border-radius: 4px;
 	font-weight: 400;
   padding: 4px 8px;
+  width: 150px
+	a {
+		text-decoration: none;
+	}
 }
+
