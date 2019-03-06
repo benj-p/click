@@ -3,12 +3,14 @@
   border-radius: 4px;
   box-shadow: 2px 2px 4px rgba(220,220,220,0.5);
   margin-top: 3vh;
-  padding: 8px;
+  padding: 16px;
 }
 
 .choice-container {
   display: flex;
   justify-content: space-between;
+  margin-top: 4vh;
+  padding-bottom: 16px;
 }
 
 .btn-answer {
