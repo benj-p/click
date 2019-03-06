@@ -2,7 +2,6 @@
   display: block;
   margin: 10px auto;
   max-width: 80%;
-  max-height: 250px;
 }
 
 .circle {
@@ -23,6 +22,14 @@
 
 .circle-grey {
   stroke: #505050;
+}
+
+.circle-small {
+  max-height: 16px;
+}
+
+.circle-large {
+  max-height: 250px;
 }
 
 @keyframes progress {

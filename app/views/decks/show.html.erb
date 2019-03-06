@@ -6,13 +6,13 @@
 
   <div class="row">
     <div class="col-sm-12 col-md-4">
-      <%= render 'shared/arc', color: 'green', percentage: (@results[:correct] / @attempts_count.to_f) * 100, text: 'Correct', circumference: 100 %>
+      <%= render 'shared/arc', color: 'green', percentage: (@results[:correct] / @attempts_count.to_f) * 100, text: 'Correct', size: 'large' %>
     </div>
     <div class="col-sm-12 col-md-4">
-      <%= render 'shared/arc', color: 'red', percentage: (@results[:incorrect] / @attempts_count.to_f) * 100, text: 'Incorrect', circumference: 100 %>
+      <%= render 'shared/arc', color: 'red', percentage: (@results[:incorrect] / @attempts_count.to_f) * 100, text: 'Incorrect', size: 'large' %>
     </div>
     <div class="col-sm-12 col-md-4">
-      <%= render 'shared/arc', color: 'grey', percentage: (@results[:unsure] / @attempts_count.to_f) * 100, text: 'Unsure', circumference: 100 %>
+      <%= render 'shared/arc', color: 'grey', percentage: (@results[:unsure] / @attempts_count.to_f) * 100, text: 'Unsure', size: 'large' %>
     </div>
   </div>
 
@@ -22,6 +22,7 @@
         <h3>Attention students</h3>
         <% @results_by_student.each do |result| %>
           <p><%= result[:student].first_name %>:
+            <%= render 'shared/arc', color: 'green', percentage: result[:results][:correct] / result[:attempts].to_f) * 100, text: 'Correct', size: 'large' %>
             <%= result[:results][:correct] %> | <%= result[:results][:incorrect] %> | <%= result[:results][:unsure] %>
           </p>
         <% end %>
