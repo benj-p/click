@@ -8,13 +8,15 @@ class UsersController < ApplicationController
       array << section.curriculum
     end
     @decks = @curriculums.map(&:decks).flatten
-    @outstanding_decks = @decks.select { |deck| deck.attempts.where(user: @user).length < deck.cards.count }
+    @outstanding_decks = @decks.select { |deck| deck.attempts.where(user: @user).length != deck.cards.count }
     @completed_decks = @decks.select { |deck| deck.attempts.where(user: @user).length == deck.cards.count }
+    # raise
   end
 
   def takedeck
     authorize @user
     @deck = Deck.find(params[:deck])
+    @attempt = Attempt.new
   end
 
   private

@@ -19,4 +19,5 @@ Rails.application.routes.draw do
       get 'takedeck'
     end
   end
+  resources :attempts, only: [:create]
 end
