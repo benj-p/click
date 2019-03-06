@@ -13,7 +13,7 @@
         <%= f.input :wrong_answer %>
       </div>
       <div class="col-12 col-md-6">
-        <%= f.input :resource, collection: @resources%>
+        <%= f.input :resource, collection: @resources, label_method: :name%>
       </div>
       <div class="col-md-12">
         <%= f.submit "Update Card" %>

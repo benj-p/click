@@ -1,5 +1,6 @@
 class CardsController < ApplicationController
   before_action :set_card, only: [:edit]
+  before_action :deck_resources, only: [:index, :new, :edit]
 
   def index
     @cards = policy_scope(Card).where(deck: Deck.find(params[:deck_id]))
@@ -13,7 +14,6 @@ class CardsController < ApplicationController
     authorize @card
     @deck = @card.deck
     @curriculum = @deck.curriculum
-    @resources = deck_resources
   end
 
   def create
@@ -23,7 +23,7 @@ class CardsController < ApplicationController
     @curriculum = @deck.curriculum
     authorize @card
     if @card.save
-      redirect_to curriculum_deck_cards_path(@curriculum, @deck, @card)
+      redirect_to curriculum_deck_cards_path(@curriculum, @deck)
     else
       render :new
     end
@@ -33,16 +33,19 @@ class CardsController < ApplicationController
     authorize @card
     @deck = @card.deck
     @curriculum = @deck.curriculum
-    @resources = deck_resources
   end
 
   def update
-    @card = Card.update(params[:id], card_params)
+    @card = Card.find(params[:id])
+    @card.update(card_params)
+    @resource = Resource.find(params[:card][:resource])
+    @card.resource = @resource
+    @card.save
     authorize @card
     @deck = @card.deck
     @curriculum = @deck.curriculum
     if @card.save
-      redirect_to curriculum_deck_cards_path(@curriculum, @deck, @card)
+      redirect_to curriculum_deck_cards_path(@curriculum, @deck)
     else
       render :edit
     end
@@ -55,16 +58,16 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:name, :question, :correct_answer, :wrong_answer, :resource_id)
+    params.require(:card).permit(:name, :question, :correct_answer, :wrong_answer)
   end
 
   def deck_resources
-    resources = ["Create New"]
+    resources = []
     Deck.find(params[:deck_id]).cards.each do |card|
       if card.resource
-        resources << card.resource.name
+        resources << card.resource
       end
     end
-    resources.uniq
+    @resources = resources.uniq
   end
 end
