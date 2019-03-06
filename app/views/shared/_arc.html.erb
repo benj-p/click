@@ -1,14 +1,12 @@
 <% radius = circumference / (3.14159 * 2) %>
 <% diameter = radius * 2 %>
-<% percentage = (percentage / circumference) * 100 %>
-<%= percentage %>
-<%= total = 100 * (circumference / 100) %>
+
 <svg viewBox="0 0 36 36" class="circular-chart">
   <path class="circle circle-<%= color%>"
     d="M18 2.0845
       a <%= radius %> <%= radius %> 0 0 1 0 <%= diameter %>
       a <%= radius %> <%= radius %> 0 0 1 0 -<%= diameter %>"
-    stroke-dasharray="<%= percentage %>, <%= total %>"
+    stroke-dasharray="<%= percentage %>, 100"
   />
   <text x="9" y="20.35" class="circle-label"><%= text %></text>
 </svg>

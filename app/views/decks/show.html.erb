@@ -6,13 +6,13 @@
 
   <div class="row">
     <div class="col-sm-12 col-md-4">
-      <%= render 'shared/arc', color: 'green', percentage: (@results[:correct] / @attempts_count.to_f) * 100, text: 'Correct', circumference: 50 %>
+      <%= render 'shared/arc', color: 'green', percentage: (@results[:correct] / @attempts_count.to_f) * 100, text: 'Correct', circumference: 100 %>
     </div>
     <div class="col-sm-12 col-md-4">
-      <%= render 'shared/arc', color: 'red', percentage: (@results[:incorrect] / @attempts_count.to_f) * 100, text: 'Incorrect', circumference: 50 %>
+      <%= render 'shared/arc', color: 'red', percentage: (@results[:incorrect] / @attempts_count.to_f) * 100, text: 'Incorrect', circumference: 100 %>
     </div>
     <div class="col-sm-12 col-md-4">
-      <%= render 'shared/arc', color: 'grey', percentage: (@results[:unsure] / @attempts_count.to_f) * 100, text: 'Unsure', circumference: 50 %>
+      <%= render 'shared/arc', color: 'grey', percentage: (@results[:unsure] / @attempts_count.to_f) * 100, text: 'Unsure', circumference: 100 %>
     </div>
   </div>
 
