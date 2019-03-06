@@ -6,4 +6,8 @@ class UserPolicy < ApplicationPolicy
   def takedeck?
     @record == @user
   end
+
+  def decksummary?
+    @record == @user
+  end
 end

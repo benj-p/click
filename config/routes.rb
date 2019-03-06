@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     member do
       get 'dashboard'
       get 'takedeck'
+      get 'decksummary'
     end
   end
   resources :attempts, only: [:create]

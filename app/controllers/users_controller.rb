@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:dashboard, :takedeck]
+  before_action :set_user, only: [:dashboard, :takedeck, :decksummary]
 
   def dashboard
     authorize @user
@@ -17,6 +17,15 @@ class UsersController < ApplicationController
     authorize @user
     @deck = Deck.find(params[:deck])
     @attempt = Attempt.new
+  end
+
+  def decksummary
+    authorize @user
+    @deck = Deck.find(params[:deck])
+    @correct_answers = @deck.attempts.where(user: current_user, response: "Correct")
+    @wrong_answers = @deck.attempts.where(user: current_user, response: "Incorrect")
+    @unsure_answers = @deck.attempts.where(user: current_user, response: "I don't know")
+    raise
   end
 
   private
