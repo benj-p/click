@@ -34,9 +34,13 @@
       <h3>Students</h3>
       <h4><%= pluralize(@section.users.count, 'student') %></h4>
       <div class="container student-list">
-        <% @section.users.each do |user| %>
-          <% unless user.is_teacher %>
-            <p><%= link_to "#{user.first_name} #{user.last_name}", root_path %></p>
+        <% if @section.users.empty? %>
+          <p>There are no registered students for this section</p>
+        <% else %>
+          <% @section.users.each do |user| %>
+            <% unless user.is_teacher %>
+              <p><%= link_to "#{user.first_name} #{user.last_name}", root_path %></p>
+            <% end %>
           <% end %>
         <% end %>
       </div>
