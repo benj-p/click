@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     @correct_answers = @deck.attempts.where(user: current_user, response: "Correct")
     @wrong_answers = @deck.attempts.where(user: current_user, response: "Incorrect")
     @unsure_answers = @deck.attempts.where(user: current_user, response: "I don't know")
-    raise
+    # raise
   end
 
   private

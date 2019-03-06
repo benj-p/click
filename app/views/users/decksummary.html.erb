@@ -6,4 +6,11 @@
 
 <h3>Questions you got wrong</h3>
 
+<% @wrong_answers.each do |wronganswer| %>
+  <p>
+    <p><%= wronganswer.card.question %></p>
+    <p>The correct answer was <strong><%= wronganswer.card.correct_answer %></strong></p>
+  </p>
+<% end %>
+
 <p><%= link_to "Back to dashboard", dashboard_user_path(@user) %></p>

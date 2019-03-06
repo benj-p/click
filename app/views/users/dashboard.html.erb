@@ -23,6 +23,7 @@ You have <%= @outstanding_decks.count %> outstanding <%= "deck".pluralize(@outst
     <strong><%= deck.curriculum.name %></strong>
     <p>Completion: <%= deck.attempts.where(user: @user).count %> / <%= deck.cards.count %></p>
     <p>Due date: <%= deck.due_date %></p>
+    <p><%= link_to "Deck summary", decksummary_user_path(@user, deck: deck) %></p>
   <% end %>
 <% end %>
 
