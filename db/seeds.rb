@@ -19,8 +19,6 @@ teachers = (1..5).each_with_object({}) do |i, teacher|
   teacher[i] = User.create(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , password: "secret", is_teacher: true)
 end
 
-teacher = User.create(email: "izzyweber@gmail.com", first_name: "Izzy", last_name: "Weber" , password: "secret", is_teacher: true)
-
 #Curriculum
 
 intro_to_accounting = Curriculum.create({user: teacher, name: "Intro to Accounting"})
