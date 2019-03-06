@@ -49,7 +49,8 @@ class DecksController < ApplicationController
         end
       end
     end
-    @results_by_student.sort_by! { |result| result[:results][:incomplete] }
+    @results_by_student.sort_by! { |student| student[:results][:incomplete] }
+    @results_by_card.sort_by { |card| card[1][:results][:incomplete]}
     authorize @deck
   end
 
