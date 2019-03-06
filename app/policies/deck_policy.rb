@@ -5,6 +5,10 @@ class DeckPolicy < ApplicationPolicy
     end
   end
 
+  def new?
+    @record.curriculum.user = @user
+  end
+
   def create?
     @record.curriculum.user = @user
   end
