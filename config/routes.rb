@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'resources/new'
+  get 'resources/edit'
   get 'cards/new'
   get 'cards/edit'
   devise_for :users
