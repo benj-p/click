@@ -10,3 +10,16 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar {
+	list-style: none;
+}
+.av-img {
+	position: absolute;
+	right: 20px;
+}
+@media only screen and (max-width: 593px) {
+	.av-img {
+		display: none;
+	}
+}
