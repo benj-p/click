@@ -42,7 +42,8 @@
     <div class="col-sm-12 col-md-2">
       <div class="section">
         <h3>Deck info</h3>
-        <p>Deck created: <%= time_ago_in_words(@deck.created_at) %> ago</p>
+        <p>Created: <%= time_ago_in_words(@deck.created_at) %> ago</p>
+        <p>Cards: <%= @deck.cards.count %></p>
       </div>
     </div>
   </div>
