@@ -25,6 +25,12 @@
       font-weight: 600;
     }
 
+    .completed-due-date {
+      color: $green;
+      font-size: 0.9em;
+      font-weight: 600;
+    }
+
     .deck-name {
       color: #C7C7C7;
       font-weight: 300;
@@ -35,6 +41,14 @@
       padding: 0px 4px;
       text-transform: uppercase;
       font-size: 0.9em;
+    }
+
+    .btn-complete {
+      padding: 0px 4px;
+      text-transform: uppercase;
+      font-size: 0.9em;
+      color: #C7C7C7;
+      border: 1px solid #C7C7C7;
     }
 
     .progress {

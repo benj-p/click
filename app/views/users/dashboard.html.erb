@@ -2,7 +2,7 @@
   <h1>Welcome, <%= @user.first_name %>!</h1>
 
   <% if @outstanding_decks.count == 0 %>
-  You don't have any outstanding deck
+  Looks like you've done all your work 💪
   <% end %>
 
   <% if @outstanding_decks.count > 0 %>
@@ -34,11 +34,17 @@
     <h2>Completed decks, nice job!</h2>
     <% @completed_decks.each do |deck| %>
       <div class="deck-card">
-        <h3 id="outstanding"><%= deck.name %></h3>
-        <strong><%= deck.curriculum.name %></strong>
-        <p>Completion: <%= deck.attempts.where(user: @user).count %> / <%= deck.cards.count %></p>
-        <p>Due date: <%= deck.due_date %></p>
-        <p><%= link_to "Deck summary", decksummary_user_path(@user, deck: deck) %></p>
+        <div class="top-line">
+          <p><i class="fas fa-book"></i> <%= deck.name %></p>
+          <p class="completed-due-date">Comp: <%= deck.due_date.strftime("%b %d") %></p>
+        </div>
+        <div class="bottom-line">
+          <p class="deck-name"><%= deck.curriculum.name %></p>
+          <%= link_to "Review", decksummary_user_path(@user, deck: deck), class: "btn btn-grey btn-complete" %>
+        </div>
+        <div class="progress mt-3">
+          <div class="progress-bar" role="progressbar" style="width: <%= deck.attempts.where(user: @user).count / deck.cards.count.to_f * 100 %>%" aria-valuenow="<%= deck.attempts.where(user: @user).count / deck.cards.count.to_f * 100 %>" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
       </div>
     <% end %>
   </div>
