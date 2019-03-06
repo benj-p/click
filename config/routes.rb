@@ -13,4 +13,9 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  resources :sections, only: :show do
+    resources :decks, only: :show
+  end
+
 end

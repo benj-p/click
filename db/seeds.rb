@@ -19,28 +19,31 @@ teachers = (1..5).each_with_object({}) do |i, teacher|
   teacher[i] = User.create(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , password: "secret", is_teacher: true)
 end
 
-teacher = User.create(email: "izzyweber@gmail.com", first_name: "Izzy", last_name: "Weber" , password: "secret", is_teacher: true)
-
 #Curriculum
 
-intro_to_accounting = Curriculum.create({user: teacher, name: "Intro to Accounting"})
-intro_to_tax = Curriculum.create({user: teacher, name: "Intro to Taxation"})
+intro_to_accounting = Curriculum.create({user: teachers[1], name: "Intro to Accounting"})
+intro_to_tax = Curriculum.create({user: teachers[1], name: "Intro to Taxation"})
 
-sections = (1..5).each_with_object({}) do |i, section|
-  section[i] = Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_accounting)
-end
-
-sections = (6..10).each_with_object({}) do |i, section|
-  section[i] = Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_tax)
+sections = (1..10).each_with_object({}) do |i, section|
+  if i <= 5
+    section[i] = Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_accounting)
+  else
+    section[i] = Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_tax)
+  end
 end
 
 students.each_with_index do |student, index|
-  a = (1..10).to_a.shuffle
-  (1..3).to_a.sample.times do
+  a = (1..5).to_a.shuffle
+  b = (6..10).to_a.shuffle
+  (1..2).to_a.sample.times do |indextimes|
     registration = Registration.new
     registration.user = students[index+1]
-    registration.section = sections[a.pop]
-    registration.save
+    if indextimes == 1
+      registration.section = sections[a.pop]
+    else
+      registration.section = sections[b.pop]
+    end
+    registration.save!
   end
 end
 
