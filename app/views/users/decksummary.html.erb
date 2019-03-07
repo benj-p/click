@@ -16,22 +16,40 @@
   </div>
   <!-- <h2>Resources for you</h2> -->
 
-  <h2>You had <%= pluralize(@wrong_answers.count, 'question') %> wrong</h2>
+  <% unless @wrong_answers.count == 0 %>
+    <% if @correct_answers.count == @deck.cards.count && @deck.cards.count > 1 %>
+      <h2>You had all <%= pluralize(@wrong_answers.count, 'question') %> wrong</h2>
+    <% else %>
+      <h2>You had <%= pluralize(@wrong_answers.count, 'question') %> wrong</h2>
+    <% end %>
 
-  <% @wrong_answers.each do |wronganswer| %>
-    <%= render 'shared/question-summary-card', responsestatus: wronganswer %>
+    <% @wrong_answers.each do |wronganswer| %>
+      <%= render 'shared/question-summary-card', responsestatus: wronganswer %>
+    <% end %>
   <% end %>
 
-  <h2>You were unsure about <%= pluralize(@unsure_answers.count, 'question') %></h2>
+  <% unless @unsure_answers.count == 0 %>
+    <% if @unsure_answers.count == @deck.cards.count && @deck.cards.count > 1 %>
+      <h2>You were unsure about all <%= pluralize(@unsure_answers.count, 'question') %></h2>
+    <% else %>
+      <h2>You were unsure about <%= pluralize(@unsure_answers.count, 'question') %></h2>
+    <% end %>
 
-  <% @unsure_answers.each do |unsureanswer| %>
-    <%= render 'shared/question-summary-card', responsestatus: unsureanswer %>
+    <% @unsure_answers.each do |unsureanswer| %>
+      <%= render 'shared/question-summary-card', responsestatus: unsureanswer %>
+    <% end %>
   <% end %>
 
-  <h2>You had <%= pluralize(@correct_answers.count, 'question') %> right</h2>
+  <% unless @correct_answers.count == 0 %>
+    <% if @correct_answers.count == @deck.cards.count && @deck.cards.count > 1 %>
+      <h2>You had all <%= pluralize(@correct_answers.count, 'question') %> right</h2>
+    <% else %>
+      <h2>You had <%= pluralize(@correct_answers.count, 'question') %> right</h2>
+    <% end %>
 
-  <% @correct_answers.each do |correctanswer| %>
-    <%= render 'shared/question-summary-card', responsestatus: correctanswer %>
+    <% @correct_answers.each do |correctanswer| %>
+      <%= render 'shared/question-summary-card', responsestatus: correctanswer %>
+    <% end %>
   <% end %>
 
   <p><%= link_to "Back to dashboard", dashboard_user_path(@user) %></p>
