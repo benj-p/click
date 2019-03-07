@@ -3,8 +3,11 @@
 
   Great job, you've completed this deck! 👍
 
-  <%= render 'shared/arc', color: 'green', percentage: (@wrong_answers.count / @deck.cards.count.to_f) * 100,  size: 'medium', text: "Right" %>
-
+  <div class="deck-score-container">
+    <%= render 'shared/arc', color: 'green', percentage: (@wrong_answers.count / @deck.cards.count.to_f) * 100,  size: 'medium', text: "Right" %>
+    <%= render 'shared/arc', color: 'blue', percentage: (@wrong_answers.count / @deck.cards.count.to_f) * 100,  size: 'medium', text: "Unsure" %>
+    <%= render 'shared/arc', color: 'red', percentage: (@wrong_answers.count / @deck.cards.count.to_f) * 100,  size: 'medium', text: "Wrong" %>
+  </div>
   <!-- <h2>Resources for you</h2> -->
 
   <h2>You had <%= pluralize(@wrong_answers.count, 'question') %> wrong</h2>
