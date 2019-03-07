@@ -22,6 +22,8 @@
   .deck-list-item-image {
     width: 80px;
     height: 80px;
+    background-image: url('books.jpg');
+    background-size: cover;
   }
   .deck-list-item-info {
     flex-grow: 1;
