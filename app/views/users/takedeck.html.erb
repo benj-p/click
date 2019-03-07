@@ -19,7 +19,7 @@
     </div>
   </div>
 
-  <p><%= link_to "Back to dashboard", dashboard_user_path(@user) %></p>
+  <%= link_to "Back to dashboard", dashboard_user_path(@user), class: "back-dashboard-link" %>
 
   <div class="progress mt-3">
     <div class="progress-bar" role="progressbar" style="width: <%= @deck.attempts.where(user: @user).count / @deck.cards.count.to_f * 100 %>%" aria-valuenow="<%= @deck.attempts.where(user: @user).count / @deck.cards.count.to_f * 100 %>" aria-valuemin="0" aria-valuemax="100"></div>
