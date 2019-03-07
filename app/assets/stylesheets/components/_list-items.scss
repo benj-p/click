@@ -3,6 +3,8 @@
   background: #fff;
   border-radius: 8px;
   box-shadow: 0px 2px 5px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
   transition: 0.3s;
   span {
     margin: 0;
@@ -17,5 +19,15 @@
   &:hover {
     background: #ebebeb;
   }
+  .deck-list-item-image {
+    width: 80px;
+    height: 80px;
+  }
+  .progress-bar {
+    width: 50%;
+    height: 20px;
+  }
 }
+
+
 
