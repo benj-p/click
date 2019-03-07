@@ -11,6 +11,9 @@
       <div class="col-12 col-md-6">
         <%= f.input :wrong_answer %>
       </div>
+      <div class="col-12 col-md-6">
+        <%= f.input :resource, collection: @resources%>
+      </div>
       <div class="col-md-12">
         <%= f.submit "Create Card"%>
       </div>

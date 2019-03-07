@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :registrations
   has_many :sections, through: :registrations
-  has_many :curriculums, -> { where is_teacher: true }
   has_many :attempts
+  has_many :curriculums, -> { where is_teacher: true }
+
 end

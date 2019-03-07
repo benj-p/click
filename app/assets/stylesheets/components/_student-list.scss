@@ -1,0 +1,45 @@
+
+.student-list-card{
+	background-color: white;
+	border-radius: 8px;
+	width: 250px;
+	box-shadow: $box-shadow-base;
+	min-height: 200px;
+	padding:20px 10px;
+}
+
+.student-number-and-icon{
+	display:flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+
+	p{
+		color: $gris-foncee;
+	}
+
+	i{
+	color: $yellow;
+	}
+}
+
+.student-info{
+	display:flex;
+  align-items: center;
+  padding: 8px;
+	p{
+		padding-left: 8px;
+	}
+}
+
+.student-list-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  .student-name {
+    flex-grow: 1;
+    p {
+      margin: 0;
+      font-weight: bold;
+    }
+  }
+}

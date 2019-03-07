@@ -15,13 +15,14 @@ class DecksController < ApplicationController
     @attempts_count = attempts.count
 
     @deck.cards.each do |card|
-      @results_by_card[card.id] = {card: card, results: { correct: 0, incorrect: 0, unsure: 0 } }
+      @results_by_card[card.id] = {card: card, results: { attempts: 0, correct: 0, incorrect: 0, unsure: 0 } }
     end
 
     @section.users.each do |student|
-      results = { correct: 0, incorrect: 0, unsure: 0 }
+      results = { attempts: 0, correct: 0, incorrect: 0, unsure: 0 }
       student.attempts.each do |attempt|
         if attempt.card.deck == @deck
+          results[:attempts] += 1
           case attempt.response
           when "Correct" then results[:correct] += 1
           when "Incorrect" then results[:incorrect] += 1
@@ -34,6 +35,7 @@ class DecksController < ApplicationController
 
     attempts.each do |collection|
       collection.each do |attempt|
+        @results_by_card[attempt.card.id][:results][:attempts] += 1
         case attempt.response
         when "Correct"
           @results[:correct] += 1
@@ -47,7 +49,8 @@ class DecksController < ApplicationController
         end
       end
     end
-    # raise
+    @results_by_student.sort_by! { |student| student[:results][:incomplete] }
+    @results_by_card.sort_by { |card| card[1][:results][:incomplete]}
     authorize @deck
   end
 
@@ -64,7 +67,7 @@ class DecksController < ApplicationController
     @curriculum = @deck.curriculum
     if @deck.save
       authorize @deck
-      redirect_to curriculum_path(@curriculum)
+      redirect_to curriculum_deck_cards_path(@curriculum, @deck)
     else
       render :new
     end
@@ -80,7 +83,7 @@ class DecksController < ApplicationController
     authorize @deck
     @curriculum = @deck.curriculum
     if @deck.save
-      redirect_to curriculum_path(@curriculum)
+      redirect_to curriculum_deck_cards_path(@curriculum, @deck)
     else
       render :edit
     end

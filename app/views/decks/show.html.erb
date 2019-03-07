@@ -6,13 +6,13 @@
 
   <div class="row">
     <div class="col-sm-12 col-md-4">
-      <%= render 'shared/arc', color: 'green', percentage: (@results[:correct] / @attempts_count.to_f) * 100, text: 'Correct', circumference: 100 %>
+      <%= render 'shared/arc', color: 'green', percentage: (@results[:correct] / @attempts_count.to_f) * 100, text: 'Correct', size: 'large' %>
     </div>
     <div class="col-sm-12 col-md-4">
-      <%= render 'shared/arc', color: 'red', percentage: (@results[:incorrect] / @attempts_count.to_f) * 100, text: 'Incorrect', circumference: 100 %>
+      <%= render 'shared/arc', color: 'red', percentage: (@results[:incorrect] / @attempts_count.to_f) * 100, text: 'Incorrect', size: 'large' %>
     </div>
     <div class="col-sm-12 col-md-4">
-      <%= render 'shared/arc', color: 'grey', percentage: (@results[:unsure] / @attempts_count.to_f) * 100, text: 'Unsure', circumference: 100 %>
+      <%= render 'shared/arc', color: 'grey', percentage: (@results[:unsure] / @attempts_count.to_f) * 100, text: 'Unsure', size: 'large' %>
     </div>
   </div>
 
@@ -20,10 +20,23 @@
     <div class="col-sm-12 col-md-5">
       <div class="section">
         <h3>Attention students</h3>
+
         <% @results_by_student.each do |result| %>
-          <p><%= result[:student].first_name %>:
-            <%= result[:results][:correct] %> | <%= result[:results][:incorrect] %> | <%= result[:results][:unsure] %>
-          </p>
+
+          <div class="student-info border-bottom">
+            <div class="avatar-small" style="background-image: url(https://picsum.photos/400)">
+            </div>
+            <div class="student-list-content">
+              <div class="student-name">
+                <p><%= result[:student].first_name %> <%= result[:student].last_name %></p>
+              </div>
+
+              <%= render 'shared/arc', color: 'green', percentage: (result[:results][:correct] / result[:results][:attempts].to_f) * 100,  size: 'small' %>
+              <%= render 'shared/arc', color: 'red', percentage: (result[:results][:incorrect] / result[:results][:attempts].to_f) * 100,  size: 'small' %>
+              <%= render 'shared/arc', color: 'grey', percentage: (result[:results][:unsure] / result[:results][:attempts].to_f) * 100,  size: 'small' %>
+            </div>
+          </div>
+
         <% end %>
       </div>
     </div>
@@ -31,16 +44,25 @@
       <div class="section">
         <h3>Attention cards</h3>
         <% @results_by_card.each do |result| %>
-          <p><%= result[1][:card].question %>:
-            <%= result[1][:results][:correct] %> | <%= result[1][:results][:incorrect] %> | <%= result[1][:results][:unsure] %>
-          </p>
+          <div class="student-info border-bottom">
+            <div class="student-list-content">
+              <div class="student-name">
+                <p><%= truncate(result[1][:card].question, length: 24) %></p>
+              </div>
+              <%= render 'shared/arc', color: 'green', percentage: (result[1][:results][:correct] / result[1][:results][:attempts].to_f) * 100,  size: 'small' %>
+              <%= render 'shared/arc', color: 'red', percentage: (result[1][:results][:incorrect] / result[1][:results][:attempts].to_f) * 100,  size: 'small' %>
+              <%= render 'shared/arc', color: 'grey', percentage: (result[1][:results][:unsure] / result[1][:results][:attempts].to_f) * 100,  size: 'small' %>
+            </div>
+          </div>
         <% end %>
       </div>
     </div>
     <div class="col-sm-12 col-md-2">
       <div class="section">
         <h3>Deck info</h3>
-        <p>Deck created: <%= time_ago_in_words(@deck.created_at) %> ago</p>
+        <p><i class="far fa-calendar-plus"></i> Created: <%= time_ago_in_words(@deck.created_at) %> ago</p>
+        <p><i class="fas fa-layer-group"></i> Cards: <%= @deck.cards.count %></p>
+        <%= link_to "Edit deck", edit_curriculum_deck_path(@deck.curriculum, @deck) %>
       </div>
     </div>
   </div>

@@ -1,12 +1,8 @@
-<% radius = circumference / (3.14159 * 2) %>
-<% diameter = radius * 2 %>
-
-<svg viewBox="0 0 36 36" class="circular-chart">
-  <path class="circle circle-<%= color%>"
-    d="M18 2.0845
-      a <%= radius %> <%= radius %> 0 0 1 0 <%= diameter %>
-      a <%= radius %> <%= radius %> 0 0 1 0 -<%= diameter %>"
-    stroke-dasharray="<%= percentage %>, 100"
-  />
-  <text x="9" y="20.35" class="circle-label"><%= text %></text>
+<svg viewBox="0 0 36 36" class="circular-chart circle-<%= size %>">
+  <path class="circle circle-<%= color %>" d="M18 2.0845
+      a 15.915507752443826 15.915507752443826 0 0 1 0 31.831015504887652
+      a 15.915507752443826 15.915507752443826 0 0 1 0 -31.831015504887652" stroke-dasharray="<%= percentage.nan? ? 0 : percentage %>, 100"></path>
+  <% if size == 'large' %>
+    <text x="9" y="20.35" class="circle-label"><%= text %></text>
+  <% end %>
 </svg>
