@@ -14,52 +14,19 @@
   <h2>You had <%= pluralize(@wrong_answers.count, 'question') %> wrong</h2>
 
   <% @wrong_answers.each do |wronganswer| %>
-    <div class="question-summary-card">
-      <div class="short-answer">
-        <p><%= wronganswer.card.question.truncate(100) %></p>
-        <p>The correct answer was <strong><%= wronganswer.card.correct_answer.downcase %></strong></p>
-        <p class="expand-card">View details</p>
-      </div>
-      <div class="long-answer">
-        <p><%= wronganswer.card.question %></p>
-        <p>The correct answer was <strong><%= wronganswer.card.correct_answer.downcase %></strong></p>
-        <p class="collapse-card">Hide details</p>
-      </div>
-    </div>
+    <%= render 'shared/question-summary-card', responsestatus: wronganswer %>
   <% end %>
 
   <h2>You were unsure about <%= pluralize(@unsure_answers.count, 'question') %></h2>
 
   <% @unsure_answers.each do |unsureanswer| %>
-    <div class="question-summary-card">
-      <div class="short-answer">
-        <p><%= unsureanswer.card.question.truncate(100) %></p>
-        <p>The correct answer was <strong><%= unsureanswer.card.correct_answer %></strong></p>
-        <p class="expand-card">View details</p>
-      </div>
-      <div class="long-answer">
-        <p><%= unsureanswer.card.question %></p>
-        <p>The correct answer was <strong><%= unsureanswer.card.correct_answer %></strong></p>
-        <p class="collapse-card">Hide details</p>
-      </div>
-    </div>
+    <%= render 'shared/question-summary-card', responsestatus: unsureanswer %>
   <% end %>
 
   <h2>You had <%= pluralize(@correct_answers.count, 'question') %> right</h2>
 
   <% @correct_answers.each do |correctanswer| %>
-    <div class="question-summary-card">
-      <div class="short-answer">
-        <p><%= correctanswer.card.question.truncate(100) %></p>
-        <p>The correct answer was <strong><%= correctanswer.card.correct_answer %></strong></p>
-        <p class="expand-card">View details</p>
-      </div>
-      <div class="long-answer">
-        <p><%= correctanswer.card.question %></p>
-        <p>The correct answer was <strong><%= correctanswer.card.correct_answer %></strong></p>
-        <p class="collapse-card">Hide details</p>
-      </div>
-    </div>
+    <%= render 'shared/question-summary-card', responsestatus: correctanswer %>
   <% end %>
 
   <p><%= link_to "Back to dashboard", dashboard_user_path(@user) %></p>

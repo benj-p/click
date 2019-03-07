@@ -1,0 +1,12 @@
+    <div class="question-summary-card">
+      <div class="short-answer">
+        <p>"<em><%= responsestatus.card.question.truncate(100) %></em>"</p>
+        <p>The correct answer was <strong><%= responsestatus.card.correct_answer.downcase %></strong></p>
+        <p class="expand-card btn btn-yellow btn-details">View details</p>
+      </div>
+      <div class="long-answer">
+        <p>"<em><%= responsestatus.card.question %></em>"</p>
+        <p>The correct answer was <strong><%= responsestatus.card.correct_answer.downcase %></strong></p>
+        <p class="collapse-card expand-card btn btn-yellow btn-details">Hide details</p>
+      </div>
+    </div>
