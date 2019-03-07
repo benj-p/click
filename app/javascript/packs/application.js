@@ -12,12 +12,17 @@ if (window.location.pathname.includes('/takedeck')) {
 
 // Left Navbar JS
 const toggleSelectedView = () => {
-  const selected = document.querySelector(.selected);
-  selected.addEventListener("click", (event) => {
-    console.log("event selector works!")
+  const menuLinks = document.querySelectorAll(".menu-item");
+  menuLinks.forEach ((link) => {
+    link.addEventListener("click", (event) => {
+    console.log ("work")
+    const selected = document.querySelector(".selected");
+    event.currentTarget.classList.toggle("selected");
+    selected.classList.toggle("selected");
+    });
   });
 }
 
-if (window.location.pathname.includes('/takedeck')) {
-  toggleFixed();
+if (window.location.pathname.includes('/curriculums')) {
+  toggleSelectedView();
 }
