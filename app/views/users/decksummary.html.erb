@@ -4,9 +4,15 @@
   <p>Great job, you've completed this deck! 👍</p>
 
   <div class="deck-score-container">
-    <%= render 'shared/arc', color: 'green', percentage: (@wrong_answers.count / @deck.cards.count.to_f) * 100,  size: 'medium', text: "Right" %>
-    <%= render 'shared/arc', color: 'blue', percentage: (@wrong_answers.count / @deck.cards.count.to_f) * 100,  size: 'medium', text: "Unsure" %>
-    <%= render 'shared/arc', color: 'red', percentage: (@wrong_answers.count / @deck.cards.count.to_f) * 100,  size: 'medium', text: "Wrong" %>
+    <% unless @correct_answers.count == 0 %>
+      <%= render 'shared/arc', color: 'green', percentage: (@correct_answers.count / @deck.cards.count.to_f) * 100,  size: 'medium', text: "Right" %>
+    <% end %>
+    <% unless @unsure_answers.count == 0 %>
+      <%= render 'shared/arc', color: 'blue', percentage: (@unsure_answers.count / @deck.cards.count.to_f) * 100,  size: 'medium', text: "Unsure" %>
+    <% end %>
+    <% unless @wrong_answers.count == 0 %>
+      <%= render 'shared/arc', color: 'red', percentage: (@wrong_answers.count / @deck.cards.count.to_f) * 100,  size: 'medium', text: "Wrong" %>
+    <% end %>
   </div>
   <!-- <h2>Resources for you</h2> -->
 
