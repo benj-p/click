@@ -1,8 +1,7 @@
 <div class="container">
   <h1><span><%= @deck.name %></span></h1>
 
-  <% @data_id = 0 %>
-  Great job, you've completed this deck! 👍
+  <p>Great job, you've completed this deck! 👍</p>
 
   <div class="deck-score-container">
     <%= render 'shared/arc', color: 'green', percentage: (@wrong_answers.count / @deck.cards.count.to_f) * 100,  size: 'medium', text: "Right" %>
