@@ -30,6 +30,8 @@ class UsersController < ApplicationController
 
   def deck_results
     @attempts = Deck.find(params[:deck_id]).curriculum.sections.where(id: params[:section_id]).first.users.where(id: params[:id]).first.attempts
+    @student = User.find(params[:id])
+    @deck = Deck.find(params[:deck_id])
     authorize @user
   end
 
