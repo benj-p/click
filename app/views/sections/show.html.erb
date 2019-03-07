@@ -16,7 +16,7 @@
                 <span> <%= deck.name %> </span>
               </div>
               <div class="progress-bar">
-                <%= render 'shared/progress_bar' %>
+                <%= render 'shared/progress_bar', correct: 40, incorrect: 20, unsure: 5 %>
               </div>
             </div>
           <% end %>
@@ -28,8 +28,14 @@
       <% @section.curriculum.decks.each do |deck| %>
         <% if deck.due_date < Date.today %>
           <%= link_to section_deck_path(@section, deck) do %>
-            <div class="container deck-card">
-              <p> <%= deck.name %> </p>
+            <div class="container deck-list-item">
+              <div class="deck-list-item-image"></div>
+              <div class="deck-list-item-info">
+                <span> <%= deck.name %> </span>
+              </div>
+              <div class="progress-bar">
+                <%= render 'shared/progress_bar', correct: 75, incorrect: 20, unsure: 5 %>
+              </div>
             </div>
           <% end %>
         <% end %>
