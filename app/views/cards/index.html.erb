@@ -11,7 +11,9 @@
           <%= truncate(card.question, length: 100) %>
         </div>
         <div class="resources">
-          <%= card.resource %>
+          <% if card.resource %>
+            <%= card.resource.name %>
+          <% end %>
         </div>
         <div class="edit-link-icon">
           <%= link_to '<i class="fas fa-pen"></i>'.html_safe, edit_curriculum_deck_card_path(@curriculum, @deck, card) %>
