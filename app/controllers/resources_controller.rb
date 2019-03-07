@@ -2,6 +2,7 @@ class ResourcesController < ApplicationController
   def new
     @resource = Resource.new
     @deck = Deck.find(params[:deck_id])
+    @cards = @deck.cards
     @curriculum = @deck.curriculum
     authorize @deck
   end
@@ -10,8 +11,10 @@ class ResourcesController < ApplicationController
     @resource = Resource.new(resource_params)
     @deck = Deck.find(params[:deck_id])
     @curriculum = @deck.curriculum
+    @card = Card.find(params[:resource][:card])
     authorize @deck
     if @resource.save
+      @card.update(resource: @resource)
       redirect_to curriculum_deck_cards_path(@curriculum, @deck)
     else
       render :new

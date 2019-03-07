@@ -19,10 +19,11 @@
   padding: 10px;
   box-shadow: 2px 3px 5px 0px rgba(10,9,10,0.1);
   position: relative;
-  .text {
+  .text, .resource-text {
     height: 100px;
     text-overflow: ellipsis;
     overflow: hidden;
+    width: 100%;
   }
 }
 
@@ -30,12 +31,18 @@
   text-align: center;
   justify-content: center;
   vertical-align: center;
+  background-color: #F9F9F9;
 }
 
 .fa-plus-circle,{
   font-size: 64px;
   margin-top: 36px;
+  color: #A8A3A0;
 }
+
+.fa-plus-circle:hover {
+    color: #998D8C;
+  }
 
 .edit-link-icon, {
   position: absolute;
@@ -50,5 +57,6 @@
 }
 
 .heading-edit{
+  padding-left: 15px;
   font-size: 14px;
 }

@@ -1,7 +1,7 @@
 <% flash.error = "Delete page if not required!" %>
 
 <div class="container">
-  <h1>Section <%= Section.find(params[:section_id]).name %></h1>
+  <h1><span>Section <%= Section.find(params[:section_id]).name %></span></h1>
   <h2> <i class="fas fa-book"></i><%= Curriculum.find(params[:curriculum_id]).name %> </h2>
   <h3>Outstanding Decks</h3>
   <% @decks.each do |deck| %>
