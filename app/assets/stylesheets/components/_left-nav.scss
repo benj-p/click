@@ -1,3 +1,7 @@
+h1, h2, a {
+  padding-left: 12px;
+}
+
 .left-nav {
   height: 100%;
   width: 240px;
@@ -7,7 +11,7 @@
   left: 0;
   background-color: white;
   overflow-x: hidden;
-  padding-top: 20px;
+  padding-top: 30px;
 }
 
 .left-nav a {
@@ -29,4 +33,14 @@
 @media screen and (max-height: 450px) {
   .left-nav {padding-top: 15px;}
   .left-nav a {font-size: 18px;}
+}
+
+.selected {
+  border-left: solid;
+  border-width: 8px;
+  border-color: #FAC70B;
+  background: rgba(250, 199, 11, 0.14);
+  a {
+
+  }
 }

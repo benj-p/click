@@ -8,3 +8,16 @@ const toggleFixed = () => {
 if (window.location.pathname.includes('/takedeck')) {
   toggleFixed();
 }
+
+
+// Left Navbar JS
+const toggleSelectedView = () => {
+  const selected = document.querySelector(.selected);
+  selected.addEventListener("click", (event) => {
+    console.log("event selector works!")
+  });
+}
+
+if (window.location.pathname.includes('/takedeck')) {
+  toggleFixed();
+}
