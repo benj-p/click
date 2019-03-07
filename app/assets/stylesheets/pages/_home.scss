@@ -2,4 +2,12 @@
 .home-page-body{
 	background-image: asset-url('black-and-white-boy.jpg');
 	background-size: cover;
+	height: calc(100vh - 56px);
+	background-position: center;
+}
+
+.home-page-text {
+	position: relative;
+	top: 30vh;
+	left: 15px;
 }
