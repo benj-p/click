@@ -32,15 +32,25 @@
 
     <div class="col-sm-12 col-md-3">
       <h3>Students</h3>
-      <h4><%= pluralize(@section.users.count, 'student') %></h4>
-      <div class="container student-list">
-        <% if @section.users.empty? %>
-          <p>There are no registered students for this section</p>
-        <% else %>
-          <% @section.users.each do |user| %>
-              <p><%= link_to "#{user.first_name} #{user.last_name}", root_path %></p>
+      <div class="section">
+        <h4><%= pluralize(@section.users.count, 'student') %></h4>
+        <div class="container student-list">
+          <% if @section.users.empty? %>
+            <p>There are no registered students for this section</p>
+          <% else %>
+            <% @section.users.each do |user| %>
+              <div class="student-info border-bottom">
+                <div class="avatar-small" style="background-image: url(https://picsum.photos/400)">
+                </div>
+                <div class="student-list-content">
+                    <div class="student-name">
+                      <p><%= user.first_name %> <%= user.last_name %></p>
+                    </div>
+                </div>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
