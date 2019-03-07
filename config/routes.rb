@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   resources :attempts, only: [:create]
 
   resources :sections, only: :show do
-    resources :decks, only: :show
+    resources :decks, only: :show do
+      resources :students, only: :show
+    end
   end
 
 end
