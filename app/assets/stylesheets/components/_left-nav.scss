@@ -22,7 +22,7 @@ h1, h2, a {
 }
 
 .left-nav a:hover {
-  color: #f1f1f1;
+  background-color: #f1f1f1;
 }
 
 .main {
@@ -40,7 +40,7 @@ h1, h2, a {
   border-width: 8px;
   border-color: #FAC70B;
   background: rgba(250, 199, 11, 0.14);
-  a {
-
+  a:hover {
+    background-color: rgba(250, 199, 11, 0.14);
   }
 }
