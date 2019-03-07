@@ -18,7 +18,6 @@ class ApplicationController < ActionController::Base
   # end
 
 
-
   private
 
   def skip_pundit?
@@ -26,6 +25,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    current_user.is_teacher ? curriculums_path : root_path
+    current_user.is_teacher ? curriculums_path : dashboard_user_path(@user)
   end
 end
