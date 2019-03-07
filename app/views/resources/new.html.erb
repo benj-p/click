@@ -1,5 +1,5 @@
 <div class="container">
-  <h1> Add a Resource </h1>
+  <h1><span> Add a Resource </span></h1>
   <div class="row">
     <%= simple_form_for [@curriculum, @deck, @resource], :method => :post do |f| %>
       <div class="col-12 col-md-6">
@@ -10,6 +10,9 @@
       </div>
       <div class="col-12 col-md-6">
         <%= f.input :url %>
+      </div>
+      <div class="col-12 col-md-6">
+        <%= f.input :card, collection: @cards,  label_method: :question%>
       </div>
       <div class="col-md-12">
         <%= f.submit "Create Resource"%>
