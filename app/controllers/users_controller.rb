@@ -28,6 +28,10 @@ class UsersController < ApplicationController
     # raise
   end
 
+  def deck_results
+    authorize @user
+  end
+
   private
 
   def set_user

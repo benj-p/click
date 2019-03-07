@@ -22,7 +22,13 @@ Rails.application.routes.draw do
   resources :attempts, only: [:create]
 
   resources :sections, only: :show do
-    resources :decks, only: :show
+    resources :decks, only: :show do
+      resources :users, only: [] do
+        member do
+          get 'deck_results'
+        end
+      end
+    end
   end
 
 end
