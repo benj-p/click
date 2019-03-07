@@ -3,3 +3,21 @@
   justify-content: space-between;
   margin: 2vh 0 2vh 0;
 }
+
+.question-summary-card {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 2px 2px 4px rgba(220,220,220,0.5);
+  margin: 3vh 0 3vh 0;
+  padding: 16px;
+  p {
+    margin-bottom: 1vh;
+    &:last-child{
+      margin-bottom: 0;
+    }
+  }
+}
+
+.long-answer {
+  display: none;
+}
