@@ -1,0 +1,22 @@
+<div class="question-summary-card">
+  <div class="short-answer">
+    <p>"<em><%= responsestatus.card.question.truncate(100) %></em>"</p>
+    <p>The correct answer was <strong><%= responsestatus.card.correct_answer.downcase %></strong></p>
+    <p class="expand-card btn btn-yellow btn-details">View details</p>
+  </div>
+  <div class="long-answer">
+    <p>"<em><%= responsestatus.card.question %></em>"</p>
+    <p>The correct answer was <strong><%= responsestatus.card.correct_answer.downcase %></strong></p>
+    <p><u><%= responsestatus.card.resource.name %></u></p>
+    <p><%= responsestatus.card.resource.text %></p>
+    <% if responsestatus.card.resource.name.include?("Video") %>
+      <% video_id = responsestatus.card.resource.url.match(/^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/) %>
+      <div class="video-container">
+        <iframe src="http://www.youtube.com/embed/<%= video_id[2] %>"></iframe>
+      </div>
+    <% elsif responsestatus.card.resource.name.include?("Reading") %>
+      <p><%= link_to "Read it now", responsestatus.card.resource.url %></p>
+    <% end %>
+    <p class="collapse-card expand-card btn btn-yellow btn-details">Hide details</p>
+  </div>
+</div>

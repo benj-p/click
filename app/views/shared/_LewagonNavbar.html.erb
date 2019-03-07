@@ -1,8 +1,11 @@
 
 <% if user_signed_in? %>
   <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-    <a href=<%= root_path %>><img src=<%=asset_path "YellowClick.png"%> alt=""></a>
-
+    <% if current_user.is_teacher %>
+      <%= link_to image_tag("YellowClick.png"), curriculums_path %>
+    <% else %>
+      <%= link_to image_tag("YellowClick.png"), dashboard_user_path(current_user) %>
+    <% end %>
     <button class="navbar-toggler" type="button" data-toggle="dropdown" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
