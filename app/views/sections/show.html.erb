@@ -13,6 +13,9 @@
             <div class="container deck-list-item">
               <div class="deck-list-item-image"></div>
               <span> <%= deck.name %> </span>
+              <div class="progress-bar">
+                <%= render 'shared/progress_bar' %>
+              </div>
             </div>
           <% end %>
         <% end %>
