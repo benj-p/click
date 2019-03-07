@@ -1,0 +1,19 @@
+<div class="left-nav">
+  <div class="menu">
+    <h2>Menu</h2>
+    <div class="menu-item selected">
+      <a class= href="#">My Sections </a>
+    </div>
+    <div class="menu-item">
+      <a href="#">My Curriculums </a>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="curriculums">
+    <h2>Curriculums</h2>
+    <% @curriculums.each do |curriculum| %>
+      <a href="#"> <%= curriculum.name %> </a>
+    <% end %>
+  </div>
+</div>
