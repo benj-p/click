@@ -15,6 +15,8 @@ class Deck < ApplicationRecord
     }
   end
 
+  private
+
   def deck_attempts(section)
     attempts = []
     self.curriculum.sections.where(id: section.id).first.users.each do |user|
