@@ -1,5 +1,5 @@
 <div class="container">
-  <h1> Edit Resource: <%= @resource.name %> </h1>
+  <h1><span> Edit Resource: <%= @resource.name %> </span> </h1>
   <div class="row">
     <%= simple_form_for [@curriculum, @deck, @resource], :method => :patch do |f| %>
       <div class="col-12 col-md-6">

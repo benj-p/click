@@ -1,14 +1,25 @@
 @media(max-width: 575.98px) {
   h1 {
     font-size: 1.5em;
-    font-weight: 500;
-    span {
-      border-bottom: 0.5vh solid $yellow;
-    }
   }
 
   h2 {
     font-size: 1em;
     font-weight: 600;
   }
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 800;
+  width: 100%;
+  margin: 16px 0px;
+  span{
+    border-bottom: 0.5vh solid $yellow;
+  }
+}
+ h2 {
+  font-size: 22px;
+  font-weight: 200;
+  color: #A8A3A0;
 }
