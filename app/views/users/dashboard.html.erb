@@ -6,7 +6,7 @@
   <% end %>
 
   <% if @outstanding_decks.count > 0 %>
-  You have <span style="color: #FAC70A;"><%= @outstanding_decks.count %></span> uncomplete <%= "deck".pluralize(@outstanding_decks.count) %>.
+  You have <span style="color: #FAC70A;"><strong><%= @outstanding_decks.count %></strong></span> incomplete <%= "deck".pluralize(@outstanding_decks.count) %>.
 
   <div class="dashboard-deck-container">
     <h2>Outstanding decks</h2>
