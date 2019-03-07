@@ -2,7 +2,10 @@
   <path class="circle circle-<%= color %>" d="M18 2.0845
       a 15.915507752443826 15.915507752443826 0 0 1 0 31.831015504887652
       a 15.915507752443826 15.915507752443826 0 0 1 0 -31.831015504887652" stroke-dasharray="<%= percentage.nan? ? 0 : percentage %>, 100"></path>
-  <% if size == 'large' %>
-    <text x="9" y="20.35" class="circle-label"><%= text %></text>
+
+  <% if size == 'large' || 'medium' %>
+    <text x="50%" y ="50%" style="font-size:6px" dominant-baseline="middle" text-anchor="middle" class="circle-label"><%= text %></text>
+  <% elsif size == 'large' %>
+    <text x="50%" y ="50%" dominant-baseline="middle" text-anchor="middle" class="circle-label"><%= text %></text>
   <% end %>
 </svg>

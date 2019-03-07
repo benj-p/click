@@ -10,7 +10,7 @@
 
   <div class="dashboard-deck-container">
     <h2>Outstanding decks</h2>
-    <% @outstanding_decks.each do |deck| %>
+    <% @outstanding_decks.sort_by(&:due_date).reverse.each do |deck| %>
       <div class="deck-card">
         <div class="top-line">
           <p><i class="fas fa-book"></i> <%= deck.name %></p>
@@ -32,7 +32,7 @@
   <% if @completed_decks.count > 0 %>
   <div class="dashboard-deck-container">
     <h2>Completed decks, nice job!</h2>
-    <% @completed_decks.each do |deck| %>
+    <% @completed_decks.sort_by(&:due_date).reverse.each do |deck| %>
       <div class="deck-card">
         <div class="top-line">
           <p><i class="fas fa-book"></i> <%= deck.name %></p>

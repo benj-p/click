@@ -1,1 +1,25 @@
 // Specific CSS for your home-page
+.home-page-body{
+	background-image: asset-url('bannerlet-01.png');
+	height: calc(100vh - 56px);
+	background-size: cover;
+	background-position: center;
+}
+
+.home-page-text {
+	position: relative;
+	top: 30vh;
+	left: 15px;
+	h1{
+		font-weight: bold;
+	}
+
+	p{
+		color:$gris-foncee;
+	}
+}
+
+.yellow-word{
+	color: $yellow;
+	border-bottom: none;
+}

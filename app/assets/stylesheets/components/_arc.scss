@@ -22,9 +22,19 @@
   stroke: #505050;
 }
 
+.circle-blue {
+  stroke: #748DE2;
+}
+
 .circle-small {
   height: 32px;
   width: 32px;
+  margin: 0 10px;
+}
+
+.circle-medium {
+  height: 100px;
+  width: 100px;
   margin: 0 10px;
 }
 

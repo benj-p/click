@@ -11,4 +11,6 @@ class User < ApplicationRecord
   has_many :attempts
   has_many :curriculums, -> { where is_teacher: true }
 
+  mount_uploader :photo, PhotoUploader
+
 end
