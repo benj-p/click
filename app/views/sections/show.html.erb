@@ -16,7 +16,8 @@
                 <span> <%= deck.name %> </span>
               </div>
               <div class="progress-bar">
-                <%= render 'shared/progress_bar', correct: 40, incorrect: 20, unsure: 5 %>
+                <% result = deck.deck_results(@section) %>
+                <%= render 'shared/progress_bar', correct: result[:correct], incorrect: result[:incorrect], unsure: result[:unsure] %>
               </div>
             </div>
           <% end %>
@@ -32,11 +33,11 @@
               <div class="deck-list-item-image"></div>
               <div class="deck-list-item-info">
                 <span> <%= deck.name %> </span>
-                <% result = deck.deck_results(@section) %>
-                <% raise %>
+
               </div>
               <div class="progress-bar">
-                <%= render 'shared/progress_bar', correct: 75, incorrect: 20, unsure: 5 %>
+                <% result = deck.deck_results(@section) %>
+                <%= render 'shared/progress_bar', correct: result[:correct], incorrect: result[:incorrect], unsure: result[:unsure] %>
               </div>
             </div>
           <% end %>
