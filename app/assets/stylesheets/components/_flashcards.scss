@@ -1,29 +1,54 @@
 
-.falshcard-grid{
+.flashcard-grid, .deck-resources{
   display: grid;
   grid-gap: 16px;
   max-width: 1240px;
   margin: 0 auto;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
   grid-gap: 20px;
 }
 
-.flashcard {
+.flashcard, .resource,  {
   display: flex;
   flex-wrap: wrap;
   background-color: white;
   border-radius: 8px;
-  overflow: hidden;
   height: 160px;
   margin-top: 15px;
   padding: 10px;
   box-shadow: 2px 3px 5px 0px rgba(10,9,10,0.1);
   position: relative;
+  .text {
+    height: 100px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 }
 
-.edit-link-icon {
+.flashcard-new {
+  text-align: center;
+  justify-content: center;
+  vertical-align: center;
+}
+
+.fa-plus-circle,{
+  font-size: 64px;
+  margin-top: 36px;
+}
+
+.edit-link-icon, {
   position: absolute;
   bottom: 12px;
   right: 12px;
+}
+
+.fa-external-link-alt {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+}
+
+.heading-edit{
+  font-size: 14px;
 }

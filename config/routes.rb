@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'resources/new'
+  get 'resources/edit'
   get 'cards/new'
   get 'cards/edit'
   devise_for :users
@@ -6,6 +8,7 @@ Rails.application.routes.draw do
   resources :curriculums, only:[:show, :index] do
     resources :decks, only:[:index, :edit, :update, :new, :create] do
       resources :cards, only:[:edit, :update, :new, :create, :index, :show]
+      resources :resources, only: [:new, :create, :edit, :update]
     end
   end
 
