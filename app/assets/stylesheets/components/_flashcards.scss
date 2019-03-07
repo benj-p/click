@@ -30,12 +30,18 @@
   text-align: center;
   justify-content: center;
   vertical-align: center;
+  background-color: #F9F9F9;
 }
 
 .fa-plus-circle,{
   font-size: 64px;
   margin-top: 36px;
+  color: #A8A3A0;
 }
+
+.fa-plus-circle:hover {
+    color: #998D8C;
+  }
 
 .edit-link-icon, {
   position: absolute;
@@ -50,5 +56,6 @@
 }
 
 .heading-edit{
+  padding-left: 15px;
   font-size: 14px;
 }
