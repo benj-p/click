@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:dashboard, :takedeck, :decksummary]
+  before_action :set_user, only: [:dashboard, :takedeck, :decksummary, :deck_results]
 
   def dashboard
     authorize @user
@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   end
 
   def deck_results
+    @attempts = Deck.find(params[:deck_id]).curriculum.sections.where(id: params[:section_id]).first.users.where(id: params[:id]).first.attempts
     authorize @user
   end
 
