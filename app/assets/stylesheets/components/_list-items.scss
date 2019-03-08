@@ -17,8 +17,11 @@
   a {
     color: #000;
   }
+  a:hover {
+    text-decoration: none;
+  }
   &:hover {
-    background: #ebebeb;
+    background: #fafafa;
   }
   .deck-list-item-image {
     width: 80px;

@@ -4,6 +4,7 @@
   z-index: 1000;
 }
 
+
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
@@ -12,8 +13,19 @@
   width: 40px;
 }
 
+.navbartransparent{
+	background: transparent;
+}
+
 .navbar {
-	list-style: none;
+	position: fixed;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  top: 0;
+  width: 100%;
 }
 .av-img {
 	position: absolute;
