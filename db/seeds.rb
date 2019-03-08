@@ -139,4 +139,16 @@ Attempt.create({user: students[1], card: c_3, response: "I don't know"})
 Attempt.create({user: students[2], card: c_3, response: "Incorrect"})
 Attempt.create({user: students[3], card: c_3, response: "Correct"})
 
+responses = ["Correct", "Incorrect", "I don't know"]
+
+User.where(is_teacher: false).each do |student|
+  student.sections.each do |section|
+    section.curriculum.decks.each do |deck|
+      deck.cards.each do |card|
+        Attempt.create(user: student, card: card, response: response.sample)
+      end
+    end
+  end
+end
+
 puts "Seeding complete!!"
