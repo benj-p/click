@@ -1,5 +1,5 @@
 <div class="left-nav">
-  <div class="menu">
+  <div class="menu-list">
     <h2>Menu</h2>
     <div class="menu-item selected">
       <a class= href="#">My Sections </a>
@@ -10,10 +10,22 @@
   </div>
   <br>
   <br>
-  <div class="curriculums">
+  <div class="curriculum-list curriculums" hidden>
     <h2>Curriculums</h2>
     <% @curriculums.each do |curriculum| %>
-      <a href="#"> <%= curriculum.name %> </a>
+      <%= link_to curriculum.name, curriculums_path %>
+      <% curriculum.decks.each do |deck| %>
+        <%= link_to deck.name, curriculum_deck_cards_path(curriculum, deck), class: "decks-list-item"%>
+        <% end %>
+    <% end %>
+  </div>
+  <div class="section-list sections">
+    <h2>Sections</h2>
+    <% @curriculums.each do |curriculum| %>
+      <h4> <%= curriculum.name %> </h4>
+      <% curriculum.sections.each do |section| %>
+        <%= link_to section.name, section_path(section), class: "sections-list-item"%>
+      <% end %>
     <% end %>
   </div>
 </div>

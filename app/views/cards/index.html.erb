@@ -1,46 +1,48 @@
-<div class="container">
-  <h1><span> <%= @deck.name %></span><%= link_to '<i class="fas fa-pen heading-edit"></i>'.html_safe, edit_curriculum_deck_path(@curriculum, @deck) %> </h1>
-  <h2>Cards</h2>
-  <div class="flashcard-grid column col-lg-3 col-6">
-    <div class="flashcard flashcard-new">
-      <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_curriculum_deck_card_path(@curriculum, @deck) %>
-    </div>
-    <% @deck.cards.each do |card| %>
-      <div class="flashcard">
-        <div class="text">
-          <%= truncate(card.question, length: 100) %>
-        </div>
-        <div class="resources">
-          <% if card.resource %>
-            <%= card.resource.name %>
-          <% end %>
-        </div>
-        <div class="edit-link-icon">
-          <%= link_to '<i class="fas fa-pen"></i>'.html_safe, edit_curriculum_deck_card_path(@curriculum, @deck, card) %>
-        </div>
+<div class="main">
+  <div class="container">
+    <h1><span> <%= @deck.name %></span><%= link_to '<i class="fas fa-pen heading-edit"></i>'.html_safe, edit_curriculum_deck_path(@curriculum, @deck) %> </h1>
+    <h2>Cards</h2>
+    <div class="flashcard-grid column col-lg-3 col-6">
+      <div class="flashcard flashcard-new">
+        <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_curriculum_deck_card_path(@curriculum, @deck) %>
       </div>
-    <% end %>
-  </div>
-  <h2>Deck Resources</h2>
-  <div class="deck-resources column col-lg-3 col-6">
-    <div class="flashcard flashcard-new">
-      <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_curriculum_deck_resource_path(@curriculum, @deck) %>
+      <% @deck.cards.each do |card| %>
+        <div class="flashcard">
+          <div class="text">
+            <%= truncate(card.question, length: 100) %>
+          </div>
+          <div class="resources">
+            <% if card.resource %>
+              <%= card.resource.name %>
+            <% end %>
+          </div>
+          <div class="edit-link-icon">
+            <%= link_to '<i class="fas fa-pen"></i>'.html_safe, edit_curriculum_deck_card_path(@curriculum, @deck, card) %>
+          </div>
+        </div>
+      <% end %>
     </div>
-        <% @resources.each do |resource| %>
-      <div class="resource">
-        <div class="name">
-          <p><%= resource.name %></p>
-        </div>
-        <div class="resource-text">
-          <%= truncate(resource.text, length: 80) %>
-        </div>
-        <div class="resource-url">
-          <%= link_to '<i class="fas fa-external-link-alt"></i>'.html_safe, resource.url, target: :_blank %>
-        </div>
-        <div class="edit-link-icon">
-          <%= link_to '<i class="fas fa-pen"></i>'.html_safe, edit_curriculum_deck_resource_path(@curriculum, @deck, resource) %>
-        </div>
+    <h2>Deck Resources</h2>
+    <div class="deck-resources column col-lg-3 col-6">
+      <div class="flashcard flashcard-new">
+        <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_curriculum_deck_resource_path(@curriculum, @deck) %>
       </div>
-    <% end %>
+          <% @resources.each do |resource| %>
+        <div class="resource">
+          <div class="name">
+            <p><%= resource.name %></p>
+          </div>
+          <div class="resource-text">
+            <%= truncate(resource.text, length: 80) %>
+          </div>
+          <div class="resource-url">
+            <%= link_to '<i class="fas fa-external-link-alt"></i>'.html_safe, resource.url, target: :_blank %>
+          </div>
+          <div class="edit-link-icon">
+            <%= link_to '<i class="fas fa-pen"></i>'.html_safe, edit_curriculum_deck_resource_path(@curriculum, @deck, resource) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

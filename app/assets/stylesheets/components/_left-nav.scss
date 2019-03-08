@@ -7,18 +7,19 @@
   width: 240px;
   position: fixed;
   z-index: 1;
-  top: 46px;
+  top: 0px;
   left: 0;
   background-color: white;
   overflow-x: hidden;
-  padding-top: 30px;
+  padding-top: 80px;
 }
 
-.left-nav a {
+.left-nav a, .left-nav h4 {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   color: black;
   display: block;
+  font-size: 18px;
 }
 
 .left-nav a:hover {
@@ -30,9 +31,9 @@
   padding: 0px 10px;
 }
 
-@media screen and (max-height: 450px) {
-  .left-nav {padding-top: 15px;}
-  .left-nav a {font-size: 18px;}
+.left-nav .sections-list-item, .left-nav .decks-list-item {
+  font-size: 14px;
+  padding-left: 30px;
 }
 
 .selected {
