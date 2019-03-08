@@ -48,7 +48,11 @@
           <% else %>
             <% @section.users.each do |user| %>
               <div class="student-info border-bottom">
-                <img class="avatar-small" src="https://picsum.photos/400">
+                <% if user.photo.file %>
+                  <%= cl_image_tag(user.photo, class: "avatar-small") %>
+                <% else %>
+                  <%= cl_image_tag("ptvra7owhsunxrse9zut.png", class: "avatar-small") %>
+                <% end %>
                 <div class="student-list-content">
                     <div class="student-name">
                       <p><%= user.first_name %> <%= user.last_name %></p>

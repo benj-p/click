@@ -24,10 +24,10 @@
         <% @results_by_student.each do |result| %>
 
           <div class="student-info border-bottom">
-            <% if result[:student].photo != "" %>
-              <%= cl_image_tag(result[:student].photo, :default_image => "xcpokhxjnrjyhwzsx0zk.jpg", class: "avatar-small") %>
+            <% if result[:student].photo.file %>
+              <%= cl_image_tag(result[:student].photo, class: "avatar-small") %>
             <% else %>
-              <img class="avatar-small" src="https://picsum.photos/400">
+              <%= cl_image_tag("ptvra7owhsunxrse9zut.png", class: "avatar-small") %>
             <% end %>
 
             <div class="student-list-content">

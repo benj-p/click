@@ -15,6 +15,7 @@ Section.destroy_all
 Curriculum.destroy_all
 User.destroy_all
 
+
 puts "creating students..."
 students = (1..200).each_with_object({}) do |i, student|
   student[i] = User.create(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , password: "secret")
