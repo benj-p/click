@@ -31,7 +31,7 @@ if (window.location.pathname.includes('/takedeck')) {
 }
 
 // Left Navbar Selection
-const toggleSelectedView = () => {
+const toggleSelectedMenuItem = () => {
   const menuLinks = document.querySelectorAll(".menu-item");
   const sections = document.querySelectorAll(".sections");
   const curriculums = document.querySelectorAll(".curriculums");
@@ -60,9 +60,7 @@ const toggleSelectedView = () => {
   });
 }
 
-if (window.location.pathname.includes('/curriculums')) {
-  toggleSelectedView();
-}
+toggleSelectedMenuItem()
 
 if (window.location.pathname.includes('/decksummary')) {
   expandCard();
