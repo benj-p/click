@@ -1,5 +1,13 @@
 import "bootstrap";
 
+// Remove alert message
+// const removeAlert = () => {
+//   setTimeout(
+//     function () {
+//       document.querySelector('.alert').style.display = 'none';
+//     }, 3000);
+// }
+
 // Get container width for progress bar
 const toggleFixed = () => {
   var parentwidth = $(".question-container").width();
@@ -66,3 +74,5 @@ if (window.location.pathname.includes('/decksummary')) {
   expandCard();
   collapseCard();
 }
+
+// removeAlert();
