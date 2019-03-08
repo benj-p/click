@@ -66,7 +66,16 @@ end
 #   end
 # end
 
+def rand_section
+  offset = rand(Section.count)
+  Section.offset(offset).first
+end
 
+User.where(is_teacher: false).each do |student|
+  5.times do
+    Registration.new()
+  end
+end
 
 #Deck
 
