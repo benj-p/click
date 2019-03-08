@@ -2,4 +2,21 @@
   position: fixed;
   bottom: 0px;
   right: 0px;
+  z-index: 100;
+  animation-name: alertRemove;
+  animation-duration: 4000ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes alertRemove{
+  0%{
+    opacity: 1;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    display: none;
+    opacity: 0;
+  }
 }
