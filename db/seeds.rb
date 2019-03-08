@@ -94,10 +94,11 @@ r1 = Resource.create!({name: "Review Video", text: "Check out this video review 
 r2 = Resource.create({name: "Review Reading", text: "Did you review the reading assignment? Check it out here.", url: "https://londonlovesbusiness.com/5-genuinely-interesting-tax-facts-no-really/"})
 
 #Card
-
+answers = ["True", "False"]
 Deck.all.each do |deck|
   20.times do
-    Card.create(deck: deck, question: question, correct_answer: answer, wrong_answer: answer)
+    answers.shuffle!
+    Card.create(deck: deck, question: Faker::Quote.famous_last_words, correct_answer: answers[0], wrong_answer: answers[1])
   end
 end
 
