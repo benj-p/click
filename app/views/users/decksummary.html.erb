@@ -52,5 +52,6 @@
     <% end %>
   <% end %>
 
-  <p><%= link_to "Back to dashboard", dashboard_user_path(@user) %></p>
+  <%= link_to "Back to dashboard", dashboard_user_path(@user), class: "back-dashboard-link" %>
+
 </div>
