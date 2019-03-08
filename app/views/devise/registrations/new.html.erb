@@ -24,12 +24,14 @@
           <%= f.input :photo_cache, as: :hidden %>
         </div>
 
-        <div class="form-actions">
-          <%= f.button :submit, "Sign up", class: "btn-yellow" %>
+        <div class="form-buttons-container">
+          <div class="form-actions">
+            <%= f.button :submit, "Sign up", class: "btn-yellow" %>
+          </div>
+          <%= render "devise/shared/links" %>
         </div>
       <% end %>
 
-      <%= render "devise/shared/links" %>
 
     </div>
   </div>
