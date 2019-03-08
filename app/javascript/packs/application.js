@@ -30,7 +30,7 @@ if (window.location.pathname.includes('/takedeck')) {
   toggleFixed();
 }
 
-// Left Navbar JS
+// Left Navbar Selection
 const toggleSelectedView = () => {
   const menuLinks = document.querySelectorAll(".menu-item");
   const sections = document.querySelector(".sections");
