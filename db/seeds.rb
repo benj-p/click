@@ -73,7 +73,7 @@ end
 
 User.where(is_teacher: false).each do |student|
   5.times do
-    Registration.new()
+    Registration.create(user: student, section: rand_section)
   end
 end
 
