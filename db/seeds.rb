@@ -1,6 +1,8 @@
 require 'date'
 require 'faker'
 
+start_time = Time.now()
+
 puts "starting to seed..."
 
 puts "destroying current records..."
@@ -172,4 +174,6 @@ User.where(is_teacher: false).each do |student|
   end
 end
 
-puts "Seeding complete!!"
+end_time = Time.now()
+
+puts "Seeding complete!! Done in #{ end_time - start_time } seconds."
