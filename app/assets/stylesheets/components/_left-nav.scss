@@ -7,11 +7,11 @@
   width: 240px;
   position: fixed;
   z-index: 1;
-  top: 46px;
+  top: 0px;
   left: 0;
   background-color: white;
   overflow-x: hidden;
-  padding-top: 30px;
+  padding-top: 80px;
 }
 
 .left-nav a {
@@ -28,11 +28,6 @@
 .main {
   margin-left: 160px;
   padding: 0px 10px;
-}
-
-@media screen and (max-height: 450px) {
-  .left-nav {padding-top: 15px;}
-  .left-nav a {font-size: 18px;}
 }
 
 .selected {
