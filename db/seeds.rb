@@ -150,20 +150,21 @@ c_1 = Card.create({deck: fun_facts_taxes, question: "During the Middle Ages, Eur
 c_2 = Card.create({deck: fun_facts_taxes, question: 'In 1712, England imposed a tax on printed wallpaper. Builders avoided the tax by hanging plain wallpaper and then painting patterns on the walls."', correct_answer: "True" , wrong_answer: "False", resource: r1})
 c_3 = Card.create({deck: fun_facts_taxes, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
 
+teacher_sections = []
 sections = (1..8).each_with_object({}) do |i, section|
   if i <= 4
-    section[i] = Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_accounting)
+    teacher_sections << Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_accounting)
   else
-    section[i] = Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_tax)
+    teacher_sections << Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_tax)
   end
 end
 
 Registration.create(user: student, section: Section.last)
 Registration.create(user: student, section: rand_section)
 
-sections.each do |section|
+teacher_sections.each do |section|
   15.times do
-    Registration.create(student: User.find(rand(User.count)), section: section)
+    Registration.create(user: User.offset(rand(User.count)).first, section: section)
   end
 end
 puts "creating attempts..."
