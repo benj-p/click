@@ -5,8 +5,8 @@ puts "starting to seed..."
 
 puts "destorying current records..."
 Attempt.destroy_all
-Resource.destroy_all
 Card.destroy_all
+Resource.destroy_all
 Deck.destroy_all
 Registration.destroy_all
 Section.destroy_all
@@ -27,7 +27,7 @@ teacher = User.create(email: "izzyweber@gmail.com", first_name: "Izzy", last_nam
 #Curriculums
 User.where(is_teacher: true).each do |teacher|
   6.times do
-    Curriculum.create(user: teacher, subject: Faker::Educator.course_name)
+    Curriculum.create(user: teacher, name: Faker::Educator.course_name)
   end
 end
 
@@ -41,7 +41,7 @@ intro_to_tax = Curriculum.create({user: teacher, name: "Intro to Taxation"})
 #     section[i] = Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_tax)
 #   end
 # end
-sections = ('A'..'Z')
+sections = ('A'..'Z').to_a
 
 Curriculum.all.each do |curriculum|
   counter = 0
