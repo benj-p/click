@@ -3,7 +3,7 @@ require 'faker'
 
 puts "starting to seed..."
 
-puts "destorying current records..."
+puts "destroying current records..."
 Attempt.destroy_all
 Card.destroy_all
 Resource.destroy_all
@@ -14,7 +14,7 @@ Curriculum.destroy_all
 User.destroy_all
 
 
-students = (1..50).each_with_object({}) do |i, student|
+students = (1..200).each_with_object({}) do |i, student|
   student[i] = User.create(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , password: "secret")
 end
 
@@ -23,6 +23,8 @@ teachers = (1..5).each_with_object({}) do |i, teacher|
 end
 
 teacher = User.create(email: "izzyweber@gmail.com", first_name: "Izzy", last_name: "Weber" , password: "secret", is_teacher: true)
+
+student = User.create(email: "jonny@email.com", first_name: "Jonny", last_name: "Gates", password: "secret")
 
 #Curriculums
 User.where(is_teacher: true).each do |teacher|
@@ -147,7 +149,7 @@ responses = ["Correct", "Incorrect", "I don't know"]
 User.where(is_teacher: false).each do |student|
   student.sections.each do |section|
     section.curriculum.decks.each do |deck|
-      deck.cards.each do |card|
+      deck.cards.take(rand(deck.cards.count)).each do |card|
         Attempt.create(user: student, card: card, response: responses.sample)
       end
     end
