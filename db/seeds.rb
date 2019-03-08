@@ -22,33 +22,34 @@ teachers = (1..5).each_with_object({}) do |i, teacher|
   teacher[i] = User.create(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , password: "secret", is_teacher: true)
 end
 
-teacher = User.create(email: "izzyweber@gmail.com", first_name: "Izzy", last_name: "Weber" , password: "secret", is_teacher: true)
 
-student = User.create(email: "jonny@email.com", first_name: "Jonny", last_name: "Gates", password: "secret")
+
 
 #Curriculums
-User.where(is_teacher: true).each do |teacher|
+teachers.each do |teacher|
   6.times do
     Curriculum.create(user: teacher, name: Faker::Educator.course_name)
   end
 end
 
-intro_to_accounting = Curriculum.create({user: teacher, name: "Intro to Accounting"})
-intro_to_tax = Curriculum.create({user: teacher, name: "Intro to Taxation"})
 
-# sections = (1..10).each_with_object({}) do |i, section|
-#   if i <= 5
-#     section[i] = Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_accounting)
-#   else
-#     section[i] = Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_tax)
-#   end
-# end
-sections = ('A'..'Z').to_a
+
+
+
+sections = (1..10).each_with_object({}) do |i, section|
+  if i <= 5
+    section[i] = Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_accounting)
+  else
+    section[i] = Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_tax)
+  end
+end
+
+section_names = ('A'..'Z').to_a
 
 Curriculum.all.each do |curriculum|
   counter = 0
   5.times do
-    Section.create(name: sections[counter], curriculum: curriculum)
+    Section.create(name: section_names[counter], curriculum: curriculum)
     counter += 1
   end
 end
@@ -145,6 +146,15 @@ Attempt.create({user: students[2], card: c_3, response: "Incorrect"})
 Attempt.create({user: students[3], card: c_3, response: "Correct"})
 
 responses = ["Correct", "Incorrect", "I don't know"]
+
+teacher = User.create(email: "izzyweber@gmail.com", first_name: "Izzy", last_name: "Weber" , password: "secret", is_teacher: true)
+student = User.create(email: "jonny@email.com", first_name: "Jonny", last_name: "Gates", password: "secret")
+
+intro_to_accounting = Curriculum.create({user: teacher, name: "Intro to Accounting"})
+intro_to_tax = Curriculum.create({user: teacher, name: "Intro to Taxation"})
+
+Registration.create(user: student, section: teacher.curriculums.first.sections.first)
+Registration.create(user: student, section: teacher.curriculums.last.sections.first)
 
 User.where(is_teacher: false).each do |student|
   student.sections.each do |section|
