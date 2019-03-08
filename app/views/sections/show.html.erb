@@ -9,17 +9,15 @@
       <h3>Outstanding Decks</h3>
       <% @section.curriculum.decks.each do |deck| %>
         <% if deck.due_date > Date.today %>
-          <%= link_to section_deck_path(@section, deck) do %>
-            <div class="deck-list-item">
-              <div class="deck-list-item-image"></div>
-              <div class="deck-list-item-info">
-                <span> <%= deck.name %> </span>
-              </div>
-              <div class="progress-bar">
-                 <%= render 'shared/progress_bar', correct: rand(80), incorrect: rand(20) %>
-              </div>
+          <div class="deck-list-item">
+            <div class="deck-list-item-image"></div>
+            <div class="deck-list-item-info">
+              <span> <%= link_to deck.name, section_deck_path(@section, deck) %> </span>
             </div>
-          <% end %>
+            <div class="progress-bar">
+               <%= render 'shared/progress_bar', correct: rand(80), incorrect: rand(20) %>
+            </div>
+          </div>
         <% end %>
       <% end %>
 
@@ -27,18 +25,15 @@
       <h3>Completed Decks</h3>
       <% @section.curriculum.decks.each do |deck| %>
         <% if deck.due_date < Date.today %>
-          <%= link_to section_deck_path(@section, deck) do %>
-            <div class="deck-list-item">
-              <div class="deck-list-item-image"></div>
-              <div class="deck-list-item-info">
-                <span> <%= deck.name %> </span>
-
-              </div>
-              <div class="progress-bar">
-                <%= render 'shared/progress_bar', correct: rand(40), incorrect: rand(40) %>
-              </div>
+          <div class="deck-list-item">
+            <div class="deck-list-item-image"></div>
+            <div class="deck-list-item-info">
+              <span> <%= link_to deck.name, section_deck_path(@section, deck) %> </span>
             </div>
-          <% end %>
+            <div class="progress-bar">
+              <%= render 'shared/progress_bar', correct: rand(40), incorrect: rand(40) %>
+            </div>
+          </div>
         <% end %>
       <% end %>
     </div>
