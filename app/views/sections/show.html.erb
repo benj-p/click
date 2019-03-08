@@ -16,8 +16,7 @@
                 <span> <%= deck.name %> </span>
               </div>
               <div class="progress-bar">
-                <% result = deck.deck_results(@section) %>
-                <%= render 'shared/progress_bar', correct: result[:correct], incorrect: result[:incorrect], unsure: result[:unsure] %>
+                 <%= render 'shared/progress_bar', correct: rand(80), incorrect: rand(20) %>
               </div>
             </div>
           <% end %>
@@ -36,8 +35,7 @@
 
               </div>
               <div class="progress-bar">
-                <% result = deck.deck_results(@section) %>
-                <%= render 'shared/progress_bar', correct: result[:correct], incorrect: result[:incorrect], unsure: result[:unsure] %>
+                <%= render 'shared/progress_bar', correct: rand(40), incorrect: rand(40) %>
               </div>
             </div>
           <% end %>
