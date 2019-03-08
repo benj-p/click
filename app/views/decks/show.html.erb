@@ -21,22 +21,27 @@
       <div class="col-sm-12 col-md-5">
         <div class="section">
           <h3>Attention students</h3>
+          <div class="student-info border-bottom">
+            <% if result[:student].photo.file %>
+              <%= cl_image_tag(result[:student].photo, class: "avatar-small") %>
+            <% else %>
+              <%= cl_image_tag("ptvra7owhsunxrse9zut.png", class: "avatar-small") %>
+            <% end %>
 
-          <% @results_by_student.each do |result| %>
-            <div class="student-info border-bottom">
-              <div class="avatar-small" style="background-image: url(https://picsum.photos/400)">
+            <div class="student-list-content">
+              <div class="student-name">
+                <p><%= result[:student].first_name %> <%= result[:student].last_name %></p>
               </div>
-              <div class="student-list-content">
-                <div class="student-name">
-                  <p><%= result[:student].first_name %> <%= result[:student].last_name %></p>
-                </div>
-
+              <% unless result[:results][:correct] == 0 %>
                 <%= render 'shared/arc', color: 'green', percentage: (result[:results][:correct] / result[:results][:attempts].to_f) * 100,  size: 'small' %>
+              <% end %>
+              <% unless result[:results][:incorrect] == 0 %>
                 <%= render 'shared/arc', color: 'red', percentage: (result[:results][:incorrect] / result[:results][:attempts].to_f) * 100,  size: 'small' %>
+              <% end %>
+              <% unless result[:results][:unsure] == 0 %>
                 <%= render 'shared/arc', color: 'grey', percentage: (result[:results][:unsure] / result[:results][:attempts].to_f) * 100,  size: 'small' %>
-              </div>
+              <% end %>
             </div>
-
           <% end %>
         </div>
       </div>
@@ -49,9 +54,15 @@
                 <div class="student-name">
                   <p><%= truncate(result[1][:card].question, length: 24) %></p>
                 </div>
-                <%= render 'shared/arc', color: 'green', percentage: (result[1][:results][:correct] / result[1][:results][:attempts].to_f) * 100,  size: 'small' %>
-                <%= render 'shared/arc', color: 'red', percentage: (result[1][:results][:incorrect] / result[1][:results][:attempts].to_f) * 100,  size: 'small' %>
-                <%= render 'shared/arc', color: 'grey', percentage: (result[1][:results][:unsure] / result[1][:results][:attempts].to_f) * 100,  size: 'small' %>
+                <% unless result[1][:results][:correct] == 0 %>
+                  <%= render 'shared/arc', color: 'green', percentage: (result[1][:results][:correct] / result[1][:results][:attempts].to_f) * 100,  size: 'small' %>
+                <% end %>
+                <% unless result[1][:results][:incorrect] == 0 %>
+                  <%= render 'shared/arc', color: 'red', percentage: (result[1][:results][:incorrect] / result[1][:results][:attempts].to_f) * 100,  size: 'small' %>
+                <% end %>
+                <% unless result[1][:results][:unsure] == 0 %>
+                  <%= render 'shared/arc', color: 'grey', percentage: (result[1][:results][:unsure] / result[1][:results][:attempts].to_f) * 100,  size: 'small' %>
+                <% end %>
               </div>
             </div>
           <% end %>
