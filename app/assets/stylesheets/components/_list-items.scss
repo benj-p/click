@@ -1,0 +1,41 @@
+.deck-list-item {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  margin: 16px 0px;
+  transition: 0.3s;
+  span {
+    margin: 0;
+    color: #000;
+    &:hover {
+      text-decoration: none !important;
+    }
+  }
+  a {
+    color: #000;
+  }
+  &:hover {
+    background: #ebebeb;
+  }
+  .deck-list-item-image {
+    width: 80px;
+    height: 80px;
+    background-image: url('books.jpg');
+    background-size: cover;
+  }
+  .deck-list-item-info {
+    padding: 8px;
+    flex-grow: 1;
+  }
+  .progress-bar {
+    width: 50%;
+    height: 20px;
+    margin: 8px;
+  }
+}
+
+
+

@@ -29,7 +29,7 @@
         <% @resources.each do |resource| %>
       <div class="resource">
         <div class="name">
-          <h3><%= resource.name %></h3>
+          <p><%= resource.name %></p>
         </div>
         <div class="resource-text">
           <%= truncate(resource.text, length: 80) %>

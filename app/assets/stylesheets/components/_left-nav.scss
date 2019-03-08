@@ -1,0 +1,46 @@
+
+.left-nav {
+    h1, h2, a {
+      padding-left: 12px;
+    }
+  height: 100%;
+  width: 240px;
+  position: fixed;
+  z-index: 1;
+  top: 46px;
+  left: 0;
+  background-color: white;
+  overflow-x: hidden;
+  padding-top: 30px;
+}
+
+.left-nav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+
+.left-nav a:hover {
+  background-color: #f1f1f1;
+}
+
+.main {
+  margin-left: 160px;
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .left-nav {padding-top: 15px;}
+  .left-nav a {font-size: 18px;}
+}
+
+.selected {
+  border-left: solid;
+  border-width: 8px;
+  border-color: #FAC70B;
+  background: rgba(250, 199, 11, 0.14);
+  a:hover {
+    background-color: rgba(250, 199, 11, 0.14);
+  }
+}
