@@ -1,7 +1,7 @@
 // Specific CSS for your home-page
 .home-page-body{
 	background-image: asset-url('bannerlet-01.png');
-	height: calc(100vh - 56px);
+	height: 100vh;
 	background-size: cover;
 	background-position: center;
 }
@@ -12,14 +12,27 @@
 	left: 15px;
 	h1{
 		font-weight: bold;
+		font-size: 30px;
 	}
 
 	p{
 		color:$gris-foncee;
+		font-size: 15px;
 	}
 }
 
 .yellow-word{
 	color: $yellow;
 	border-bottom: none;
+}
+
+@media only screen and (max-width: 593px) {
+	.remove-text {
+		display: none;
+	}
+
+	.padding-sm-screen {
+		font-size: 15px;
+		padding-right: 50px;
+	}
 }
