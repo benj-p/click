@@ -26,6 +26,7 @@ const collapseCard = () => {
   });
 }
 
+
 if (window.location.pathname.includes('/takedeck')) {
   toggleFixed();
 }

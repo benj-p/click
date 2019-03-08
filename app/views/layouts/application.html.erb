@@ -20,7 +20,9 @@
     <%= render 'shared/flashes' %>
     <%= render'shared/left-nav', curriculums: @curriculums if (!current_user.nil? && current_user.is_teacher) %>
     <div class="big-container">
-      <div class="fake-nav">a</div>
+      <% if (!current_user.nil? && current_user.is_teacher) %>
+        <div class="fake-nav">a</div>
+      <% end %>
       <div class="page-content">
         <%= yield %>
       </div>
