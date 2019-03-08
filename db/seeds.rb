@@ -132,7 +132,7 @@ end
 
 puts "creating demo users..."
 teacher = User.create(email: "izzyweber@gmail.com", first_name: "Izzy", last_name: "Weber" , password: "secret", is_teacher: true)
-student = User.create(email: "jonny@email.com", first_name: "Jonny", last_name: "Gates", password: "secret")
+
 
 intro_to_accounting = Curriculum.create({user: teacher, name: "Intro to Accounting"})
 intro_to_tax = Curriculum.create({user: teacher, name: "Intro to Taxation"})
@@ -173,8 +173,10 @@ teacher_sections.each do |section|
   end
 end
 
+student = User.create(email: "jonny@email.com", first_name: "Jonny", last_name: "Gates", password: "secret")
+
 Registration.create(user: student, section: Section.last)
-Registration.create(user: student, section: rand_section)
+Registration.create(user: student, section: Section.first)
 
 
 puts "creating attempts..."
