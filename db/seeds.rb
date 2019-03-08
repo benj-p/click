@@ -136,6 +136,11 @@ student = User.create(email: "jonny@email.com", first_name: "Jonny", last_name: 
 
 intro_to_accounting = Curriculum.create({user: teacher, name: "Intro to Accounting"})
 intro_to_tax = Curriculum.create({user: teacher, name: "Intro to Taxation"})
+fake_curric1 = Curriculum.create(user: teacher, name: Faker::Educator.course_name)
+fake_curric2 = Curriculum.create(user: teacher, name: Faker::Educator.course_name)
+
+Deck.create(curriculum: fake_curric1, name: "Intro to #{fake_curric1.name}")
+Deck.create(curriculum: fake_curric2, name: "Intro to #{fake_curric2.name}")
 
 financial_statement_basics = Deck.create({curriculum: intro_to_accounting, name: "Financial Statement Basics", due_date: Date.today()-10})
 journal_entry_basics = Deck.create({curriculum: intro_to_accounting, name: "Basic Journal Entries", due_date: Date.today()+3})
@@ -154,20 +159,24 @@ c_3 = Card.create({deck: fun_facts_taxes, question: 'In 1705, Russian Emperor Pe
 teacher_sections = []
 sections = (1..8).each_with_object({}) do |i, section|
   if i <= 4
-    teacher_sections << Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_accounting)
+    teacher_sections << Section.create(name: ('A'..'D').to_a[i-1], curriculum: intro_to_accounting)
   else
-    teacher_sections << Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_tax)
+    x = i - 4
+    teacher_sections << Section.create(name: ('A'..'D').to_a[x-1], curriculum: intro_to_tax)
+  end
+end
+
+teacher_sections.each do |section|
+  15.times do
+    reg = Registration.new(user: User.offset(rand(User.count)).first, section: section)
+    reg.save unless reg.user.is_teacher
   end
 end
 
 Registration.create(user: student, section: Section.last)
 Registration.create(user: student, section: rand_section)
 
-teacher_sections.each do |section|
-  15.times do
-    Registration.create(user: User.offset(rand(User.count)).first, section: section)
-  end
-end
+
 puts "creating attempts..."
 
 
