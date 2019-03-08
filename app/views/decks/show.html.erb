@@ -24,15 +24,25 @@
         <% @results_by_student.each do |result| %>
 
           <div class="student-info border-bottom">
-            <img class="avatar-small" src="https://picsum.photos/400">
+            <% if result[:student].photo != "" %>
+              <%= cl_image_tag(result[:student].photo, :default_image => "xcpokhxjnrjyhwzsx0zk.jpg", class: "avatar-small") %>
+            <% else %>
+              <img class="avatar-small" src="https://picsum.photos/400">
+            <% end %>
+
             <div class="student-list-content">
               <div class="student-name">
                 <p><%= result[:student].first_name %> <%= result[:student].last_name %></p>
               </div>
-
-              <%= render 'shared/arc', color: 'green', percentage: (result[:results][:correct] / result[:results][:attempts].to_f) * 100,  size: 'small' %>
-              <%= render 'shared/arc', color: 'red', percentage: (result[:results][:incorrect] / result[:results][:attempts].to_f) * 100,  size: 'small' %>
-              <%= render 'shared/arc', color: 'grey', percentage: (result[:results][:unsure] / result[:results][:attempts].to_f) * 100,  size: 'small' %>
+              <% unless result[:results][:correct] == 0 %>
+                <%= render 'shared/arc', color: 'green', percentage: (result[:results][:correct] / result[:results][:attempts].to_f) * 100,  size: 'small' %>
+              <% end %>
+              <% unless result[:results][:incorrect] == 0 %>
+                <%= render 'shared/arc', color: 'red', percentage: (result[:results][:incorrect] / result[:results][:attempts].to_f) * 100,  size: 'small' %>
+              <% end %>
+              <% unless result[:results][:unsure] == 0 %>
+                <%= render 'shared/arc', color: 'grey', percentage: (result[:results][:unsure] / result[:results][:attempts].to_f) * 100,  size: 'small' %>
+              <% end %>
             </div>
           </div>
 
