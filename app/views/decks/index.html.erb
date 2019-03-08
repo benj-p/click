@@ -1,40 +1,39 @@
 <% flash.error = "Delete page if not required!" %>
-
-<div class="container">
-  <h1><span>Section <%= Section.find(params[:section_id]).name %></span></h1>
-  <h2> <i class="fas fa-book"></i><%= Curriculum.find(params[:curriculum_id]).name %> </h2>
-  <h3>Outstanding Decks</h3>
-  <% @decks.each do |deck| %>
-    <% if deck.due_date > Date.today %>
-      <%= link_to curriculum_section_deck_path(params[:curriculum_id], params[:section_id], deck.id) do %>
-        <div class="container deck-card">
-          <p> <%= deck.name %> </p>
-        </div>
+<div class="main">
+  <div class="container">
+    <h1><span>Section <%= Section.find(params[:section_id]).name %></span></h1>
+    <h2> <i class="fas fa-book"></i><%= Curriculum.find(params[:curriculum_id]).name %> </h2>
+    <h3>Outstanding Decks</h3>
+    <% @decks.each do |deck| %>
+      <% if deck.due_date > Date.today %>
+        <%= link_to curriculum_section_deck_path(params[:curriculum_id], params[:section_id], deck.id) do %>
+          <div class="container deck-card">
+            <p> <%= deck.name %> </p>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
 
-  <h3>Completed Decks</h3>
-  <% @decks.each do |deck| %>
-    <% if deck.due_date < Date.today %>
-      <%= link_to curriculum_section_deck_path(params[:curriculum_id], params[:section_id], deck.id) do %>
-        <div class="container deck-card">
-          <p> <%= deck.name %> </p>
-        </div>
+    <h3>Completed Decks</h3>
+    <% @decks.each do |deck| %>
+      <% if deck.due_date < Date.today %>
+        <%= link_to curriculum_section_deck_path(params[:curriculum_id], params[:section_id], deck.id) do %>
+          <div class="container deck-card">
+            <p> <%= deck.name %> </p>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
 
-  <h3>Students</h3>
-  <h4><%= Section.find(params[:section_id]).users.length %> students</h4>
-  <div class="container student-list">
-    <% Section.find(params[:section_id]).users.each do |user| %>
-      <% unless user.is_teacher %>
-        <p><%= link_to "#{user.first_name} #{user.last_name}", root_path %></p>
+    <h3>Students</h3>
+    <h4><%= Section.find(params[:section_id]).users.length %> students</h4>
+    <div class="container student-list">
+      <% Section.find(params[:section_id]).users.each do |user| %>
+        <% unless user.is_teacher %>
+          <p><%= link_to "#{user.first_name} #{user.last_name}", root_path %></p>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
-
-
 </div>
 
