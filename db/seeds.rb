@@ -95,7 +95,7 @@ r2 = Resource.create({name: "Review Reading", text: "Did you review the reading 
 
 Deck.all.each do |deck|
   20.times do
-    Card.create(deck: deck)
+    Card.create(deck: deck, question: question, correct_answer: answer, wrong_answer: answer)
   end
 end
 
