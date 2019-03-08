@@ -3,6 +3,7 @@ require 'faker'
 
 puts "starting to seed..."
 
+puts "destorying current records..."
 Attempt.destroy_all
 Resource.destroy_all
 Card.destroy_all
@@ -11,6 +12,7 @@ Registration.destroy_all
 Section.destroy_all
 Curriculum.destroy_all
 User.destroy_all
+
 
 students = (1..50).each_with_object({}) do |i, student|
   student[i] = User.create(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , password: "secret")
@@ -22,33 +24,49 @@ end
 
 teacher = User.create(email: "izzyweber@gmail.com", first_name: "Izzy", last_name: "Weber" , password: "secret", is_teacher: true)
 
-#Curriculum
+#Curriculums
+User.where(is_teacher: true).each do |teacher|
+  6.times do
+    Curriculum.create(user: teacher, subject: Faker::Educator.course_name)
+  end
+end
 
 intro_to_accounting = Curriculum.create({user: teacher, name: "Intro to Accounting"})
 intro_to_tax = Curriculum.create({user: teacher, name: "Intro to Taxation"})
 
-sections = (1..10).each_with_object({}) do |i, section|
-  if i <= 5
-    section[i] = Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_accounting)
-  else
-    section[i] = Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_tax)
+# sections = (1..10).each_with_object({}) do |i, section|
+#   if i <= 5
+#     section[i] = Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_accounting)
+#   else
+#     section[i] = Section.create(name: ('A'..'Z').to_a[i-1], curriculum: intro_to_tax)
+#   end
+# end
+sections = ('A'..'Z')
+
+Curriculum.all.each do |curriculum|
+  counter = 0
+  5.times do
+    Section.create(name: sections[counter], curriculum: curriculum)
   end
+  counter += 1
 end
 
-students.each_with_index do |student, index|
-  a = (1..5).to_a.shuffle
-  b = (6..10).to_a.shuffle
-  (1..2).to_a.sample.times do |indextimes|
-    registration = Registration.new
-    registration.user = students[index+1]
-    if indextimes == 1
-      registration.section = sections[a.pop]
-    else
-      registration.section = sections[b.pop]
-    end
-    registration.save!
-  end
-end
+# students.each_with_index do |student, index|
+#   a = (1..5).to_a.shuffle
+#   b = (6..10).to_a.shuffle
+#   (1..2).to_a.sample.times do |indextimes|
+#     registration = Registration.new
+#     registration.user = students[index+1]
+#     if indextimes == 1
+#       registration.section = sections[a.pop]
+#     else
+#       registration.section = sections[b.pop]
+#     end
+#     registration.save!
+#   end
+# end
+
+
 
 #Deck
 
