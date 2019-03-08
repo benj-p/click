@@ -47,8 +47,8 @@ Curriculum.all.each do |curriculum|
   counter = 0
   5.times do
     Section.create(name: sections[counter], curriculum: curriculum)
+    counter += 1
   end
-  counter += 1
 end
 
 # students.each_with_index do |student, index|
@@ -148,7 +148,7 @@ User.where(is_teacher: false).each do |student|
   student.sections.each do |section|
     section.curriculum.decks.each do |deck|
       deck.cards.each do |card|
-        Attempt.create(user: student, card: card, response: response.sample)
+        Attempt.create(user: student, card: card, response: responses.sample)
       end
     end
   end
