@@ -10,10 +10,19 @@
   </div>
   <br>
   <br>
-  <div class="curriculum-list">
+  <div class="curriculum-list curriculums" hidden>
     <h2>Curriculums</h2>
     <% @curriculums.each do |curriculum| %>
-      <a href="#"> <%= curriculum.name %> </a>
+      <%= link_to curriculum.name, curriculums_path %>
+    <% end %>
+  </div>
+  <div class="section-list sections">
+    <h2>Sections</h2>
+    <% @curriculums.each do |curriculum| %>
+      <h4> <%= curriculum.name %> </h4>
+      <% curriculum.sections.each do |section| %>
+        <%= link_to section.name, section_path(section), class: "sections-list-item"%>
+      <% end %>
     <% end %>
   </div>
 </div>

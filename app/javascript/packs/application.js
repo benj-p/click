@@ -33,20 +33,28 @@ if (window.location.pathname.includes('/takedeck')) {
 // Left Navbar Selection
 const toggleSelectedView = () => {
   const menuLinks = document.querySelectorAll(".menu-item");
-  const sections = document.querySelector(".sections");
-  const curriculums = document.querySelector(".curriculums");
+  const sections = document.querySelectorAll(".sections");
+  const curriculums = document.querySelectorAll(".curriculums");
   menuLinks.forEach ((link) => {
     link.addEventListener("click", (event) => {
       const selected = document.querySelector(".selected");
       selected.classList.toggle("selected");
       event.currentTarget.classList.toggle("selected");
       if (event.currentTarget.innerText === "My Sections") {
-        curriculums.setAttribute("hidden", "")
-        sections.removeAttribute("hidden", "")
-      }
+        curriculums.forEach ((curriculum) => {
+          curriculum.setAttribute("hidden", "")
+        });
+        sections.forEach ((section) => {
+          section.removeAttribute("hidden", "")
+        });
+      };
       if (event.currentTarget.innerText === "My Curriculums") {
-        sections.setAttribute("hidden", "")
-        curriculums.removeAttribute("hidden", "")
+        curriculums.forEach ((curriculum) => {
+          curriculum.removeAttribute("hidden", "")
+        });
+        sections.forEach ((section) => {
+          section.setAttribute("hidden", "")
+        });
       };
     });
   });
