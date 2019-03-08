@@ -84,7 +84,9 @@ journal_entry_basics = Deck.create({curriculum: intro_to_accounting, name: "Basi
 fun_facts_taxes = Deck.create({curriculum: intro_to_tax, name: "Fun Facts About Taxes", due_date: Date.today()+5})
 
 Curriculum.all.each do |curriculum|
-  Deck.create(curriculum: curriculum, name: Faker::Educator.course_name, due_date: Date.today() + rand((1..10)))
+  5.times do
+    Deck.create(curriculum: curriculum, name: Faker::Educator.course_name, due_date: Date.today() + rand((1..10)))
+  end
 end
 
 #Resources
