@@ -36,3 +36,15 @@
 		padding-right: 50px;
 	}
 }
+
+
+
+.page-content {
+  padding-top: 40px;
+}
+
+@media(max-width: 575.98px) {
+  .page-content {
+    padding-top: 48px;
+  }
+}
