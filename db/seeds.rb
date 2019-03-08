@@ -17,12 +17,12 @@ User.destroy_all
 
 
 puts "creating students..."
-students = (1..200).each_with_object({}) do |i, student|
+students = (1..20).each_with_object({}) do |i, student|
   student[i] = User.create(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , password: "secret")
 end
 
 puts "creating teachers..."
-teachers = (1..5).each_with_object({}) do |i, teacher|
+teachers = (1..3).each_with_object({}) do |i, teacher|
   teacher[i] = User.create(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , password: "secret", is_teacher: true)
 end
 
@@ -31,7 +31,7 @@ end
 puts "creating curriculums..."
 #Curriculums
 User.where(is_teacher: true).each do |teacher|
-  6.times do
+  3.times do
     Curriculum.create(user: teacher, name: Faker::Educator.course_name)
   end
 end
@@ -42,7 +42,7 @@ section_names = ('A'..'Z').to_a
 
 Curriculum.all.each do |curriculum|
   counter = 0
-  5.times do
+  3.times do
     Section.create(name: section_names[counter], curriculum: curriculum)
     counter += 1
   end
@@ -70,7 +70,7 @@ def rand_section
 end
 
 User.where(is_teacher: false).each do |student|
-  5.times do
+  3.times do
     Registration.create(user: student, section: rand_section)
   end
 end
@@ -93,7 +93,7 @@ r2 = Resource.create({name: "Review Reading", text: "Did you review the reading 
 puts "creating answers..."
 answers = ["True", "False"]
 Deck.all.each do |deck|
-  20.times do
+  8.times do
     answers.shuffle!
     Card.create(deck: deck, question: Faker::Quote.famous_last_words, correct_answer: answers[0], wrong_answer: answers[1])
   end
