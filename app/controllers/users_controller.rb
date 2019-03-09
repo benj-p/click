@@ -28,6 +28,10 @@ class UsersController < ApplicationController
     # raise
   end
 
+  def feed
+    @feed_events = current_user.feed
+  end
+
   private
 
   def set_user
