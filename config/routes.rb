@@ -17,7 +17,6 @@ Rails.application.routes.draw do
       get 'dashboard'
       get 'takedeck'
       get 'decksummary'
-      get 'feed'
     end
   end
   resources :attempts, only: [:create]
@@ -27,5 +26,7 @@ Rails.application.routes.draw do
       resources :students, only: :show
     end
   end
+
+  get 'feed', to: 'users#feed'
 
 end
