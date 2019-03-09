@@ -1,10 +1,31 @@
 <div class="container">
   <div class="sections">
     <div class="row mb-3">
+      <div class="col-md-6">
       <h1><span><%= @user.first_name %> <%= @user.last_name %></span></h1>
-      <% @shared_decks.each do |deck| %>
-        <%= deck.name %>
-      <% end %>
+      <h2>Shared decks</h2>
+        <% if @shared_decks.empty? %>
+          <p><%= @user.first_name %> hasn't shared any decks</p>
+        <% else %>
+          <% @shared_decks.each do |deck| %>
+            <%= deck.name %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
+    <% if @user == current_user %>
+      <div class="row">
+        <div class="col-md-6">
+          <h2>My decks</h2>
+          <% if @user_decks.empty? %>
+            <p>You don't have any decks</p>
+          <% else %>
+            <% @user_decks.each do |deck| %>
+              <%= deck.name %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

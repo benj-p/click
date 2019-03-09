@@ -4,7 +4,12 @@ class UsersController < ApplicationController
   def show
     authorize @user
     @shared_decks = []
-    @user.curriculums.each { |curriculum| curriculum.decks.each { |deck| @shared_decks << deck if deck.shared } }
+    @user_decks = []
+    @user.curriculums.each do |curriculum|
+      curriculum.decks.each do |deck|
+        deck.shared ? @shared_decks << deck : @user_decks << deck
+      end
+    end
   end
 
   def dashboard
