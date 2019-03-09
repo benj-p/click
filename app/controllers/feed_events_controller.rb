@@ -1,0 +1,2 @@
+class FeedEventsController < ApplicationController
+end
