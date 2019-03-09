@@ -14,4 +14,8 @@ class User < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
+  def feed
+    feed_events
+  end
+
 end

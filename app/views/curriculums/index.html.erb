@@ -4,6 +4,9 @@
       <div class="row mx-0">
         <h1><span>My Sections</span></h1>
       </div>
+      <% @feed_events.each do |feed_event| %>
+        <%= feed_event.title %>
+      <% end %>
       <% @curriculums.each do |curriculum| %>
         <div class="row mx-0">
           <h3><%= curriculum.name %></h3>

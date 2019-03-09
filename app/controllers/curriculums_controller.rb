@@ -3,6 +3,7 @@ class CurriculumsController < ApplicationController
 
   def index
     @curriculums = policy_scope(Curriculum)
+    @feed_events = current_user.feed
   end
 
   def show
