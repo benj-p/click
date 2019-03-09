@@ -3,17 +3,10 @@
     h1, h2, a {
       padding-left: 12px;
     }
-  // height: 1000vh;
   width: 240px;
-  // position: sticky;
-  top: 0;
-  left: 0;
-  position: fixed;
   background-color: white;
-  overflow-x: hidden;
   padding-top: 80px;
-  height: 100%;
-  // align-items: stretch;
+  flex: 0 0 auto;
 }
 
 .left-nav a, .left-nav h4 {
@@ -46,9 +39,4 @@
   a:hover {
     background-color: rgba(250, 199, 11, 0.14);
   }
-}
-
-.fake-nav {
-  width: 240px;
-  z-index: -1;
 }

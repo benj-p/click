@@ -16,13 +16,11 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
-    <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <%= render'shared/left-nav', curriculums: @curriculums if (!current_user.nil? && current_user.is_teacher) %>
-    <div class="big-container">
-      <% if (!current_user.nil? && current_user.is_teacher) %>
-        <div class="fake-nav">a</div>
-      <% end %>
+
+    <div class="page-container">
+      <%= render 'shared/navbar' %>
+      <%= render'shared/left-nav', curriculums: @curriculums if (!current_user.nil? && current_user.is_teacher) %>
       <div class="page-content">
         <%= yield %>
       </div>
