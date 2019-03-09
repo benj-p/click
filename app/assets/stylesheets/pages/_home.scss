@@ -31,6 +31,11 @@
 	border-bottom: none;
 }
 
+.btn-container-homepage-mobile {
+  display: none;
+}
+
+
 @media only screen and (max-width: 593px) {
 	.remove-text {
 		display: none;
@@ -54,6 +59,18 @@
 @media(max-width: 575.98px) {
   .page-content {
     padding-top: 48px;
+  }
+
+  .btn-container-homepage-mobile {
+    display: flex;
+    padding: 80vh 4vw;
+      .btn-homepage {
+        flex-grow: 1;
+        margin-right: 16px;
+      }
+      :last-child {
+        margin-right: 0px;
+    }
   }
 }
 
