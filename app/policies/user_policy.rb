@@ -1,7 +1,7 @@
 class UserPolicy < ApplicationPolicy
 
   def show?
-    record == user
+    user.is_teacher
   end
 
   def dashboard?
