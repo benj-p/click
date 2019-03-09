@@ -2,15 +2,28 @@
   <div class="sections">
     <div class="row mb-3">
       <div class="col-md-6">
-      <h1><span><%= @user.first_name %> <%= @user.last_name %></span></h1>
-      <h2>Shared decks</h2>
-        <% if @shared_decks.empty? %>
-          <p><%= @user.first_name %> hasn't shared any decks</p>
+        <h1><span><%= @user.first_name %> <%= @user.last_name %></span></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <% if @user.photo.file %>
+          <%= cl_image_tag(@user.photo, class: "avatar-large") %>
         <% else %>
-          <% @shared_decks.each do |deck| %>
-            <%= deck.name %>
-          <% end %>
+          <%= cl_image_tag("ptvra7owhsunxrse9zut.png", class: "avatar-large") %>
         <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Shared decks</h2>
+          <% if @shared_decks.empty? %>
+            <p><%= @user.first_name %> hasn't shared any decks</p>
+          <% else %>
+            <% @shared_decks.each do |deck| %>
+              <%= deck.name %>
+            <% end %>
+          <% end %>
       </div>
     </div>
     <% if @user == current_user %>
