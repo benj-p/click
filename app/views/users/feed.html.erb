@@ -5,6 +5,16 @@
       <div class="feed-container">
         <% @feed_events.each do |feed_event| %>
           <div class="feed-item">
+            <% if feed_event.about_user %>
+              <div class="feed-item-user">
+                <% if feed_event.about_user.photo.file %>
+                  <%= cl_image_tag(result[:student].photo, class: "avatar-small") %>
+                <% else %>
+                  <%= cl_image_tag("ptvra7owhsunxrse9zut.png", class: "avatar-small") %>
+                <% end %>
+                <span><%= feed_event.about_user.first_name %> <%= feed_event.about_user.last_name %></span>
+              </div>
+            <% end%>
             <%= feed_event.title %>
           </div>
         <% end %>
