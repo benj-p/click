@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:dashboard, :takedeck, :decksummary, :show]
 
   def show
+    authorize @user
   end
 
   def dashboard

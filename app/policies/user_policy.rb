@@ -1,4 +1,9 @@
 class UserPolicy < ApplicationPolicy
+
+  def show?
+    record == user
+  end
+
   def dashboard?
     @record == @user && @user.is_teacher == false
   end
