@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_09_094328) do
+ActiveRecord::Schema.define(version: 2019_03_09_094647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,18 @@ ActiveRecord::Schema.define(version: 2019_03_09_094328) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "feed_events", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "title"
+    t.bigint "deck_id"
+    t.bigint "event_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deck_id"], name: "index_feed_events_on_deck_id"
+    t.index ["event_type_id"], name: "index_feed_events_on_event_type_id"
+    t.index ["user_id"], name: "index_feed_events_on_user_id"
+  end
+
   create_table "registrations", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "section_id"
@@ -109,6 +121,9 @@ ActiveRecord::Schema.define(version: 2019_03_09_094328) do
   add_foreign_key "cards", "resources"
   add_foreign_key "curriculums", "users"
   add_foreign_key "decks", "curriculums"
+  add_foreign_key "feed_events", "decks"
+  add_foreign_key "feed_events", "event_types"
+  add_foreign_key "feed_events", "users"
   add_foreign_key "registrations", "sections"
   add_foreign_key "registrations", "users"
   add_foreign_key "sections", "curriculums"
