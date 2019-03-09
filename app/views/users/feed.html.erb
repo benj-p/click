@@ -1,0 +1,14 @@
+<div class="container mx-auto">
+  <div class="sections">
+    <div class="row mx-0">
+      <h1><span>My feed</span></h1>
+      <div class="feed-container">
+        <% @feed_events.each do |feed_event| %>
+          <div class="feed-item">
+            <%= feed_event.title %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
