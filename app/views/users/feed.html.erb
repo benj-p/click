@@ -15,7 +15,12 @@
                 <span><%= feed_event.about_user.first_name %> <%= feed_event.about_user.last_name %></span>
               </div>
             <% end%>
-            <%= feed_event.title %>
+            <div class="feed-item-content">
+              <%= feed_event.title %>
+            </div>
+            <div class="feed-item-date">
+              <%= time_ago_in_words(feed_event.created_at) %> ago
+            </div>
           </div>
         <% end %>
       </div>
