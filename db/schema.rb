@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_09_094647) do
+ActiveRecord::Schema.define(version: 2019_03_09_124600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2019_03_09_094647) do
     t.bigint "event_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "about_user_id"
     t.index ["deck_id"], name: "index_feed_events_on_deck_id"
     t.index ["event_type_id"], name: "index_feed_events_on_event_type_id"
     t.index ["user_id"], name: "index_feed_events_on_user_id"
@@ -124,6 +125,7 @@ ActiveRecord::Schema.define(version: 2019_03_09_094647) do
   add_foreign_key "feed_events", "decks"
   add_foreign_key "feed_events", "event_types"
   add_foreign_key "feed_events", "users"
+  add_foreign_key "feed_events", "users", column: "about_user_id"
   add_foreign_key "registrations", "sections"
   add_foreign_key "registrations", "users"
   add_foreign_key "sections", "curriculums"
