@@ -14,6 +14,8 @@ Registration.destroy_all
 Section.destroy_all
 Curriculum.destroy_all
 User.destroy_all
+FeedEvent.destroy_all
+EventType.destroy_all
 
 
 puts "creating students..."
@@ -26,7 +28,10 @@ teachers = (1..3).each_with_object({}) do |i, teacher|
   teacher[i] = User.create(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , password: "secret", is_teacher: true)
 end
 
-
+puts "creating event types"
+EventType.create(name: "Completed deck")
+EventType.create(name: "Shared deck")
+EventType.create(name: "Extreme score")
 
 puts "creating curriculums..."
 #Curriculums
