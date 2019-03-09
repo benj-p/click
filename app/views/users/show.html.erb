@@ -2,6 +2,9 @@
   <div class="sections">
     <div class="row mb-3">
       <h1><span><%= @user.first_name %> <%= @user.last_name %></span></h1>
+      <% @shared_decks.each do |deck| %>
+        <%= deck.name %>
+      <% end %>
     </div>
   </div>
 </div>
