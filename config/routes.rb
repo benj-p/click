@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [] do
+  resources :users, only: [:show] do
     member do
       get 'dashboard'
       get 'takedeck'
