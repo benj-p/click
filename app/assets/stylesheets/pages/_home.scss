@@ -13,15 +13,16 @@
 .home-page-text {
 	position: relative;
 	top: 30vh;
-	left: 15px;
+	left: 16px;
+  width: 50vw;
 	h1{
 		font-weight: bold;
-		font-size: 30px;
+		font-size: 40px;
 	}
 
 	p{
 		color:$gris-foncee;
-		font-size: 15px;
+		font-size: 20px;
 	}
 }
 
@@ -39,6 +40,10 @@
 		font-size: 15px;
 		padding-right: 50px;
 	}
+
+  .home-page-text {
+    width: 70vw;
+  }
 }
 
 .page-content {
