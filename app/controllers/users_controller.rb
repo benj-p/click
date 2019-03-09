@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:dashboard, :takedeck, :decksummary]
+  before_action :set_user, only: [:dashboard, :takedeck, :decksummary, :show]
+
+  def show
+  end
 
   def dashboard
     authorize @user
