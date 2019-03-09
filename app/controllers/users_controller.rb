@@ -30,6 +30,7 @@ class UsersController < ApplicationController
 
   def feed
     @feed_events = current_user.feed
+    authorize  current_user
   end
 
   private

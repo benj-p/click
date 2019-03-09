@@ -10,4 +10,8 @@ class UserPolicy < ApplicationPolicy
   def decksummary?
     @record == @user && @user.is_teacher == false
   end
+
+  def feed?
+    user
+  end
 end
