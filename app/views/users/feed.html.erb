@@ -19,7 +19,11 @@
               </div>
             <% end%>
             <div class="feed-item-content">
-              <%= feed_event.title %>
+              <p><%= feed_event.title %></p>
+              <% form_for(TodoItem.new) do |f| %>
+                <%= f.hidden_field :name, :value => feed_event.title %>
+                <%= f.submit "Add reminder" %>
+              <% end %>
             </div>
             <div class="feed-item-date">
               <%= time_ago_in_words(feed_event.created_at) %> ago
