@@ -20,7 +20,7 @@
             <% end%>
             <div class="feed-item-content">
               <p><%= feed_event.title %></p>
-              <% form_for(TodoItem.new) do |f| %>
+              <%= form_for(TodoItem.new) do |f| %>
                 <%= f.hidden_field :name, :value => feed_event.title %>
                 <%= f.submit "Add reminder" %>
               <% end %>
