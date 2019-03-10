@@ -16,9 +16,13 @@
           <p><i class="fas fa-book"></i> <%= deck.name %></p>
           <p class="outstanding-due-date">Due: <%= deck.due_date.strftime("%b %d") %></p>
         </div>
-        <div class="bottom-line">
-          <p class="deck-name"><%= deck.curriculum.name %></p>
-          <%= link_to "Finish now", takedeck_user_path(deck: deck, question: deck.attempts.where(user: @user).count || 0), class: "btn btn-yellow btn-finish" %>
+        <div class="row">
+          <div class="col-8 px-0">
+            <p class="deck-name"><%= deck.curriculum.name %></p>
+          </div>
+          <div class="col-4 px-0 text-right">
+            <%= link_to "Finish now", takedeck_user_path(deck: deck, question: deck.attempts.where(user: @user).count || 0), class: "btn btn-yellow btn-finish" %>
+          </div>
         </div>
         <div class="progress mt-3">
           <div class="progress-bar" role="progressbar" style="width: <%= deck.attempts.where(user: @user).count / deck.cards.count.to_f * 100 %>%" aria-valuenow="<%= deck.attempts.where(user: @user).count / deck.cards.count.to_f * 100 %>" aria-valuemin="0" aria-valuemax="100"></div>
@@ -38,9 +42,13 @@
           <p><i class="fas fa-book"></i> <%= deck.name %></p>
           <p class="completed-due-date">Comp: <%= deck.due_date.strftime("%b %d") %></p>
         </div>
-        <div class="bottom-line">
-          <p class="deck-name"><%= deck.curriculum.name %></p>
-          <%= link_to "Review", decksummary_user_path(@user, deck: deck), class: "btn btn-grey btn-complete" %>
+        <div class="row">
+          <div class="col-9 px-0">
+            <p class="deck-name"><%= deck.curriculum.name %></p>
+          </div>
+          <div class="col-3 px-0 text-right">
+            <%= link_to "Review", decksummary_user_path(@user, deck: deck), class: "btn btn-grey btn-complete" %>
+          </div>
         </div>
         <div class="progress mt-3">
           <div class="progress-bar" role="progressbar" style="width: <%= deck.attempts.where(user: @user).count / deck.cards.count.to_f * 100 %>%" aria-valuenow="<%= deck.attempts.where(user: @user).count / deck.cards.count.to_f * 100 %>" aria-valuemin="0" aria-valuemax="100"></div>
