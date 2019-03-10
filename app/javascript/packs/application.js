@@ -67,3 +67,19 @@ if (window.location.pathname.includes('/decksummary')) {
   expandCard();
   collapseCard();
 }
+
+import 'hammerjs';
+
+// Get a reference to an element.
+var card = document.querySelector('.question-card');
+
+// Create an instance of Hammer with the reference.
+var hammer = new Hammer(card);
+
+// Subscribe to a quick start event: press, tap, or doubletap.
+// For a full list of quick start events, read the documentation.
+hammer.on('press', function(e) {
+  // e.target.classList.toggle('expand');
+  console.log("You're pressing me!");
+  console.log(e);
+});
