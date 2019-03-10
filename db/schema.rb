@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_09_124600) do
+ActiveRecord::Schema.define(version: 2019_03_10_135643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2019_03_09_124600) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "curriculum_id"
+    t.boolean "shared", default: false
     t.index ["curriculum_id"], name: "index_decks_on_curriculum_id"
   end
 
@@ -72,6 +73,16 @@ ActiveRecord::Schema.define(version: 2019_03_09_124600) do
     t.index ["deck_id"], name: "index_feed_events_on_deck_id"
     t.index ["event_type_id"], name: "index_feed_events_on_event_type_id"
     t.index ["user_id"], name: "index_feed_events_on_user_id"
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.integer "following_id", null: false
+    t.integer "follower_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
+    t.index ["following_id", "follower_id"], name: "index_follows_on_following_id_and_follower_id", unique: true
+    t.index ["following_id"], name: "index_follows_on_following_id"
   end
 
   create_table "registrations", force: :cascade do |t|
@@ -98,6 +109,15 @@ ActiveRecord::Schema.define(version: 2019_03_09_124600) do
     t.datetime "updated_at", null: false
     t.bigint "curriculum_id"
     t.index ["curriculum_id"], name: "index_sections_on_curriculum_id"
+  end
+
+  create_table "todo_items", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id"
+    t.boolean "completed", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_todo_items_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -129,4 +149,5 @@ ActiveRecord::Schema.define(version: 2019_03_09_124600) do
   add_foreign_key "registrations", "sections"
   add_foreign_key "registrations", "users"
   add_foreign_key "sections", "curriculums"
+  add_foreign_key "todo_items", "users"
 end
