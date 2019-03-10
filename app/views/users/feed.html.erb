@@ -5,6 +5,9 @@
       <div class="feed-container">
         <% @feed_events.each do |feed_event| %>
           <div class="feed-item">
+            <div class="feed-item-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
             <% if feed_event.about_user %>
               <div class="feed-item-user">
                 <% if feed_event.about_user.photo.file %>
@@ -12,7 +15,7 @@
                 <% else %>
                   <%= cl_image_tag("ptvra7owhsunxrse9zut.png", class: "avatar-small") %>
                 <% end %>
-                <span><%= feed_event.about_user.first_name %> <%= feed_event.about_user.last_name %></span>
+                <span><strong><%= feed_event.about_user.first_name %> <%= feed_event.about_user.last_name %></strong></span>
               </div>
             <% end%>
             <div class="feed-item-content">
