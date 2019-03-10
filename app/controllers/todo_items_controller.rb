@@ -1,4 +1,8 @@
 class TodoItemsController < ApplicationController
+  def index
+    @todo_items = policy_scope(TodoItem)
+  end
+
   def create
     @todo_item = TodoItem.new(todo_item_params)
     @todo_item.user = current_user

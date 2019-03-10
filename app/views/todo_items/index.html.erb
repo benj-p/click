@@ -1,0 +1,12 @@
+<div class="container mx-auto">
+  <div class="sections">
+    <div class="row mx-0">
+      <h1><span>My Reminders</span></h1>
+      <div class="feed-container">
+        <% @todo_items.each do |item| %>
+          <%= item.name %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

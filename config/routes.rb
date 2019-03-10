@@ -29,6 +29,6 @@ Rails.application.routes.draw do
 
   get 'feed', to: 'users#feed'
 
-  resources :todo_items, only: :create
+  resources :todo_items, only: [:create, :index]
 
 end
