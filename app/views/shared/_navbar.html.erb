@@ -38,9 +38,7 @@
         </div>
       <% end %>
       <% unless params[:controller] == 'devise/sessions' && params[:action] == 'new' %>
-      <div class="btn btn-grey btn-homepage-navbar">
-        <%= link_to "Log In",  new_user_session_path %>
-      </div>
+        <button type="button" class="btn btn-grey btn-homepage-navbar" data-toggle="modal" data-target="#loginModal">Log In</button>
       <% end %>
     </div>
   </div>
