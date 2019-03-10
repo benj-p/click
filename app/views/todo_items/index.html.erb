@@ -4,7 +4,14 @@
       <h1><span>My Reminders</span></h1>
       <div class="feed-container">
         <% @todo_items.each do |item| %>
-          <%= item.name %>
+          <div class="feed-item">
+            <%= item.name %>
+            <% if item.completed %>
+              Complete
+            <% else %>
+              Mark as done
+            <% end %>
+          </div>
         <% end %>
       </div>
     </div>

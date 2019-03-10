@@ -11,7 +11,7 @@ class TodoItemsController < ApplicationController
 
     if @todo_item.save
       flash[:notice] = "Reminder created"
-      redirect_to root_path
+      redirect_to todo_items_path
     else
       flash[:error] = "There was an error, please try again"
       redirect_to :back
