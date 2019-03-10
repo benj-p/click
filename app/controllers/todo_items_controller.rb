@@ -3,7 +3,10 @@ class TodoItemsController < ApplicationController
     @todo_item = TodoItem.new(todo_item_params)
     @todo_item.user = current_user
 
+    authorize @todo_item
+
     if @todo_item.save
+      flash[:notice] = "Reminder created"
       redirect_to root_path
     else
       flash[:error] = "There was an error, please try again"
