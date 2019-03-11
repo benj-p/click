@@ -29,7 +29,7 @@
   box-shadow: 2px 2px 4px rgba(220,220,220,0.5);
   margin-top: 3vh;
   padding: 16px;
-  position: absolute;
+  position: relative;
   width: 90vw;
   left: 50%;
   transform: translate(-50%, 0);
@@ -66,10 +66,7 @@ a.btn-answer {
   }
 
 .back-dashboard-link {
+  margin-top: 8px;
   display: block;
-  margin: 2vh 0;
-  position: fixed;
-  bottom: 4vh;
-  left: 50%;
-  transform: translate(-50%, 0);
+  text-align: center;
 }
