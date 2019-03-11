@@ -49,9 +49,15 @@
                       <p><%= student.first_name %> <%= student.last_name %></p>
                     </div>
                     <div class="attempts-bar">
-                      <div class="attempt attempt-green"></div>
-                      <div class="attempt attempt-grey"></div>
-                      <div class="attempt attempt-red"></div>
+                      <% student.deck_attempts(@deck).each do |attempt| %>
+                        <% if attempt.response == "Correct" %>
+                          <div class="attempt attempt-green"></div>
+                        <% elsif attempt.response == "Incorrect" %>
+                          <div class="attempt attempt-red"></div>
+                        <% else %>
+                          <div class="attempt attempt-grey"></div>
+                        <% end %>
+                      <% end %>
                     </div>
 
                   </div>
