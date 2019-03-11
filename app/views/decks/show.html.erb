@@ -36,27 +36,19 @@
           <div class="row">
             <div class="col-sm-12 col-md-6">
               <div class="section">
-                <% @results_by_student.each do |result| %>
+                <% @section.users.each do |student| %>
                 <div class="student-info">
-                  <% if result[:student].photo.file %>
-                    <%= cl_image_tag(result[:student].photo, class: "avatar-small") %>
+                  <% if student.photo.file %>
+                    <%= cl_image_tag(student.photo, class: "avatar-small") %>
                   <% else %>
                     <%= cl_image_tag("ptvra7owhsunxrse9zut.png", class: "avatar-small") %>
                   <% end %>
 
                   <div class="student-list-content">
                     <div class="student-name">
-                      <p><%= result[:student].first_name %> <%= result[:student].last_name %></p>
+                      <p><%= student.first_name %> <%= student.last_name %></p>
                     </div>
-                    <% unless result[:results][:correct] == 0 %>
-                      <%= render 'shared/arc', color: 'green', percentage: (result[:results][:correct] / result[:results][:attempts].to_f) * 100,  size: 'small' %>
-                    <% end %>
-                    <% unless result[:results][:incorrect] == 0 %>
-                      <%= render 'shared/arc', color: 'red', percentage: (result[:results][:incorrect] / result[:results][:attempts].to_f) * 100,  size: 'small' %>
-                    <% end %>
-                    <% unless result[:results][:unsure] == 0 %>
-                      <%= render 'shared/arc', color: 'grey', percentage: (result[:results][:unsure] / result[:results][:attempts].to_f) * 100,  size: 'small' %>
-                    <% end %>
+
                   </div>
                 </div>
                 <% end %>
