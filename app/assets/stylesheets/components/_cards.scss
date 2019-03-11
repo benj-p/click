@@ -29,7 +29,6 @@
 }
 
 .description{
-	padding: 0px 2px;
 	h2{
 		font-size: 20px;
     	font-weight: 400;
@@ -44,7 +43,7 @@
 }
 
 .card-bottom {
-  padding: 16px;
+  padding: 8px;
 }
 
 .p-bar{
@@ -62,3 +61,33 @@
   margin-bottom: 16px;
 }
 
+.title-style {
+	margin-top: 10px;
+	padding: 8px;
+	padding-bottom: 0;
+
+}
+
+.each-deck {
+	margin-bottom: 8px;
+
+	i{
+		margin-right: 5px;
+		color: black;
+	}
+
+	a{
+		color: black; 
+	}
+
+	a:hover{
+		color: $gris-foncee;
+		transition-duration: 0.5s;
+		text-decoration: none;
+		i {
+			color: $yellow;
+			transition-duration: 0.5s;
+		}
+	}
+
+}
