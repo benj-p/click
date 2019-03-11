@@ -1,4 +1,5 @@
 class TodoItemsController < ApplicationController
+  before_action :set_todo_item, only: :mark_complete
   def index
     @todo_items = policy_scope(TodoItem)
   end
