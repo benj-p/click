@@ -11,13 +11,13 @@
 
           <div class="row">
             <div class="col-sm-12 col-md-4">
-              <%= render 'shared/arc', color: 'green', percentage: (@results[:correct] / @attempts_count.to_f) * 100, text: 'Correct', size: 'large' %>
+              <%= render 'shared/arc', color: 'green', percentage: @results[:correct] , text: 'Correct', size: 'large' %>
             </div>
             <div class="col-sm-12 col-md-4">
-              <%= render 'shared/arc', color: 'red', percentage: (@results[:incorrect] / @attempts_count.to_f) * 100, text: 'Incorrect', size: 'large' %>
+              <%= render 'shared/arc', color: 'red', percentage: @results[:incorrect] , text: 'Incorrect', size: 'large' %>
             </div>
             <div class="col-sm-12 col-md-4">
-              <%= render 'shared/arc', color: 'grey', percentage: (@results[:unsure] / @attempts_count.to_f) * 100, text: 'Unsure', size: 'large' %>
+              <%= render 'shared/arc', color: 'grey', percentage: @results[:unsure] , text: 'Unsure', size: 'large' %>
             </div>
           </div>
 
