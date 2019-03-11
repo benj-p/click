@@ -7,10 +7,12 @@ class TodoItemsController < ApplicationController
   def create
     @todo_item = TodoItem.new(todo_item_params)
     @todo_item.user = current_user
+    @feed_event = FeedEvent.find(params[:todo_item][:feed_event])
 
     authorize @todo_item
 
     if @todo_item.save
+      @feed_event.update(reminder_created: true)
       flash[:notice] = "Reminder created"
       redirect_to todo_items_path
     else
