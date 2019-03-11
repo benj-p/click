@@ -18,4 +18,8 @@ class User < ApplicationRecord
     feed_events
   end
 
+  def deck_attempts(deck)
+    self.attempts.select { |attempt| attempt.card.deck == deck }
+  end
+
 end

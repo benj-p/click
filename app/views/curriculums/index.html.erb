@@ -1,21 +1,21 @@
 
-  <div class="container mx-auto">
+  <div class="container">
     <div class="sections">
-      <div class="row mx-0">
+      <div class="row mb-3">
         <h1><span>My Sections</span></h1>
       </div>
       <% @curriculums.each do |curriculum| %>
-        <div class="row mx-0">
-          <h3><%= curriculum.name %></h3>
+        <div class="row mb-3">
+          <h2><%= curriculum.name %></h2>
           <div class="col-12">
           <div class="cards">
           <% curriculum.sections.first(4).each do |section| %>
             <div class="card-rating">
               <div class="card">
-                <div class="background-image" style="background-image: url(https://picsum.photos/400)">
+                <div class="background-image" style="background-image: url(<%= curriculum.image %>)">
                 </div>
 
-                <div class="kind-of-container">
+                <div class="card-bottom">
                   <div class="description">
                     <h2><%= link_to "Section #{section.name}", section_path(section) %></h2>
                     <p> </p>
@@ -52,7 +52,7 @@
             <%=curriculum.name  %>
             <div class="background-image" style="background-image: url(https://picsum.photos/400)">
             </div>
-            <div class="kind-of-container">
+            <div class="card-bottom">
               <div class="description">
                 <% curriculum.decks.each do |deck|%>
                   <h2><%= link_to "#{deck.name}", curriculum_deck_cards_path(curriculum, deck) %></h2>

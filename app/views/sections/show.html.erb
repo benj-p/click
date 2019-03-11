@@ -1,9 +1,8 @@
-<!-- <div class="main"> -->
-  <div class="container mx-auto">
-    <div class="row">
-      <h1><span>Section <%= @section.name %></span></h1>
-      <h2> <i class="fas fa-book"></i><%= @section.curriculum.name %> </h2>
-    </div>
+<div class="container">
+  <div class="row">
+    <h1><span>Section <%= @section.name %></span></h1>
+    <h2> <i class="fas fa-book"></i><%= @section.curriculum.name %> </h2>
+  </div>
 
   <div class="row">
     <div class="col-sm-12 col-md-9">
@@ -21,7 +20,6 @@
           </div>
         <% end %>
       <% end %>
-
 
       <h3>Completed Decks</h3>
       <% @section.curriculum.decks.each do |deck| %>
@@ -55,9 +53,9 @@
                   <%= cl_image_tag("ptvra7owhsunxrse9zut.png", class: "avatar-small") %>
                 <% end %>
                 <div class="student-list-content">
-                    <div class="student-name">
-                      <p><%= user.first_name %> <%= user.last_name %></p>
-                    </div>
+                  <div class="student-name">
+                    <p><%= user.first_name %> <%= user.last_name %></p>
+                  </div>
                 </div>
               </div>
             <% end %>
@@ -66,5 +64,4 @@
       </div>
     </div>
   </div>
-  </div>
-<!-- </div> -->
+</div>

@@ -17,6 +17,23 @@ Section.destroy_all
 Curriculum.destroy_all
 User.destroy_all
 
+puts "Storing images..."
+
+curriculum_images= ["https://images.pexels.com/photos/7366/startup-photos.jpg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/7102/notes-macbook-study-conference.jpg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/60582/newton-s-cradle-balls-sphere-action-60582.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/159621/open-book-library-education-read-159621.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/256520/pexels-photo-256520.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/1011329/pexels-photo-1011329.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/256417/pexels-photo-256417.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/1043514/pexels-photo-1043514.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/533189/pexels-photo-533189.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/267586/pexels-photo-267586.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/167682/pexels-photo-167682.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/102127/pexels-photo-102127.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/53621/calculator-calculation-insurance-finance-53621.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/33692/coins-currency-investment-insurance.jpg?auto=compress&cs=tinysrgb&dpr=2&w=500"]
+
 
 
 puts "creating students..."
@@ -36,9 +53,11 @@ EventType.create(name: "Extreme score")
 
 puts "creating curriculums..."
 #Curriculums
+image_counter = 0
 User.where(is_teacher: true).each do |teacher|
   3.times do
-    Curriculum.create(user: teacher, name: Faker::Educator.course_name)
+    Curriculum.create(user: teacher, name: Faker::Educator.course_name, image: curriculum_images[image_counter])
+    image_counter += 1
   end
 end
 
@@ -140,10 +159,10 @@ puts "creating demo users..."
 teacher = User.create(email: "izzyweber@gmail.com", first_name: "Izzy", last_name: "Weber" , password: "secret", is_teacher: true)
 
 
-intro_to_accounting = Curriculum.create({user: teacher, name: "Intro to Accounting"})
-intro_to_tax = Curriculum.create({user: teacher, name: "Intro to Taxation"})
-fake_curric1 = Curriculum.create(user: teacher, name: Faker::Educator.course_name)
-fake_curric2 = Curriculum.create(user: teacher, name: Faker::Educator.course_name)
+intro_to_accounting = Curriculum.create({user: teacher, name: "Intro to Accounting", image: curriculum_images[-1]})
+intro_to_tax = Curriculum.create({user: teacher, name: "Intro to Taxation", image: curriculum_images[-2]})
+fake_curric1 = Curriculum.create(user: teacher, name: Faker::Educator.course_name, image: curriculum_images[image_counter])
+fake_curric2 = Curriculum.create(user: teacher, name: Faker::Educator.course_name, image: curriculum_images[image_counter+1])
 
 Deck.create(curriculum: fake_curric1, name: "Intro to #{fake_curric1.name}")
 Deck.create(curriculum: fake_curric2, name: "Intro to #{fake_curric2.name}")

@@ -1,23 +1,28 @@
 // Specific CSS for your home-page
 .home-page-body{
 	background-image: asset-url('bannerlet-01.png');
-	height: 100vh;
-	background-size: cover;
-	background-position: center;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  top: 0;
+  z-index: -1;
+  width: 100vw;
 }
 
 .home-page-text {
 	position: relative;
 	top: 30vh;
-	left: 15px;
+	left: 16px;
+  width: 50vw;
 	h1{
 		font-weight: bold;
-		font-size: 30px;
+		font-size: 40px;
 	}
 
 	p{
 		color:$gris-foncee;
-		font-size: 15px;
+		font-size: 20px;
 	}
 }
 
@@ -25,6 +30,11 @@
 	color: $yellow;
 	border-bottom: none;
 }
+
+.btn-container-homepage-mobile {
+  display: none;
+}
+
 
 @media only screen and (max-width: 593px) {
 	.remove-text {
@@ -35,23 +45,40 @@
 		font-size: 15px;
 		padding-right: 50px;
 	}
+
+  .home-page-text {
+    width: 70vw;
+  }
 }
-
-
 
 .page-content {
   padding-top: 40px;
-  flex-grow: 1;
+  flex: 1 1 auto;
+  overflow: auto;
 }
 
 @media(max-width: 575.98px) {
   .page-content {
     padding-top: 48px;
   }
+
+  .btn-container-homepage-mobile {
+    display: flex;
+    margin-top: 80vh;
+    padding: 4vw;
+      .btn-homepage {
+        flex-grow: 1;
+        margin-right: 16px;
+      }
+      :last-child {
+        margin-right: 0px;
+    }
+  }
 }
 
-.big-container {
+.page-container {
   display: flex;
+  height: 100vh;
 }
 
 .row {

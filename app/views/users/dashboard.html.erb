@@ -10,15 +10,25 @@
 
   <div class="dashboard-deck-container">
     <h2>Outstanding decks</h2>
-    <% @outstanding_decks.sort_by(&:due_date).reverse.each do |deck| %>
+    <% @outstanding_decks.sort_by(&:due_date).each do |deck| %>
       <div class="deck-card">
         <div class="top-line">
           <p><i class="fas fa-book"></i> <%= deck.name %></p>
-          <p class="outstanding-due-date">Due: <%= deck.due_date.strftime("%b %d") %></p>
+          <% if deck.due_date - Date.today() < 0 %>
+            <p class="passed-due-date">Overdue: <%= deck.due_date.strftime("%b %d") %></p>
+          <% elsif deck.due_date - Date.today() < 3 %>
+            <p class="short-due-date">Due: <%= deck.due_date.strftime("%b %d") %></p>
+          <% else %>
+            <p class="long-due-date">Due: <%= deck.due_date.strftime("%b %d") %></p>
+          <% end %>
         </div>
-        <div class="bottom-line">
-          <p class="deck-name"><%= deck.curriculum.name %></p>
-          <%= link_to "Finish now", takedeck_user_path(deck: deck, question: deck.attempts.where(user: @user).count || 0), class: "btn btn-yellow btn-finish" %>
+        <div class="row">
+          <div class="col-8 px-0">
+            <p class="deck-name"><%= deck.curriculum.name %></p>
+          </div>
+          <div class="col-4 px-0 text-right">
+            <%= link_to "Finish now", takedeck_user_path(deck: deck, question: deck.attempts.where(user: @user).count || 0), class: "btn btn-yellow btn-finish" %>
+          </div>
         </div>
         <div class="progress mt-3">
           <div class="progress-bar" role="progressbar" style="width: <%= deck.attempts.where(user: @user).count / deck.cards.count.to_f * 100 %>%" aria-valuenow="<%= deck.attempts.where(user: @user).count / deck.cards.count.to_f * 100 %>" aria-valuemin="0" aria-valuemax="100"></div>
@@ -36,11 +46,15 @@
       <div class="deck-card">
         <div class="top-line">
           <p><i class="fas fa-book"></i> <%= deck.name %></p>
-          <p class="completed-due-date">Comp: <%= deck.due_date.strftime("%b %d") %></p>
+          <p class="completed-due-date">Completed</p>
         </div>
-        <div class="bottom-line">
-          <p class="deck-name"><%= deck.curriculum.name %></p>
-          <%= link_to "Review", decksummary_user_path(@user, deck: deck), class: "btn btn-grey btn-complete" %>
+        <div class="row">
+          <div class="col-9 px-0">
+            <p class="deck-name"><%= deck.curriculum.name %></p>
+          </div>
+          <div class="col-3 px-0 text-right">
+            <%= link_to "Review", decksummary_user_path(@user, deck: deck), class: "btn btn-grey btn-complete" %>
+          </div>
         </div>
         <div class="progress mt-3">
           <div class="progress-bar" role="progressbar" style="width: <%= deck.attempts.where(user: @user).count / deck.cards.count.to_f * 100 %>%" aria-valuenow="<%= deck.attempts.where(user: @user).count / deck.cards.count.to_f * 100 %>" aria-valuemin="0" aria-valuemax="100"></div>
