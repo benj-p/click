@@ -1,10 +1,12 @@
-<div class="main">
   <div class="container">
     <h1><span> <%= @deck.name %></span><%= link_to '<i class="fas fa-pen heading-edit"></i>'.html_safe, edit_curriculum_deck_path(@curriculum, @deck) %> </h1>
-    <h2>Cards</h2>
     <div class="flashcard-grid column col-lg-3 col-6">
       <div class="flashcard flashcard-new">
         <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_curriculum_deck_card_path(@curriculum, @deck) %>
+        <div class="resources">
+          <div class="resources-text">
+          </div>
+        </div>
       </div>
       <% @deck.cards.each do |card| %>
         <div class="flashcard">
@@ -12,37 +14,57 @@
             <%= truncate(card.question, length: 100) %>
           </div>
           <div class="resources">
-            <% if card.resource %>
-              <%= card.resource.name %>
-            <% end %>
-          </div>
-          <div class="edit-link-icon">
-            <%= link_to '<i class="fas fa-pen"></i>'.html_safe, edit_curriculum_deck_card_path(@curriculum, @deck, card) %>
+            <div class="resources-text">
+              <% if card.resource %>
+                <%= card.resource.name %>
+              <% end %>
+            </div>
+            <div class="edit-link-icon">
+              <%= link_to '<i class="fas fa-pen"></i>'.html_safe, edit_curriculum_deck_card_path(@curriculum, @deck, card) %>
+            </div>
           </div>
         </div>
       <% end %>
     </div>
-    <h2>Deck Resources</h2>
-    <div class="deck-resources column col-lg-3 col-6">
-      <div class="flashcard flashcard-new">
-        <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_curriculum_deck_resource_path(@curriculum, @deck) %>
+  </div>
+
+  <div id="loginModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+<div id="loginModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Log In</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-          <% @resources.each do |resource| %>
-        <div class="resource">
-          <div class="name">
-            <p><%= resource.name %></p>
+      <div class="modal-body">
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :email,
+                        required: false,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" } %>
+            <%= f.input :password,
+                        required: false,
+                        input_html: { autocomplete: "current-password" } %>
+            <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
           </div>
-          <div class="resource-text">
-            <%= truncate(resource.text, length: 80) %>
-          </div>
-          <div class="resource-url">
-            <%= link_to '<i class="fas fa-external-link-alt"></i>'.html_safe, resource.url, target: :_blank %>
-          </div>
-          <div class="edit-link-icon">
-            <%= link_to '<i class="fas fa-pen"></i>'.html_safe, edit_curriculum_deck_resource_path(@curriculum, @deck, resource) %>
-          </div>
-        </div>
-      <% end %>
+
+          <div class="form-buttons-container">
+            <div class="form-actions">
+              <%= f.button :submit, "Log in", class: "btn-yellow" %>
+            </div>
+            <div class="devise-links">
+              or <%= link_to "sign up", new_registration_path(resource_name) %> to create a new account<br />
+            </div>
+            <!-- form buttons container div closes in the devise shared links -->
+        <% end %>
+      </div>
+      <div class="modal-footer">
+      </div>
     </div>
+
   </div>
 </div>
