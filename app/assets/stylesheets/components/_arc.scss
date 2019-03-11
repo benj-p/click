@@ -26,6 +26,10 @@
   stroke: #748DE2;
 }
 
+.circle-light-grey {
+  stroke: #ebebeb;
+}
+
 .circle-small {
   height: 32px;
   width: 32px;
@@ -39,9 +43,9 @@
 }
 
 .circle-large {
-  max-height: 250px;
+  max-height: 175px;
   margin: 10px auto;
-  max-width: 80%;
+  max-width: 175px;
 }
 
 @keyframes progress {

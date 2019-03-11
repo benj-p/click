@@ -1,6 +1,4 @@
 .question-container {
-  height: 100vh;
-
   .progress {
     height: 1vh;
   }
@@ -10,6 +8,13 @@
     position: fixed;
     bottom: 16px;
   }
+
+  .progress-text {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
 }
 
 .question-card {
@@ -18,6 +23,10 @@
   box-shadow: 2px 2px 4px rgba(220,220,220,0.5);
   margin-top: 3vh;
   padding: 16px;
+
+  p {
+    font-size: 20px;
+  }
 }
 
 .choice-container {
@@ -31,20 +40,21 @@
   border-radius: 50%;
   height: 10vh;
   width: 10vh;
-  background-color: $yellow;
+  background-color: #748DE2;
   display: flex;
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
   &.help {
-    background-color: #748DE2;
+    background-color: $yellow;
   }
-  a {
+}
+
+a.btn-answer {
     color: white;
     text-decoration: none;
     font-weight: bold;
   }
-}
 
 .back-dashboard-link {
   display: block;
