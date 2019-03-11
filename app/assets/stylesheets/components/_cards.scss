@@ -1,6 +1,6 @@
 .card{
 	border-radius: 8px;
-  border: none;
+  	border: none;
 	overflow: hidden;
 	box-shadow: 2px 2px 8px rgba(10,10,10,0.1);
 
@@ -41,7 +41,6 @@
 }
 
 .description{
-	padding: 0px 2px;
 	h2{
 		font-size: 20px;
     	font-weight: 400;
@@ -56,7 +55,7 @@
 }
 
 .card-bottom {
-  padding: 16px;
+  padding: 8px;
 }
 
 .p-bar{
@@ -77,3 +76,39 @@
 	}
 }
 
+.title-style {
+
+	h2{
+		margin-top: 0px;
+	    padding: 16px 8px;
+	    font-size: 20px;
+	}
+	padding: 8px;
+	min-height: 70px;
+	background-color: rgba(200,200,200,0.2);
+
+}
+
+.each-deck {
+	margin-bottom: 8px;
+
+	i{
+		margin-right: 5px;
+		color: black;
+	}
+
+	a{
+		color: black; 
+	}
+
+	a:hover{
+		color: $gris-foncee;
+		transition-duration: 0.5s;
+		text-decoration: none;
+		i {
+			color: $yellow;
+			transition-duration: 0.5s;
+		}
+	}
+
+}
