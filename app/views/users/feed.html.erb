@@ -1,36 +1,41 @@
-<div class="container mx-auto">
-  <div class="sections">
-    <div class="row mx-0">
-      <h1><span>My feed</span></h1>
-      <div class="feed-container">
-        <% @feed_events.each do |feed_event| %>
-          <div class="feed-item">
-            <div class="feed-item-icon">
-              <i class="fas fa-check-circle"></i>
-            </div>
-            <% if feed_event.about_user %>
-              <div class="feed-item-user">
-                <% if feed_event.about_user.photo.file %>
-                  <%= cl_image_tag(result[:student].photo, class: "avatar-small") %>
-                <% else %>
-                  <%= cl_image_tag("ptvra7owhsunxrse9zut.png", class: "avatar-small") %>
-                <% end %>
-                <span><strong><%= feed_event.about_user.first_name %> <%= feed_event.about_user.last_name %></strong></span>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-sm-12 col-md-9">
+      <div class="row">
+        <div class="col-12">
+          <h1><span>My feed</span></h1>
+          <div class="feed-container">
+            <% @feed_events.each do |feed_event| %>
+              <div class="feed-item">
+                <div class="feed-item-icon">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <% if feed_event.about_user %>
+                  <div class="feed-item-user">
+                    <% if feed_event.about_user.photo.file %>
+                      <%= cl_image_tag(result[:student].photo, class: "avatar-small") %>
+                    <% else %>
+                      <%= cl_image_tag("ptvra7owhsunxrse9zut.png", class: "avatar-small") %>
+                    <% end %>
+                    <span><strong><%= feed_event.about_user.first_name %> <%= feed_event.about_user.last_name %></strong></span>
+                  </div>
+                <% end%>
+                <div class="feed-item-content">
+                  <p><%= feed_event.title %></p>
+                  <button type="button" class="btn btn-yellow" data-toggle="modal" data-target="#myModal">Create reminder</button>
+                </div>
+                <div class="feed-item-date">
+                  <%= time_ago_in_words(feed_event.created_at) %> ago
+                </div>
               </div>
-            <% end%>
-            <div class="feed-item-content">
-              <p><%= feed_event.title %></p>
-              <button type="button" class="btn btn-yellow" data-toggle="modal" data-target="#myModal">Create reminder</button>
-            </div>
-            <div class="feed-item-date">
-              <%= time_ago_in_words(feed_event.created_at) %> ago
-            </div>
+            <% end %>
           </div>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
 
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
