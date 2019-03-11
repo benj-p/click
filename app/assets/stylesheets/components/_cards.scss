@@ -63,24 +63,20 @@
 
 .title-style {
 
-	h2{
-		margin-top: 0px;
-	    padding: 16px 8px;
-	    font-size: 20px;
-	}
 	padding: 8px;
-	min-height: 70px;
+	min-height: 30px;
 	background-color: rgba(200,200,200,0.2);
+	text-align: center;
+	margin-top: 0px;
+	padding: 16px 8px;
+	font-size: 15px;
+	font-weight:bold;
 
 }
 
 .each-deck {
 	margin-bottom: 8px;
-
-	i{
-		margin-right: 5px;
-		color: black;
-	}
+	font-size: 12px;
 
 	a{
 		color: black; 

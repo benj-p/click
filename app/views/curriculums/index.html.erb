@@ -57,7 +57,7 @@
                   <% curriculum.decks.each do |deck|%>
                     <div class="each-deck">
                       <%= link_to curriculum_deck_cards_path(curriculum, deck) do %>
-                        <%= deck.name %>
+                        • <%= deck.name %>
                       <% end %>
                   </div>
                 <% end %>
