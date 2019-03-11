@@ -42,30 +42,30 @@
           </div>
 
           <div class="col-sm-12 col-md-3">
-            <h3>Students</h3>
-            <div class="section">
-              <h4><%= pluralize(@section.users.count, 'student') %></h4>
-              <div class="container student-list">
-                <% if @section.users.empty? %>
-                  <p>There are no registered students for this section</p>
-                <% else %>
-                  <% @section.users.each do |user| %>
-                    <div class="student-info border-bottom">
-                      <% if user.photo.file %>
-                        <%= cl_image_tag(user.photo, class: "avatar-small") %>
-                      <% else %>
-                        <%= cl_image_tag("ptvra7owhsunxrse9zut.png", class: "avatar-small") %>
-                      <% end %>
-                      <div class="student-list-content">
-                        <div class="student-name">
-                          <p><%= user.first_name %> <%= user.last_name %></p>
-                        </div>
+
+
+            <div class="container student-list">
+              <% if @section.users.empty? %>
+                <p>There are no registered students for this section</p>
+              <% else %>
+                <p><%= pluralize(@section.users.count, 'student') %> enrolled</p>
+                <% @section.users.each do |user| %>
+                  <div class="student-info">
+                    <% if user.photo.file %>
+                      <%= cl_image_tag(user.photo, class: "avatar-small") %>
+                    <% else %>
+                      <%= cl_image_tag("ptvra7owhsunxrse9zut.png", class: "avatar-small") %>
+                    <% end %>
+                    <div class="student-list-content">
+                      <div class="student-name">
+                        <p><%= user.first_name %> <%= user.last_name %></p>
                       </div>
                     </div>
-                  <% end %>
+                  </div>
                 <% end %>
-              </div>
+              <% end %>
             </div>
+
           </div>
         </div>
 
