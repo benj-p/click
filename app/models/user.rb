@@ -13,4 +13,8 @@ class User < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
+  def deck_attempts(deck)
+    self.attempts.select { |attempt| attempt.card.deck == deck }
+  end
+
 end
