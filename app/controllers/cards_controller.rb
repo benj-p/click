@@ -7,6 +7,7 @@ class CardsController < ApplicationController
     @deck = Deck.find(params[:deck_id])
     @curriculum = Curriculum.find(params[:curriculum_id])
     @card = Card.new
+    @resource = Resource.new
   end
 
   def new

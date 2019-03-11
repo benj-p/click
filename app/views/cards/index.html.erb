@@ -20,7 +20,6 @@
               <% end %>
             </div>
             <div class="edit-link-icon">
-              <button type="button" class="btn" data-toggle="modal" data-target="#myModal"><i class="fas fa-pen"></i></button>
               <%= link_to '<i class="fas fa-pen"></i>'.html_safe, edit_curriculum_deck_card_path(@curriculum, @deck, card) %>
             </div>
           </div>
@@ -44,6 +43,9 @@
         <%= f.input :correct_answer %>
         <%= f.input :wrong_answer %>
         <%= f.input :resource, collection: @resources%>
+        <p class="add-resource">
+          ...or add a new resource
+        </p>
       </div>
       <div class="form-actions">
         <%= f.submit "Create Card", class: "btn-yellow" %>
@@ -52,4 +54,28 @@
       </div>
     </div>
   </div>
-</div
+</div>
+
+<div class="container">
+  <h1><span> Add a Resource </span></h1>
+  <div class="row">
+    <%= simple_form_for [@curriculum, @deck, @resource], :method => :post do |f| %>
+      <div class="col-12 col-md-6">
+        <%= f.input :name %>
+      </div>
+      <div class="col-12 col-md-6">
+        <%= f.input :text %>
+      </div>
+      <div class="col-12 col-md-6">
+        <%= f.input :url %>
+      </div>
+      <div class="col-12 col-md-6">
+        <%= f.input :card, collection: @cards,  label_method: :question%>
+      </div>
+      <div class="col-md-12">
+        <%= f.submit "Create Resource"%>
+      </div>
+    <% end %>
+  </div>
+</div>
+
