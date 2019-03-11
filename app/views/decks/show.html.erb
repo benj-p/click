@@ -21,8 +21,20 @@
             </div>
           </div>
 
+          <div class="row py-3">
+            <div class="col-12">
+              <div class="deck-info d-flex align-items-center">
+                <div class="deck-data">
+                  <p><i class="far fa-calendar-plus"></i> Created: <%= time_ago_in_words(@deck.created_at) %> ago</p>
+                  <p><i class="fas fa-layer-group"></i> Cards: <%= @deck.cards.count %></p>
+                </div>
+                <%= link_to "Edit deck", curriculum_deck_cards_path(@deck.curriculum, @deck), class: 'btn btn-yellow' %>
+              </div>
+            </div>
+          </div>
+
           <div class="row">
-            <div class="col-sm-12 col-md-5">
+            <div class="col-sm-12 col-md-6">
               <div class="section">
                 <% @results_by_student.each do |result| %>
                 <div class="student-info">
@@ -51,7 +63,7 @@
 
               </div>
             </div>
-            <div class="col-sm-12 col-md-5">
+            <div class="col-sm-12 col-md-6">
               <div class="section">
                 <% @results_by_card.each do |result| %>
                   <div class="student-info">
@@ -73,14 +85,7 @@
                 <% end %>
               </div>
             </div>
-            <div class="col-sm-12 col-md-2">
-              <div class="section">
-                <h3>Deck info</h3>
-                <p><i class="far fa-calendar-plus"></i> Created: <%= time_ago_in_words(@deck.created_at) %> ago</p>
-                <p><i class="fas fa-layer-group"></i> Cards: <%= @deck.cards.count %></p>
-                <%= link_to "Edit deck", curriculum_deck_cards_path(@deck.curriculum, @deck) %>
-              </div>
-            </div>
+
           </div>
         </div>
       </div>
