@@ -20,6 +20,7 @@ class TodoItemsController < ApplicationController
   end
 
   def mark_complete
+    authorize @todo_item
     if !@todo_item.completed
       if @todo_item.complete
         redirect_to todo_items_path

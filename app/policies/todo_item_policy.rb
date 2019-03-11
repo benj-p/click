@@ -8,4 +8,8 @@ class TodoItemPolicy < ApplicationPolicy
   def create?
     user
   end
+
+  def mark_complete?
+    record.user == user
+  end
 end
