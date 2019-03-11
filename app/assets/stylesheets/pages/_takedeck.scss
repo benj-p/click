@@ -43,21 +43,30 @@
 }
 
 .transform {
-  -webkit-transition: left 0.5s ease 0s;
-  -moz-transition: left 0.5s ease 0s;
-  -o-transition: left 0.5s ease 0s;
-  -ms-transition: left 0.5s ease 0s;
-  transition: left 0.5s ease 0s;
-  left: 50%;
-  transform: translate(-50%, 0);
+  -webkit-transition: all 0.5s ease 0s;
+  -moz-transition: all 0.5s ease 0s;
+  -o-transition: all 0.5s ease 0s;
+  -ms-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+  // left: 50%;
+  // transform: translate(-50%, 0);
 }
 
 .transform-left {
-  left: -100%;
+  // left: -100%;
+  -webkit-transform: translateX(-500px);
+  -moz-transform: translateX(-500px);
+  -o-transform: translateX(-500px);
+  -ms-transform: translateX(-500px);
+  transform: translateX(-500px);
 }
 
 .transform-right {
-  left: 200%;
+  -webkit-transform: translateX(500px);
+  -moz-transform: translateX(500px);
+  -o-transform: translateX(500px);
+  -ms-transform: translateX(500px);
+  transform: translateX(500px);
 }
 
 .choice-container {
