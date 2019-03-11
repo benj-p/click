@@ -15,7 +15,7 @@
         <div class="top-line">
           <p><i class="fas fa-book"></i> <%= deck.name %></p>
           <% if deck.due_date - Date.today() < 0 %>
-            <p class="short-due-date">Overdue: <%= deck.due_date.strftime("%b %d") %></p>
+            <p class="passed-due-date">Overdue: <%= deck.due_date.strftime("%b %d") %></p>
           <% elsif deck.due_date - Date.today() < 3 %>
             <p class="short-due-date">Due: <%= deck.due_date.strftime("%b %d") %></p>
           <% else %>
