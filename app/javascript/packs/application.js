@@ -70,54 +70,21 @@ if (window.location.pathname.includes('/decksummary')) {
 
 import 'hammerjs';
 
-var myBlock = document.querySelector('.question-card');
+// Get a reference to an element.
+var card = document.querySelector('.question-card');
 
-// create a simple instance on our object
-var mc = new Hammer(myBlock);
+// Create an instance of Hammer with the reference.
+var hammer = new Hammer(card);
 
-// add a "PAN" recognizer to it (all directions)
-mc.add( new Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: 0 }) );
-
-// tie in the handler that will be called
-mc.on("pan", handleDrag);
-
-// poor choice here, but to keep it simple
-// setting up a few vars to keep track of things.
-// at issue is these values need to be encapsulated
-// in some scope other than global.
-var lastPosX = 0;
-var lastPosY = 0;
-var isDragging = false;
-function handleDrag(ev) {
-
-  // for convience, let's get a reference to our object
-  var elem = ev.target;
-
-  // DRAG STARTED
-  // here, let's snag the current position
-  // and keep track of the fact that we're dragging
-  if ( ! isDragging ) {
-    isDragging = true;
-    lastPosX = elem.offsetLeft;
-    lastPosY = elem.offsetTop;
-  }
-
-  // we simply need to determine where the x,y of this
-  // object is relative to where it's "last" known position is
-  // NOTE:
-  //    deltaX and deltaY are cumulative
-  // Thus we need to always calculate 'real x and y' relative
-  // to the "lastPosX/Y"
-  var posX = ev.deltaX + lastPosX;
-  var posY = ev.deltaY + lastPosY;
-
-  // move our element to that position
-  elem.style.left = posX + "px";
-  elem.style.top = posY + "px";
-
-  // DRAG ENDED
-  // this is where we simply forget we are dragging
-  if (ev.isFinal) {
-    isDragging = false;
-  }
-}
+// Subscribe to a quick start event: press, tap, or doubletap.
+// For a full list of quick start events, read the documentation.
+hammer.on('swipe', function(e) {
+  console.log("You're swiping me!");
+  if (e.offsetDirection === 2) {
+    console.log("left");
+    $(".question-card").animate({left: "-1000px"});
+  };
+  if (e.offsetDirection === 4) {
+    $(".question-card").animate({right: "-1000px"});
+  };
+});
