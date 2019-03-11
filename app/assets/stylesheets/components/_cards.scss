@@ -3,7 +3,19 @@
   border: none;
 	overflow: hidden;
 	box-shadow: 2px 2px 8px rgba(10,10,10,0.1);
+
+	// &:hover {
+	// 	box-shadow: 2px 2px 8px rgba(10,10,10,0.5);
+	// }
+
+
 }
+
+.card-rating:hover .card,
+.card-rating:hover .p-bar {
+		box-shadow: 2px 2px 8px rgba(10,10,10,0.5);
+		transition-duration: 1s;
+	}
 
 .background-image{
 	height:80px;
@@ -54,11 +66,14 @@
 	box-shadow: 2px 2px 8px rgba(10,10,10,0.1);
 }
 
-.p-bar-margin{
+.p-bar-margin {
 	padding: 20px 15px;
 }
 
 .card-rating{
   margin-bottom: 16px;
+  	a:hover{
+		text-decoration: none;
+	}
 }
 
