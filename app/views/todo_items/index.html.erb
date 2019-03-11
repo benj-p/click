@@ -1,19 +1,45 @@
-<div class="container mx-auto">
-  <div class="sections">
-    <div class="row mx-0">
-      <h1><span>My Reminders</span></h1>
-      <div class="feed-container">
-        <% @todo_items.each do |item| %>
-          <div class="feed-item">
-            <%= item.name %>
-            <% if item.completed %>
-              Complete
-            <% else %>
-              Mark as done
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-sm-12 col-md-9">
+      <div class="row mx-0">
+        <div class="col-12">
+          <h1><span>My Reminders</span></h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <div class="feed-container">
+            <h4>Outstanding</h4>
+            <% @todo_items.where(completed: false).each do |item| %>
+              <div class="feed-item">
+                <%= item.name %>
+                <% if item.completed %>
+                  Complete
+                <% else %>
+                  Mark as done
+                <% end %>
+              </div>
+            <% end %>
+            <h4>Done</h4>
+            <% @todo_items.where(completed: true).each do |item| %>
+              <div class="feed-item">
+                <%= item.name %>
+                <% if item.completed %>
+                  Complete
+                <% else %>
+                  Mark as done
+                <% end %>
+              </div>
             <% end %>
           </div>
-        <% end %>
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+          Add reminder
+        </div>
       </div>
     </div>
   </div>
+
 </div>
