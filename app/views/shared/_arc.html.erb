@@ -6,6 +6,7 @@
   <% if size == 'medium' %>
     <text x="50%" y ="50%" style="font-size:6px" dominant-baseline="middle" text-anchor="middle" class="circle-label"><%= text %></text>
   <% elsif size == 'large' %>
-    <text x="50%" y ="50%" dominant-baseline="middle" text-anchor="middle" class="circle-label"><%= text %></text>
+    <text x="50%" y ="40%" dominant-baseline="middle" text-anchor="middle" class="circle-label"><%= text %></text>
+    <text x="50%" y ="60%" dominant-baseline="middle" text-anchor="middle" class="circle-label"><%= percentage.nan? ? 0 : percentage.round %>%</text>
   <% end %>
 </svg>
