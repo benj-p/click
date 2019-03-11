@@ -1,26 +1,18 @@
 <div class="container question-container">
   <h1><span><%= @deck.name %></span></h1>
   <div class="question-card">
-    <h2>Question <%= params[:question].to_i + 1 %></h2>
+    <!-- <h2>Question <%= params[:question].to_i + 1 %></h2> -->
     <p><%= @deck.cards[params[:question].to_i].question %></p>
     <div class="choice-container">
-        <div class="btn-answer">
-          <%= link_to @deck.cards[params[:question].to_i || 0].wrong_answer, attempts_path(@attempt, response: "Incorrect", card_id: @deck.cards[params[:question].to_i], deck_id: @deck, question: params[:question].to_i), method: :post %>
-        </div>
-
-        <div class="btn-answer help">
-          <%= link_to "Help!", attempts_path(@attempt, response: "I don't know", card_id: @deck.cards[params[:question].to_i], deck_id: @deck, question: params[:question].to_i), method: :post %>
-        </div>
-
-        <div class="btn-answer">
-          <%= link_to @deck.cards[params[:question].to_i || 0].correct_answer, attempts_path(@attempt, response: "Correct", card_id: @deck.cards[params[:question].to_i], deck_id: @deck, question: params[:question].to_i), method: :post %>
-        </div>
-
+      <%= link_to @deck.cards[params[:question].to_i || 0].wrong_answer, attempts_path(@attempt, response: "Incorrect", card_id: @deck.cards[params[:question].to_i], deck_id: @deck, question: params[:question].to_i), method: :post, class: "btn-answer" %>
+      <%= link_to "Help!", attempts_path(@attempt, response: "I don't know", card_id: @deck.cards[params[:question].to_i], deck_id: @deck, question: params[:question].to_i), method: :post, class: "btn-answer help" %>
+      <%= link_to @deck.cards[params[:question].to_i || 0].correct_answer, attempts_path(@attempt, response: "Correct", card_id: @deck.cards[params[:question].to_i], deck_id: @deck, question: params[:question].to_i), method: :post, class: "btn-answer" %>
     </div>
   </div>
 
   <%= link_to "Back to dashboard", dashboard_user_path(@user), class: "back-dashboard-link" %>
 
+  <div class="progress-text">Question <%= @deck.attempts.where(user: @user).count + 1 %> / <%= @deck.cards.count %></div>
   <div class="progress mt-3">
     <div class="progress-bar" role="progressbar" style="width: <%= @deck.attempts.where(user: @user).count / @deck.cards.count.to_f * 100 %>%" aria-valuenow="<%= @deck.attempts.where(user: @user).count / @deck.cards.count.to_f * 100 %>" aria-valuemin="0" aria-valuemax="100"></div>
   </div>
