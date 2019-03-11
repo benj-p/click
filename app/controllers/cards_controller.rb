@@ -6,6 +6,7 @@ class CardsController < ApplicationController
     @cards = policy_scope(Card).where(deck: Deck.find(params[:deck_id]))
     @deck = Deck.find(params[:deck_id])
     @curriculum = Curriculum.find(params[:curriculum_id])
+    @card = Card.new
   end
 
   def new

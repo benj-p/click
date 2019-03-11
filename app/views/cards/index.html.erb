@@ -2,7 +2,7 @@
     <h1><span> <%= @deck.name %></span><%= link_to '<i class="fas fa-pen heading-edit"></i>'.html_safe, edit_curriculum_deck_path(@curriculum, @deck) %> </h1>
     <div class="flashcard-grid column col-lg-3 col-6">
       <div class="flashcard flashcard-new">
-        <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_curriculum_deck_card_path(@curriculum, @deck) %>
+        <button type="button" class="btn" data-toggle="modal" data-target="#myModal"><i class="fas fa-plus-circle"></i></button>
         <div class="resources">
           <div class="resources-text">
           </div>
@@ -20,6 +20,7 @@
               <% end %>
             </div>
             <div class="edit-link-icon">
+              <button type="button" class="btn" data-toggle="modal" data-target="#myModal"><i class="fas fa-pen"></i></button>
               <%= link_to '<i class="fas fa-pen"></i>'.html_safe, edit_curriculum_deck_card_path(@curriculum, @deck, card) %>
             </div>
           </div>
@@ -28,32 +29,27 @@
     </div>
   </div>
 
-<div id="loginModal" class="modal fade" role="dialog">
+<!-- New card modal content-->
+<div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
-    <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <h2>New Card</h2>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for [@curriculum, @deck, @card],
-        method => :post do |f| %>
-            <div class="form-inputs">
-              <%= f.input :question %>
-              <%= f.input :correct_answer %>
-              <%= f.input :wrong_answer %>
-              <%= f.input :resource, collection: @resources%>
-            </div>
-            <div class="form-buttons-container">
-              <div class="form-actions">
-                <%= f.button :submit, "Log in", class: "btn-yellow" %>
-              </div>
-            </div>
-        <% end %>
+        <%= simple_form_for [@curriculum, @deck, @card], :method => :post do |f| %>
+      <div class="form-inputs">
+        <%= f.input :question %>
+        <%= f.input :correct_answer %>
+        <%= f.input :wrong_answer %>
+        <%= f.input :resource, collection: @resources%>
       </div>
-      <div class="modal-footer">
+      <div class="form-actions">
+        <%= f.submit "Create Card", class: "btn-yellow" %>
+      </div>
+    <% end %>
       </div>
     </div>
   </div>
-</div>
+</div
