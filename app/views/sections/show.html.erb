@@ -12,7 +12,7 @@
 
         <div class="row">
           <div class="col-sm-12 col-md-9">
-            <p>Decks</p>
+            <h4>Decks</h4>
             <% @section.curriculum.decks.each do |deck| %>
               <% if deck.due_date > Date.today %>
                 <div class="deck-list-item">
@@ -28,6 +28,7 @@
             <% end %>
 
             <% if @section.curriculum.decks.count { |deck| deck.due_date < Date.today } > 0 %>
+              <h4>Past</h4>
               <% @section.curriculum.decks.each do |deck| %>
                 <% if deck.due_date < Date.today %>
                   <div class="deck-list-item completed-deck">
@@ -51,9 +52,9 @@
 
             <div class="container student-list">
               <% if @section.users.empty? %>
-                <p>There are no registered students for this section</p>
+                <span>There are no registered students for this section</span>
               <% else %>
-                <p><%= pluralize(@section.users.count, 'student') %> enrolled</p>
+                <span><%= pluralize(@section.users.count, 'student') %> enrolled</span>
                 <% @section.users.each do |user| %>
                   <div class="student-info">
                     <% if user.photo.file %>
