@@ -29,6 +29,10 @@ Rails.application.routes.draw do
 
   get 'feed', to: 'users#feed'
 
-  resources :todo_items, only: [:create, :index]
+  resources :todo_items, only: [:create, :index] do
+    member do
+      get 'mark_complete'
+    end
+  end
 
 end
