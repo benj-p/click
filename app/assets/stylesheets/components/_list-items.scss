@@ -21,7 +21,7 @@
     text-decoration: none;
   }
   &:hover {
-    background: #fafafa;
+    background: #ebebeb;
   }
   .deck-list-item-image {
     width: 80px;
@@ -41,6 +41,10 @@
     height: 20px;
     margin: 8px;
   }
+}
+
+.completed-deck {
+  background: #ebebeb;
 }
 
 

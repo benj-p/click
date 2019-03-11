@@ -30,7 +30,7 @@
             <% if @section.curriculum.decks.count { |deck| deck.due_date < Date.today } > 0 %>
               <% @section.curriculum.decks.each do |deck| %>
                 <% if deck.due_date < Date.today %>
-                  <div class="deck-list-item">
+                  <div class="deck-list-item completed-deck">
                     <div class="deck-list-item-image d-flex align-items-center justify-content-center"><i class="fas fa-check"></i></div>
                     <div class="deck-list-item-info">
                       <span> <%= link_to deck.name, section_deck_path(@section, deck) %> </span>
