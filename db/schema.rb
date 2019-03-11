@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_10_135643) do
+ActiveRecord::Schema.define(version: 2019_03_11_154742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2019_03_10_135643) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.string "image"
     t.index ["user_id"], name: "index_curriculums_on_user_id"
   end
 
@@ -70,6 +71,7 @@ ActiveRecord::Schema.define(version: 2019_03_10_135643) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "about_user_id"
+    t.boolean "reminder_created", default: false
     t.index ["deck_id"], name: "index_feed_events_on_deck_id"
     t.index ["event_type_id"], name: "index_feed_events_on_event_type_id"
     t.index ["user_id"], name: "index_feed_events_on_user_id"
