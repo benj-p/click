@@ -10,7 +10,7 @@
 
   <div class="dashboard-deck-container">
     <h2>Outstanding decks</h2>
-    <% @outstanding_decks.sort_by(&:due_date).reverse.each do |deck| %>
+    <% @outstanding_decks.sort_by(&:due_date).each do |deck| %>
       <div class="deck-card">
         <div class="top-line">
           <p><i class="fas fa-book"></i> <%= deck.name %></p>
