@@ -21,7 +21,7 @@
         <div class="col-sm-12 col-md-5">
           <div class="section">
             <% @results_by_student.each do |result| %>
-            <div class="student-info border-bottom">
+            <div class="student-info">
               <% if result[:student].photo.file %>
                 <%= cl_image_tag(result[:student].photo, class: "avatar-small") %>
               <% else %>
@@ -50,7 +50,7 @@
         <div class="col-sm-12 col-md-5">
           <div class="section">
             <% @results_by_card.each do |result| %>
-              <div class="student-info border-bottom">
+              <div class="student-info">
                 <div class="student-list-content">
                   <div class="student-name">
                     <p><%= truncate(result[1][:card].question, length: 24) %></p>
