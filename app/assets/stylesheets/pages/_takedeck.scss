@@ -10,6 +10,13 @@
     position: fixed;
     bottom: 16px;
   }
+
+  .progress-text {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
 }
 
 .question-card {
