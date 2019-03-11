@@ -31,13 +31,13 @@
   border-radius: 50%;
   height: 10vh;
   width: 10vh;
-  background-color: $yellow;
+  background-color: #748DE2;
   display: flex;
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
   &.help {
-    background-color: #748DE2;
+    background-color: $yellow;
   }
 }
 
