@@ -13,23 +13,17 @@
             <h4>Outstanding</h4>
             <% @todo_items.where(completed: false).each do |item| %>
               <div class="feed-item">
-                <%= item.name %>
-                <% if item.completed %>
-                  Complete
-                <% else %>
+                <p><%= item.name %></p>
+
                   <%= link_to "Mark Complete", mark_complete_todo_item_path(item), class: 'btn btn-yellow' %>
-                <% end %>
+
               </div>
             <% end %>
             <h4>Done</h4>
             <% @todo_items.where(completed: true).each do |item| %>
               <div class="feed-item">
-                <%= item.name %>
-                <% if item.completed %>
-                  Complete
-                <% else %>
-                  Mark as done
-                <% end %>
+                <p><%= item.name %></p>
+                <i class="fas fa-check"></i> Complete
               </div>
             <% end %>
           </div>
