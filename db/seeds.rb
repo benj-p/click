@@ -15,6 +15,23 @@ Section.destroy_all
 Curriculum.destroy_all
 User.destroy_all
 
+puts "Storing images..."
+
+curriculum_images= ["https://images.pexels.com/photos/7366/startup-photos.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+"https://www.pexels.com/photo/notes-macbook-study-conference-7102/",
+"https://www.pexels.com/photo/action-balls-black-and-white-illustration-60582/",
+"https://www.pexels.com/photo/black-pen-on-white-book-page-159621/",
+"https://www.pexels.com/photo/close-up-of-apple-on-top-of-books-256520/",
+"https://www.pexels.com/photo/person-touching-macbook-pro-1011329/",
+"https://www.pexels.com/photo/text-on-shelf-256417/",
+"https://www.pexels.com/photo/person-writing-on-white-book-1043514/",
+"https://www.pexels.com/photo/arrows-box-business-chalk-533189/",
+"https://www.pexels.com/photo/book-book-pages-browse-education-267586/",
+"https://www.pexels.com/photo/black-click-pen-on-white-paper-167682/",
+"https://www.pexels.com/photo/brush-painting-color-paint-102127/",
+"https://www.pexels.com/photo/black-calculator-near-ballpoint-pen-on-white-printed-paper-53621/",
+"https://www.pexels.com/photo/money-coins-cash-currency-33692/"]
+
 
 puts "creating students..."
 students = (1..20).each_with_object({}) do |i, student|
@@ -30,9 +47,11 @@ end
 
 puts "creating curriculums..."
 #Curriculums
+image_counter = 0
 User.where(is_teacher: true).each do |teacher|
   3.times do
-    Curriculum.create(user: teacher, name: Faker::Educator.course_name)
+    Curriculum.create(user: teacher, name: Faker::Educator.course_name, image: curriculum_images[image_counter])
+    image_counter += 1
   end
 end
 
@@ -134,10 +153,10 @@ puts "creating demo users..."
 teacher = User.create(email: "izzyweber@gmail.com", first_name: "Izzy", last_name: "Weber" , password: "secret", is_teacher: true)
 
 
-intro_to_accounting = Curriculum.create({user: teacher, name: "Intro to Accounting"})
-intro_to_tax = Curriculum.create({user: teacher, name: "Intro to Taxation"})
-fake_curric1 = Curriculum.create(user: teacher, name: Faker::Educator.course_name)
-fake_curric2 = Curriculum.create(user: teacher, name: Faker::Educator.course_name)
+intro_to_accounting = Curriculum.create({user: teacher, name: "Intro to Accounting", image: curriculum_images[-1]})
+intro_to_tax = Curriculum.create({user: teacher, name: "Intro to Taxation", image: curriculum_images[-2]})
+fake_curric1 = Curriculum.create(user: teacher, name: Faker::Educator.course_name, image: curriculum_images[image_counter])
+fake_curric2 = Curriculum.create(user: teacher, name: Faker::Educator.course_name, image: curriculum_images[image_counter+1])
 
 Deck.create(curriculum: fake_curric1, name: "Intro to #{fake_curric1.name}")
 Deck.create(curriculum: fake_curric2, name: "Intro to #{fake_curric2.name}")
