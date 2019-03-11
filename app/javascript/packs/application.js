@@ -72,20 +72,21 @@ if (window.location.pathname.includes('/decksummary')) {
 
 // Card swipe
 
-var card = document.querySelector('.question-card');
-var hammer = new Hammer(card);
-hammer.on('swipe', function(e) {
-  console.log("You're swiping me!");
-  if (e.offsetDirection === 2) {
-    console.log("left");
-    $(".question-card").animate({left: "-1000px"});
+if (window.location.pathname.includes('/takedeck')) {
+  var card = document.querySelector('.question-card');
+  var hammer = new Hammer(card);
+  hammer.on('swipe', function(e) {
+    if (e.offsetDirection === 2) {
+      $(".question-card").animate({left: "-1000px"});
+      document.querySelector(".left").click();
+    };
+    if (e.offsetDirection === 4) {
+      $(".question-card").animate({left: "1000px"});
+      document.querySelector(".right").click();
+    };
+    $(".back-dashboard-link").fadeOut(50);
     $(".question-card").fadeOut(50);
-    document.querySelector(".left").click();
-  };
-  if (e.offsetDirection === 4) {
-    console.log("right");
-    $(".question-card").animate({left: "1000px"});
-    $(".question-card").fadeOut(50);
-    document.querySelector(".right").click();
-  };
 });
+}
+
+
