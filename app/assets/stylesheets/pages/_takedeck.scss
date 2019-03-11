@@ -42,6 +42,24 @@
   }
 }
 
+.transform {
+  -webkit-transition: all 0.5s ease 0s;
+  -moz-transition: all 0.5s ease 0s;
+  -o-transition: all 0.5s ease 0s;
+  -ms-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.transform-left {
+  left: -100%;
+}
+
+.transform-right {
+  left: 200%;
+}
+
 .choice-container {
   display: flex;
   justify-content: space-between;
@@ -74,3 +92,4 @@ a.btn-answer {
   display: block;
   text-align: center;
 }
+
