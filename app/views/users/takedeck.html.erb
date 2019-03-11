@@ -10,7 +10,9 @@
     </div>
   </div>
 
-  <%= link_to "Back to dashboard", dashboard_user_path(@user), class: "back-dashboard-link" %>
+  <%= image_tag("swipe-hand-touch-finger.png", class: "swipe-helper") %>
+
+  <!-- <%= link_to "Back to dashboard", dashboard_user_path(@user), class: "back-dashboard-link" %> -->
 
   <div class="progress-text">Question <%= @deck.attempts.where(user: @user).count + 1 %> / <%= @deck.cards.count %></div>
   <div class="progress mt-3">

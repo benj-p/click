@@ -4,6 +4,13 @@
   overflow: hidden;
 }
 
+.swipe-helper {
+  width: 30vw;
+  display: block;
+  margin: 20px auto 0 auto;
+  opacity: 0.1;
+}
+
 .question-container {
   .progress {
     height: 1vh;
