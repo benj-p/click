@@ -21,7 +21,8 @@
                     <span> <%= link_to deck.name, section_deck_path(@section, deck) %> </span>
                   </div>
                   <div class="progress-bar">
-                     <%= render 'shared/progress_bar', correct: rand(80), incorrect: rand(20) %>
+                    <% results = deck.deck_results(@section) %>
+                     <%= render 'shared/progress_bar', correct: results[:correct], incorrect: results[:incorrect] %>
                   </div>
                 </div>
               <% end %>
@@ -37,7 +38,8 @@
                       <span> <%= link_to deck.name, section_deck_path(@section, deck) %> </span>
                     </div>
                     <div class="progress-bar">
-                      <%= render 'shared/progress_bar', correct: rand(40), incorrect: rand(40) %>
+                      <% results = deck.deck_results(@section) %>
+                     <%= render 'shared/progress_bar', correct: results[:correct], incorrect: results[:incorrect] %>
                     </div>
                   </div>
                 <% end %>
