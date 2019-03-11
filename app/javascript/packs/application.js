@@ -1,4 +1,5 @@
 import "bootstrap";
+import 'hammerjs';
 
 // Get container width for progress bar
 const toggleFixed = () => {
@@ -68,23 +69,23 @@ if (window.location.pathname.includes('/decksummary')) {
   collapseCard();
 }
 
-import 'hammerjs';
 
-// Get a reference to an element.
+// Card swipe
+
 var card = document.querySelector('.question-card');
-
-// Create an instance of Hammer with the reference.
 var hammer = new Hammer(card);
-
-// Subscribe to a quick start event: press, tap, or doubletap.
-// For a full list of quick start events, read the documentation.
 hammer.on('swipe', function(e) {
   console.log("You're swiping me!");
   if (e.offsetDirection === 2) {
     console.log("left");
     $(".question-card").animate({left: "-1000px"});
+    $(".question-card").fadeOut(50);
+    document.querySelector(".left").click();
   };
   if (e.offsetDirection === 4) {
-    $(".question-card").animate({right: "-1000px"});
+    console.log("right");
+    $(".question-card").animate({left: "1000px"});
+    $(".question-card").fadeOut(50);
+    document.querySelector(".right").click();
   };
 });
