@@ -17,20 +17,20 @@ User.destroy_all
 
 puts "Storing images..."
 
-curriculum_images= ["https://images.pexels.com/photos/7366/startup-photos.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-"https://www.pexels.com/photo/notes-macbook-study-conference-7102/",
-"https://www.pexels.com/photo/action-balls-black-and-white-illustration-60582/",
-"https://www.pexels.com/photo/black-pen-on-white-book-page-159621/",
-"https://www.pexels.com/photo/close-up-of-apple-on-top-of-books-256520/",
-"https://www.pexels.com/photo/person-touching-macbook-pro-1011329/",
-"https://www.pexels.com/photo/text-on-shelf-256417/",
-"https://www.pexels.com/photo/person-writing-on-white-book-1043514/",
-"https://www.pexels.com/photo/arrows-box-business-chalk-533189/",
-"https://www.pexels.com/photo/book-book-pages-browse-education-267586/",
-"https://www.pexels.com/photo/black-click-pen-on-white-paper-167682/",
-"https://www.pexels.com/photo/brush-painting-color-paint-102127/",
-"https://www.pexels.com/photo/black-calculator-near-ballpoint-pen-on-white-printed-paper-53621/",
-"https://www.pexels.com/photo/money-coins-cash-currency-33692/"]
+curriculum_images= ["https://images.pexels.com/photos/7366/startup-photos.jpg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/7102/notes-macbook-study-conference.jpg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/60582/newton-s-cradle-balls-sphere-action-60582.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/159621/open-book-library-education-read-159621.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/256520/pexels-photo-256520.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/1011329/pexels-photo-1011329.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/256417/pexels-photo-256417.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/1043514/pexels-photo-1043514.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/533189/pexels-photo-533189.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/267586/pexels-photo-267586.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/167682/pexels-photo-167682.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/102127/pexels-photo-102127.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/53621/calculator-calculation-insurance-finance-53621.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+"https://images.pexels.com/photos/33692/coins-currency-investment-insurance.jpg?auto=compress&cs=tinysrgb&dpr=2&w=500"]
 
 
 puts "creating students..."
