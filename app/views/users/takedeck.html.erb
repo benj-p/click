@@ -1,7 +1,7 @@
 <div class="container question-container">
   <h1><span><%= @deck.name %></span></h1>
   <div class="question-card">
-    <h2>Question <%= params[:question].to_i + 1 %></h2>
+    <!-- <h2>Question <%= params[:question].to_i + 1 %></h2> -->
     <p><%= @deck.cards[params[:question].to_i].question %></p>
     <div class="choice-container">
       <%= link_to @deck.cards[params[:question].to_i || 0].wrong_answer, attempts_path(@attempt, response: "Incorrect", card_id: @deck.cards[params[:question].to_i], deck_id: @deck, question: params[:question].to_i), method: :post, class: "btn-answer" %>
