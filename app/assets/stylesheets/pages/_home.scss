@@ -1,13 +1,14 @@
 // Specific CSS for your home-page
 .home-page-body{
 	background-image: asset-url('bannerlet-01.png');
-  height: 100vh;
   background-size: cover;
   background-position: center;
   position: fixed;
   top: 0;
   z-index: -1;
   width: 100vw;
+  height: 100%;
+  overflow: hidden;
 }
 
 .home-page-text {
@@ -64,8 +65,10 @@
 
   .btn-container-homepage-mobile {
     display: flex;
-    margin-top: 80vh;
-    padding: 4vw;
+    width: 100vw;
+    position: fixed;
+    bottom: 40px;
+    padding: 0px 4vw;
       .btn-homepage {
         flex-grow: 1;
         margin-right: 16px;
