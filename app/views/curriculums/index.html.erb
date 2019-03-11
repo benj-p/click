@@ -15,7 +15,7 @@
                 <div class="background-image" style="background-image: url(https://picsum.photos/400)">
                 </div>
 
-                <div class="kind-of-container">
+                <div class="card-bottom">
                   <div class="description">
                     <h2><%= link_to "Section #{section.name}", section_path(section) %></h2>
                     <p> </p>
@@ -52,7 +52,7 @@
             <%=curriculum.name  %>
             <div class="background-image" style="background-image: url(https://picsum.photos/400)">
             </div>
-            <div class="kind-of-container">
+            <div class="card-bottom">
               <div class="description">
                 <% curriculum.decks.each do |deck|%>
                   <h2><%= link_to "#{deck.name}", curriculum_deck_cards_path(curriculum, deck) %></h2>

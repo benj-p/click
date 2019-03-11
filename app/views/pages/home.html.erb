@@ -14,3 +14,42 @@
   </div>
 </div>
 
+<div id="loginModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Log In</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :email,
+                        required: false,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" } %>
+            <%= f.input :password,
+                        required: false,
+                        input_html: { autocomplete: "current-password" } %>
+            <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+          </div>
+
+          <div class="form-buttons-container">
+            <div class="form-actions">
+              <%= f.button :submit, "Log in", class: "btn-yellow" %>
+            </div>
+            <div class="devise-links">
+              or <%= link_to "sign up", new_registration_path(resource_name) %> to create a new account<br />
+            </div>
+            <!-- form buttons container div closes in the devise shared links -->
+        <% end %>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+
+  </div>
+</div>
+
