@@ -32,10 +32,8 @@
 }
 
 .selected {
-  border-left: solid;
-  border-width: 8px;
-  border-color: #FAC70B;
   background: rgba(250, 199, 11, 0.14);
+  box-shadow: inset 8px 0 0px 0px #FAC70B;
   a:hover {
     background-color: rgba(250, 199, 11, 0.14);
   }
