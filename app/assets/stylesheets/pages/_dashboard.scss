@@ -19,8 +19,20 @@
       justify-content: space-between;
     }
 
-    .outstanding-due-date {
+    .passed-due-date {
+      color: #FF0000;
+      font-size: 0.9em;
+      font-weight: 600;
+    }
+
+    .short-due-date {
       color: #E28674;
+      font-size: 0.9em;
+      font-weight: 600;
+    }
+
+    .long-due-date {
+      color: #51C6A1;
       font-size: 0.9em;
       font-weight: 600;
     }

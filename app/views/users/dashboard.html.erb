@@ -14,7 +14,13 @@
       <div class="deck-card">
         <div class="top-line">
           <p><i class="fas fa-book"></i> <%= deck.name %></p>
-          <p class="outstanding-due-date">Due: <%= deck.due_date.strftime("%b %d") %></p>
+          <% if deck.due_date - Date.today() < 0 %>
+            <p class="short-due-date">Overdue: <%= deck.due_date.strftime("%b %d") %></p>
+          <% elsif deck.due_date - Date.today() < 3 %>
+            <p class="short-due-date">Due: <%= deck.due_date.strftime("%b %d") %></p>
+          <% else %>
+            <p class="long-due-date">Due: <%= deck.due_date.strftime("%b %d") %></p>
+          <% end %>
         </div>
         <div class="row">
           <div class="col-8 px-0">
