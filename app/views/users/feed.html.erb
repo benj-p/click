@@ -4,7 +4,6 @@
       <div class="row my-3">
         <div class="col-12">
           <h1><span>My feed</span></h1>
-
         </div>
       </div>
       <div class="row">
@@ -21,7 +20,7 @@
           </div>
         </div>
         <div class="col-12-col-md-9">
-          <div class="feed-container">
+          <div class="feed-container" id="my-feed">
             <%= render @feed_events %>
             <div id="infinite-scrolling">
               <%= will_paginate @feed_events %>
