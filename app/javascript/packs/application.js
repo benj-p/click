@@ -105,7 +105,7 @@ if (document.referrer.includes('/takedeck') && window.location.pathname.includes
     this.p3 = p3;
 
     this.time = 0;
-    this.duration = 3 + Math.random() * 1;
+    this.duration = 5 + Math.random() * 2;
     this.color =  '#' + Math.floor((Math.random() * 0xffffff)).toString(16);
 
     this.w = 8;
@@ -252,6 +252,6 @@ if (document.referrer.includes('/takedeck') && window.location.pathname.includes
     return p;
   }
 
-  setTimeout(function() { document.querySelector("canvas").style.visibility = "hidden"; }, 3000);
+  setTimeout(function() { $("canvas").fadeOut("slow"); }, 2000);
 
 }
