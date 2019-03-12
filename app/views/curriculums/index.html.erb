@@ -32,6 +32,13 @@
               <% end %>
 
                <%= link_to section_path(section) do %>
+                <% @attempts = Section.find(section.id).users.includes(:attempts).map(&:attempts).flatten %>
+                <% @correct_attempts = @attempts.select { |attempt| attempt.response == "Correct" }.count / @attempts.count.to_f * 100 %>
+                <% @incorrect_attempts = @attempts.select { |attempt| attempt.response == "Incorrect" }.count / @attempts.count.to_f * 100  %>
+                <% @unsure_attempts = @attempts.select { |attempt| attempt.response == "I don't know" }.count / @attempts.count.to_f * 100  %>
+              <div class="progress-bar">
+               <%= render 'shared/progress_bar', correct: @correct_attempts, incorrect: @incorrect_attempts %>
+              </div>
                 <div class="p-bar">
                   <div class="p-bar-margin">
                     <div class="progress" style="height: 10px">
