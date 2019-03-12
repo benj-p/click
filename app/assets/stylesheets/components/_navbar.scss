@@ -46,9 +46,22 @@
 }
 
 @media only screen and (max-width: 593px) {
+  .navbar-nav .dropdown-menu {
+    position: absolute;
+  }
+
+  .dropdown-menu.show {
+    display: inline-grid;
+  }
+
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+
 	.av-img {
 		display: none;
 	}
+
   .button-holder {
     display: none;
     .btn-homepage-navbar {

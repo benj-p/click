@@ -36,22 +36,6 @@
   display: none;
 }
 
-
-@media only screen and (max-width: 593px) {
-	.remove-text {
-		display: none;
-	}
-
-	.padding-sm-screen {
-		font-size: 15px;
-		padding-right: 50px;
-	}
-
-  .home-page-text {
-    width: 70vw;
-  }
-}
-
 .page-content {
   padding-top: 7vh;
   flex: 1 1 auto;
@@ -59,8 +43,21 @@
 }
 
 @media(max-width: 575.98px) {
+  .remove-text {
+    display: none;
+  }
+
+  .padding-sm-screen {
+    font-size: 15px;
+    padding-right: 50px;
+  }
+
+  .home-page-text {
+    width: 70vw;
+  }
+
   .page-content {
-    padding-top: 6vh;
+    padding-top: 7vh;
   }
 
   .btn-container-homepage-mobile {
