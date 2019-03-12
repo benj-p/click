@@ -10,11 +10,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <% if current_user.photo.file %>
-      <%= cl_image_tag(current_user.photo, class: "avatar av-img dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
-    <% else %>
-      <%= cl_image_tag("man-157699__340.png", class: "avatar av-img dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
-    <% end %>
+      <%= cl_image_tag(current_user.photo.url,  class: "avatar av-img dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
