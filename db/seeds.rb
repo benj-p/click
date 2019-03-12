@@ -105,15 +105,14 @@ teacher = User.create(email: "izzyweber@gmail.com", first_name: "Izzy", last_nam
 
 intro_to_accounting = Curriculum.create({user: teacher, name: "Intro to Accounting", image: curriculum_images[-1]})
 intro_to_tax = Curriculum.create({user: teacher, name: "Intro to Taxation", image: curriculum_images[-2]})
-fake_curric1 = Curriculum.create(user: teacher, name: Faker::Educator.course_name, image: curriculum_images[image_counter])
-fake_curric2 = Curriculum.create(user: teacher, name: Faker::Educator.course_name, image: curriculum_images[image_counter+1])
-
-Deck.create(curriculum: fake_curric1, name: "Intro to #{fake_curric1.name}")
-Deck.create(curriculum: fake_curric2, name: "Intro to #{fake_curric2.name}")
+geography = Curriculum.create({user: teacher, name: "Elementary Geography", image: curriculum_images[-3]})
 
 financial_statement_basics = Deck.create({curriculum: intro_to_accounting, name: "Financial Statement Basics", due_date: Date.today()-10})
 journal_entry_basics = Deck.create({curriculum: intro_to_accounting, name: "Basic Journal Entries", due_date: Date.today()+3})
-fun_facts_taxes = Deck.create({curriculum: intro_to_tax, name: "Fun Facts About Taxes", due_date: Date.today()+5})
+fun_facts_taxes = Deck.create({curriculum: intro_to_tax, name: "Fun Facts About Taxes", due_date: Date.today()-2})
+europe = Deck.create({curriculum: geography, name: "Europe Review", due_date: Date.today()-8})
+asia = Deck.create({curriculum: geography, name: "Fun Facts About Asia", due_date: Date.today()-3})
+americas = Deck.create({curriculum: geography, name: "American Geography", due_date: Date.today()+5})
 
 a_1 = Card.create({deck: financial_statement_basics, question: 'One of the three sections of the statement of cash flows is called "Cash Flows from Manufacturing Activities."', correct_answer: "False" , wrong_answer: "True" })
 a_2 = Card.create({deck: financial_statement_basics, question: 'The act of declaring and paying a cash dividend affects both the income statement and the statement of cash flows.', correct_answer: "False" , wrong_answer: "True" })
@@ -124,6 +123,31 @@ b_3 = Card.create({deck: journal_entry_basics, question: 'When a company pays an
 c_1 = Card.create({deck: fun_facts_taxes, question: "During the Middle Ages, European governments placed a tax on soap. France didn't repeal its soap tax until 1835", correct_answer: "False" , wrong_answer: "True", resource: r2})
 c_2 = Card.create({deck: fun_facts_taxes, question: 'In 1712, England imposed a tax on printed wallpaper. Builders avoided the tax by hanging plain wallpaper and then painting patterns on the walls."', correct_answer: "True" , wrong_answer: "False", resource: r1})
 c_3 = Card.create({deck: fun_facts_taxes, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+d_1 = Card.create({deck: europe, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+d_2 = Card.create({deck: europe, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+d_3 = Card.create({deck: europe, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+d_4 = Card.create({deck: europe, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+d_5 = Card.create({deck: europe, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+d_6 = Card.create({deck: europe, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+d_7 = Card.create({deck: europe, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+d_8 = Card.create({deck: europe, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+d_9 = Card.create({deck: europe, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+e_1 = Card.create({deck: asia, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+e_2 = Card.create({deck: asia, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+e_3 = Card.create({deck: asia, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+e_4 = Card.create({deck: asia, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+e_5 = Card.create({deck: asia, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+e_6 = Card.create({deck: asia, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+e_7 = Card.create({deck: asia, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+e_8 = Card.create({deck: asia, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+f_1 = Card.create({deck: americas, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+f_2 = Card.create({deck: americas, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+f_3 = Card.create({deck: americas, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+f_4 = Card.create({deck: americas, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+f_5 = Card.create({deck: americas, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+f_6 = Card.create({deck: americas, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+f_7 = Card.create({deck: americas, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+f_8 = Card.create({deck: americas, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
 
 teacher_sections = []
 sections = (1..8).each_with_object({}) do |i, section|
@@ -135,6 +159,11 @@ sections = (1..8).each_with_object({}) do |i, section|
   end
 end
 
+Section.create(name: 'A', curriculum: geography)
+Section.create(name: 'B', curriculum: geography)
+Section.create(name: 'C', curriculum: geography)
+Section.create(name: 'D', curriculum: geography)
+
 teacher_sections.each do |section|
   15.times do
     reg = Registration.new(user: User.offset(rand(User.count)).first, section: section)
@@ -142,15 +171,23 @@ teacher_sections.each do |section|
   end
 end
 
-student = User.create(email: "jonny@email.com", first_name: "Jonny", last_name: "Gates", password: "secret")
+student1 = User.create(email: "jonny@email.com", first_name: "Jonny", last_name: "Gates", password: "secret")
+student2 = User.create(email: "leti@email.com", first_name: "Letizia", last_name: "Ackaouy", password: "secret")
+student3 = User.create(email: "ben@email.com", first_name: "Ben", last_name: "Pham", password: "secret")
+student4 = User.create(email: "kitty@email.com", first_name: "Kitty", last_name: "Mayo", password: "secret")
+student5 = User.create(email: "sahar@email.com", first_name: "Sahar", last_name: "Khan", password: "secret")
+student6 = User.create(email: "shopie@email.com", first_name: "Sophie", last_name: "Spratley", password: "secret")
+student7 = User.create(email: "taniya@email.com", first_name: "Taniya", last_name: "Amidon", password: "secret")
+student8 = User.create(email: "chai@email.com", first_name: "Chai", last_name: "Chai", password: "secret")
+student9 = User.create(email: "janie@email.com", first_name: "Janie", last_name: "Amero", password: "secret")
+student10 = User.create(email: "jack@email.com", first_name: "Jack", last_name: "Burke", password: "secret")
 
-Registration.create(user: student, section: Section.last)
-Registration.create(user: student, section: Section.first)
-
+izzys_geography_class = [student1, student2, student3, student4, student5, student6, student7, student8, student9, student10]
+izzys_geography_class.each do |student|
+  Registration.create(user: student, section: Section.last)
+end
 
 puts "creating attempts..."
-
-
 responses = ["Correct", "Incorrect", "I don't know"]
 
 User.where(is_teacher: false).each do |student|
