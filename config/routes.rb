@@ -28,6 +28,11 @@ Rails.application.routes.draw do
   resources :sections, only: :show do
     resources :decks, only: :show do
       resources :students, only: :show
+        resources :users, only: [] do
+          member do
+            get 'deck_results'
+          end
+        end
     end
   end
 

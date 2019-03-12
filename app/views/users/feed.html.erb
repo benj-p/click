@@ -1,33 +1,20 @@
 <div class="container">
-  <div class="row justify-content-md-center">
-    <div class="col-sm-12 col-md-9">
+  <div class="row ">
+    <div class="col-sm-12">
       <div class="row my-3">
         <div class="col-12">
           <h1><span>My feed</span></h1>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-3 py-3">
-          <div class="d-flex justify-content-center my-3">
-            <% if current_user.photo.file %>
-              <%= cl_image_tag(current_user.photo, class: 'avatar-large') %>
-            <% else %>
-              <%= cl_image_tag("ptvra7owhsunxrse9zut.png", class: "avatar-large") %>
-            <% end %>
-          </div>
-          <div class="d-flex justify-content-center">
-            <h2><%= current_user.first_name %> <%= current_user.last_name %></h2>
-          </div>
-        </div>
         <div class="col-12-col-md-9">
-          <div class="feed-container" id="my-feed">
             <%= render @feed_events %>
             <div id="infinite-scrolling">
               <%= will_paginate @feed_events %>
             </div>
-          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+

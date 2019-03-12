@@ -14,4 +14,8 @@ class UserPolicy < ApplicationPolicy
   def feed?
     user
   end
+
+  def deck_results?
+    @record == @user
+  end
 end

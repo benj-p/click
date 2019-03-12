@@ -8,31 +8,13 @@ class DecksController < ApplicationController
 
   def show
     @section = Section.find(params[:section_id])
-    @results_by_student = []
     @results_by_card = {}
     @results = @deck.deck_results(@section)
     attempts = @section.users.map { |user| user.attempts.select { |attempt| attempt.card.deck == @deck } }
     @attempts_count = attempts.count
-
     @deck.cards.each do |card|
       @results_by_card[card.id] = {card: card, results: { attempts: 0, correct: 0, incorrect: 0, unsure: 0 } }
     end
-
-    @section.users.each do |student|
-      results = { attempts: 0, correct: 0, incorrect: 0, unsure: 0 }
-      student.attempts.each do |attempt|
-        if attempt.card.deck == @deck
-          results[:attempts] += 1
-          case attempt.response
-          when "Correct" then results[:correct] += 1
-          when "Incorrect" then results[:incorrect] += 1
-          when "I don't know" then results[:unsure] += 1
-          end
-        end
-      end
-      @results_by_student << { student: student, results: results }
-    end
-
     attempts.each do |collection|
       collection.each do |attempt|
         @results_by_card[attempt.card.id][:results][:attempts] += 1
@@ -49,7 +31,6 @@ class DecksController < ApplicationController
         end
       end
     end
-    @results_by_student.sort_by! { |student| student[:results][:incomplete] }
     @results_by_card.sort_by { |card| card[1][:results][:incomplete]}
     authorize @deck
   end

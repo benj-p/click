@@ -6,6 +6,8 @@ class CardsController < ApplicationController
     @cards = policy_scope(Card).where(deck: Deck.find(params[:deck_id]))
     @deck = Deck.find(params[:deck_id])
     @curriculum = Curriculum.find(params[:curriculum_id])
+    @card = Card.new
+    @resource = Resource.new
   end
 
   def new
@@ -21,11 +23,21 @@ class CardsController < ApplicationController
     @card.deck = Deck.find(params[:deck_id])
     @deck = @card.deck
     @curriculum = @deck.curriculum
+    if !params[:card][:resource].empty?
+      @card.resource = Resource.find(params[:card][:resource])
+    elsif params[:card][:resource_name] && params[:card][:resource_text] && params[:card][:resource_url]
+      resource = Resource.new(name: params[:card][:resource_name], text: params[:card][:resource_text], url: params[:card][:resource_url] )
+      if resource.save
+        @card.resource = resource
+      end
+    end
     authorize @card
     if @card.save
+      flash[:notice] = "Card created"
       redirect_to curriculum_deck_cards_path(@curriculum, @deck)
     else
-      render :new
+      flash[:notice] = "Card not created"
+      redirect_to curriculum_deck_cards_path(@curriculum, @deck)
     end
   end
 
@@ -38,7 +50,6 @@ class CardsController < ApplicationController
   def update
     @card = Card.find(params[:id])
     @card.update(card_params)
-    @resource = Resource.find(params[:card][:resource])
     @card.resource = @resource
     @card.save
     authorize @card

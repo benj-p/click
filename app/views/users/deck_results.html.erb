@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1><span>Results for <%= @student.first_name %></span></h1>
+      <h2><%= @deck.name %></h2>
+    </div>
+  </div>
+
+  <div class="deck-score-container">
+    <% unless @correct_answers.count == 0 %>
+      <%= render 'shared/arc', color: 'green', percentage: (@correct_answers.count / @deck.cards.count.to_f) * 100,  size: 'medium', text: "Right" %>
+    <% end %>
+    <% unless @unsure_answers.count == 0 %>
+      <%= render 'shared/arc', color: 'blue', percentage: (@unsure_answers.count / @deck.cards.count.to_f) * 100,  size: 'medium', text: "Unsure" %>
+    <% end %>
+    <% unless @wrong_answers.count == 0 %>
+      <%= render 'shared/arc', color: 'red', percentage: (@wrong_answers.count / @deck.cards.count.to_f) * 100,  size: 'medium', text: "Wrong" %>
+    <% end %>
+  </div>
+
+  <% unless @wrong_answers.count == 0 %>
+    <% if @correct_answers.count == @deck.cards.count && @deck.cards.count > 1 %>
+      <h2><%= @student.first_name %> had all <%= pluralize(@wrong_answers.count, 'question') %> wrong</h2>
+    <% else %>
+      <h2><%= @student.first_name %> had <%= pluralize(@wrong_answers.count, 'question') %> wrong</h2>
+    <% end %>
+
+    <% @wrong_answers.each do |wronganswer| %>
+      <%= render 'shared/question-summary-card', responsestatus: wronganswer %>
+    <% end %>
+  <% end %>
+
+  <% unless @unsure_answers.count == 0 %>
+    <% if @unsure_answers.count == @deck.cards.count && @deck.cards.count > 1 %>
+      <h2><%= @student.first_name %> was unsure about all <%= pluralize(@unsure_answers.count, 'question') %></h2>
+    <% else %>
+      <h2><%= @student.first_name %> was unsure about <%= pluralize(@unsure_answers.count, 'question') %></h2>
+    <% end %>
+
+    <% @unsure_answers.each do |unsureanswer| %>
+      <%= render 'shared/question-summary-card', responsestatus: unsureanswer %>
+    <% end %>
+  <% end %>
+
+  <% unless @correct_answers.count == 0 %>
+    <% if @correct_answers.count == @deck.cards.count && @deck.cards.count > 1 %>
+      <h2><%= @student.first_name %> had all <%= pluralize(@correct_answers.count, 'question') %> right</h2>
+    <% else %>
+      <h2><%= @student.first_name %> had <%= pluralize(@correct_answers.count, 'question') %> right</h2>
+    <% end %>
+
+    <% @correct_answers.each do |correctanswer| %>
+      <%= render 'shared/question-summary-card', responsestatus: correctanswer %>
+    <% end %>
+  <% end %>
+
+  <%= link_to "Back to section dashboard", section_deck_path(@section, @deck), class: "back-dashboard-link" %>
+
+</div>
+

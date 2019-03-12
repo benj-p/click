@@ -22,7 +22,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 1rem;
+  padding: 1rem 1rem;
   top: 0;
   width: 100vw;
 }
@@ -46,14 +46,34 @@
 }
 
 @media only screen and (max-width: 593px) {
+  .navbar-nav .dropdown-menu {
+    position: absolute;
+  }
+
+  .dropdown-menu.show {
+    display: inline-grid;
+  }
+
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+
 	.av-img {
 		display: none;
 	}
+
   .button-holder {
     display: none;
     .btn-homepage-navbar {
       padding-right: 8px;
       padding-left: 8px;
     }
+  }
+}
+
+@media (min-width: 576px) {
+  .navbar-expand-sm .navbar-nav .dropdown-menu {
+      position: absolute;
+      margin-top: 20px;
   }
 }

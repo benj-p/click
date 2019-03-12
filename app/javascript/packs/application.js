@@ -69,9 +69,7 @@ if (window.location.pathname.includes('/decksummary')) {
   collapseCard();
 }
 
-
 // Card swipe
-
 if (window.location.pathname.includes('/takedeck')) {
   var card = document.querySelector('.question-card');
   var hammer = new Hammer(card);
