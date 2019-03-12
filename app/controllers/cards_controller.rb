@@ -23,11 +23,11 @@ class CardsController < ApplicationController
     @card.deck = Deck.find(params[:deck_id])
     @deck = @card.deck
     @curriculum = @deck.curriculum
-    if params[:resource]
-      @card.resource = Resource.find(params[:resource])
-    elsif params[:resource_name] && params[:resource_text] && params[:resource_url]
-      resource = Resource.new(name: params[:resource_name], text: params[:resource_text], url: params[:resource_url] )
-      if Resource.save
+    if !params[:card][:resource].empty?
+      @card.resource = Resource.find(params[:card][:resource])
+    elsif params[:card][:resource_name] && params[:card][:resource_text] && params[:card][:resource_url]
+      resource = Resource.new(name: params[:card][:resource_name], text: params[:card][:resource_text], url: params[:card][:resource_url] )
+      if resource.save
         @card.resource = resource
       end
     end

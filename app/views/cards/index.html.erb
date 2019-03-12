@@ -1,8 +1,9 @@
   <div class="container">
     <h1><span> <%= @deck.name %></span><%= link_to '<i class="fas fa-pen heading-edit"></i>'.html_safe, edit_curriculum_deck_path(@curriculum, @deck) %> </h1>
+    <button type="button" class="btn btn-yellow" data-toggle="modal" data-target="#myResourceModal">+ New Resource</button>
     <div class="flashcard-grid column col-lg-3 col-6">
+
       <div class="flashcard flashcard-new">
-        <button type="button" class="btn" data-toggle="modal" data-target="#myModal"><i class="fas fa-plus-circle"></i></button>
         <div class="resources">
           <div class="resources-text">
           </div>
@@ -43,8 +44,8 @@
         <%= f.input :correct_answer %>
         <%= f.input :wrong_answer %>
         <%= f.input :resource, collection: @resources%>
-        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-          Add resource?
+        <a  data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          Add new resource?
         </a>
         <div class="collapse" id="collapseExample">
           <p class="add-resource">
@@ -55,7 +56,7 @@
         </div>
       </div>
       <div class="form-actions">
-        <%= f.submit "Create Card", class: "btn-yellow new-card" %>
+        <%= f.submit "Create Card", class: "btn btn-yellow" %>
       </div>
     <% end %>
       </div>
@@ -63,8 +64,7 @@
   </div>
 </div>
 
-<!-- hidden new resource modal button -->
-<button hidden type="button" id="fake-button" class="btn" data-toggle="modal" data-target="#myResourceModal"><i class="fas fa-plus-circle"></i></button>
+
 
 <!-- New resource modal content-->
 <div id="myResourceModal" class="modal fade" role="dialog">
