@@ -5,5 +5,6 @@ class FeedEvent < ApplicationRecord
 
   belongs_to :deck, optional: true
   belongs_to :event_type
+  self.per_page = 10
 
 end
