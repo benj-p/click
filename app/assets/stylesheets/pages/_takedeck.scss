@@ -1,3 +1,16 @@
+.stop-scrolling {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.swipe-helper {
+  width: 30vw;
+  display: block;
+  margin: 20px auto 0 auto;
+  opacity: 0.1;
+}
+
 .question-container {
   .progress {
     height: 1vh;
@@ -23,10 +36,34 @@
   box-shadow: 2px 2px 4px rgba(220,220,220,0.5);
   margin-top: 3vh;
   padding: 16px;
-
+  position: relative;
   p {
     font-size: 20px;
   }
+}
+
+.transform {
+  -webkit-transition: transform 0.5s ease 0s;
+  -moz-transition: transform 0.5s ease 0s;
+  -o-transition: transform 0.5s ease 0s;
+  -ms-transition: transform 0.5s ease 0s;
+  transition: transform 0.5s ease 0s;
+}
+
+.transform-left {
+  -webkit-transform: translateX(-500px);
+  -moz-transform: translateX(-500px);
+  -o-transform: translateX(-500px);
+  -ms-transform: translateX(-500px);
+  transform: translateX(-500px);
+}
+
+.transform-right {
+  -webkit-transform: translateX(500px);
+  -moz-transform: translateX(500px);
+  -o-transform: translateX(500px);
+  -ms-transform: translateX(500px);
+  transform: translateX(500px);
 }
 
 .choice-container {
@@ -57,7 +94,8 @@ a.btn-answer {
   }
 
 .back-dashboard-link {
+  margin-top: 8px;
   display: block;
   text-align: center;
-  margin: 2vh 0;
 }
+

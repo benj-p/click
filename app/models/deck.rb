@@ -6,7 +6,7 @@ class Deck < ApplicationRecord
   validates :name, presence: true
 
   def deck_results(section)
-    attempts = deck_attempts(section)
+    attempts = deck_attempts(self, section)
     total = attempts.count.to_f
     {
       correct: (attempts.count { |attempt| attempt.response == "Correct" } / total) * 100,
@@ -17,10 +17,10 @@ class Deck < ApplicationRecord
 
   private
 
-  def deck_attempts(section)
+  def deck_attempts(deck, section)
     attempts = []
-    self.curriculum.sections.where(id: section.id).first.users.each do |user|
-      user.attempts.each { |attempt| attempts << attempt }
+    deck.curriculum.sections.where(id: section.id).first.users.each do |user|
+      user.attempts.each { |attempt| attempts << attempt if attempt.card.deck == deck }
     end
     attempts
   end

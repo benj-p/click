@@ -4,12 +4,12 @@
       a 15.915507752443826 15.915507752443826 0 0 1 0 -31.831015504887652" stroke-dasharray="100, 100"></path>
   <path class="circle circle-<%= color %>" d="M18 2.0845
       a 15.915507752443826 15.915507752443826 0 0 1 0 31.831015504887652
-      a 15.915507752443826 15.915507752443826 0 0 1 0 -31.831015504887652" stroke-dasharray="<%= percentage.nan? ? 0 : percentage %>, 100"></path>
+      a 15.915507752443826 15.915507752443826 0 0 1 0 -31.831015504887652" stroke-dasharray="<%= percentage.round %>, 100"></path>
 
   <% if size == 'medium' %>
     <text x="50%" y ="50%" style="font-size:6px" dominant-baseline="middle" text-anchor="middle" class="circle-label"><%= text %></text>
   <% elsif size == 'large' %>
     <text x="50%" y ="45%" dominant-baseline="middle" text-anchor="middle" class="circle-label"><%= text %></text>
-    <text x="50%" y ="65%" dominant-baseline="middle" text-anchor="middle" class="circle-label"><%= percentage.nan? ? 0 : percentage.round %>%</text>
+    <text x="50%" y ="65%" dominant-baseline="middle" text-anchor="middle" class="circle-label"><%= percentage.round %>%</text>
   <% end %>
 </svg>

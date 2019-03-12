@@ -1,4 +1,5 @@
 import "bootstrap";
+import 'hammerjs';
 
 // Get container width for progress bar
 const toggleFixed = () => {
@@ -67,3 +68,23 @@ if (window.location.pathname.includes('/decksummary')) {
   expandCard();
   collapseCard();
 }
+
+
+// Card swipe
+
+if (window.location.pathname.includes('/takedeck')) {
+  var card = document.querySelector('.question-card');
+  var hammer = new Hammer(card);
+  hammer.on('swipe', function(e) {
+    if (e.offsetDirection === 2) {
+      $(".question-card").toggleClass("transform-left");
+      document.querySelector(".left").click();
+    };
+    if (e.offsetDirection === 4) {
+      $(".question-card").toggleClass("transform-right");
+      document.querySelector(".right").click();
+    };
+});
+}
+
+
