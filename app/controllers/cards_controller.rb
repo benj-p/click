@@ -50,11 +50,7 @@ class CardsController < ApplicationController
   def update
     @card = Card.find(params[:id])
     @card.update(card_params)
-    if Resource.find(params[:card][:resource])
-      @resource = Resource.find(params[:card][:resource])
-    end
     @card.resource = @resource
-    raise
     @card.save
     authorize @card
     @deck = @card.deck
@@ -73,7 +69,7 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:name, :question, :correct_answer, :wrong_answer, resource_attributes: [:name, :url, :text])
+    params.require(:card).permit(:name, :question, :correct_answer, :wrong_answer)
   end
 
   def deck_resources
