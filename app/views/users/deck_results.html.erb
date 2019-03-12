@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1><span>Results for <%= @student.first_name %></span></h1>
+      <h2><%= @deck.name %></h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <% @attempts.each do |attempt| %>
+        <h3><%= attempt.response %></h3>
+        <p><%= attempt.card.question %></p>
+      <% end %>
+    </div>
+  </div>
+  <div class="attempts-bar">
+  <% @student.deck_attempts(@deck).each do |attempt| %>
+    <% if attempt.response == "Correct" %>
+      <div class="attempt attempt-green" data-toggle="tooltip" title="<%= attempt.card.question %>"></div>
+    <% elsif attempt.response == "Incorrect" %>
+      <div class="attempt attempt-red" data-toggle="tooltip" title="<%= attempt.card.question %>"></div>
+    <% else %>
+      <div class="attempt attempt-grey" data-toggle="tooltip" title="<%= attempt.card.question %>"></div>
+    <% end %>
+  <% end %>
+</div>
+</div>
+

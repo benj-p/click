@@ -45,7 +45,7 @@
                       <%= cl_image_tag("ptvra7owhsunxrse9zut.png", class: "avatar-small") %>
                     <% end %>
                     <div class="student-name">
-                        <p><%= student.first_name %> <%= student.last_name %></p>
+                        <p><%= link_to (student.first_name + " " + student.last_name), deck_results_section_deck_user_path(@section, @deck, student) %></p>
                     </div>
                   </div>
 
