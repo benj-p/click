@@ -15,7 +15,7 @@ class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   def feed
-    feed_events
+    feed_events.order('created_at DESC')
   end
 
   def deck_attempts(deck)
