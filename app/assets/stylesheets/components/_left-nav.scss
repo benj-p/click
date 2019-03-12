@@ -15,6 +15,7 @@
   color: black;
   display: block;
   font-size: 18px;
+  font-weight: 500;
 }
 
 .left-nav a:hover {
@@ -29,6 +30,10 @@
 .left-nav .sections-list-item, .left-nav .decks-list-item {
   font-size: 14px;
   padding-left: 30px;
+}
+
+.fa-angle-double-right {
+  padding-right: 10px;
 }
 
 .selected {
