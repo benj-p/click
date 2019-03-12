@@ -30,8 +30,12 @@ class UsersController < ApplicationController
     @deck = Deck.find(params[:deck_id])
     @teacher = @deck.curriculum.user
     authorize @teacher
+    @section = Section.find(params[:section_id])
     @attempts = Deck.find(params[:deck_id]).curriculum.sections.where(id: params[:section_id]).first.users.where(id: params[:id]).first.attempts
     @student = User.find(params[:id])
+    @correct_answers = @deck.attempts.where(user: User.find(params[:id]), response: "Correct")
+    @wrong_answers = @deck.attempts.where(user: User.find(params[:id]), response: "Incorrect")
+    @unsure_answers = @deck.attempts.where(user: User.find(params[:id]), response: "I don't know")
   end
 
   private
