@@ -39,11 +39,7 @@
                 <% @section.users.each do |student| %>
                 <div class="student-list-item">
                   <div class="student-info">
-                    <% if student.photo.file %>
-                      <%= cl_image_tag(student.photo, class: "avatar-small") %>
-                    <% else %>
-                      <%= cl_image_tag("ptvra7owhsunxrse9zut.png", class: "avatar-small") %>
-                    <% end %>
+                      <%= cl_image_tag(student.photo.url, class: "avatar-small") %>
                     <div class="student-name">
                         <p><%= student.first_name %> <%= student.last_name %></p>
                     </div>
