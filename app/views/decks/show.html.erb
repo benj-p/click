@@ -73,15 +73,15 @@
                       <div class="student-name">
                         <p><%= truncate(result[1][:card].question, length: 24) %></p>
                       </div>
-                      <% unless result[1][:results][:correct] == 0 %>
+
                         <%= render 'shared/arc', color: 'green', percentage: (result[1][:results][:correct] / result[1][:results][:attempts].to_f) * 100,  size: 'small' %>
-                      <% end %>
-                      <% unless result[1][:results][:incorrect] == 0 %>
+
+
                         <%= render 'shared/arc', color: 'red', percentage: (result[1][:results][:incorrect] / result[1][:results][:attempts].to_f) * 100,  size: 'small' %>
-                      <% end %>
-                      <% unless result[1][:results][:unsure] == 0 %>
+
+
                         <%= render 'shared/arc', color: 'grey', percentage: (result[1][:results][:unsure] / result[1][:results][:attempts].to_f) * 100,  size: 'small' %>
-                      <% end %>
+
                     </div>
                   </div>
                 <% end %>
