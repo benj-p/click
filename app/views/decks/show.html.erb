@@ -1,7 +1,6 @@
   <div class="container">
-    <div class="sections">
-      <div class="row justify-content-md-center">
-        <div class="col-sm-12 col-md-9">
+      <div class="row mb-3">
+        <div class="col-sm-12">
 
 
           <div class="row mb-3">
@@ -10,19 +9,19 @@
           </div>
 
           <div class="row">
-            <div class="col-sm-12 col-md-4">
+            <div class="col-sm-12 col-md-3">
               <%= render 'shared/arc', color: 'green', percentage: @results[:correct] , text: 'Correct', size: 'large' %>
             </div>
-            <div class="col-sm-12 col-md-4">
+            <div class="col-sm-12 col-md-3">
               <%= render 'shared/arc', color: 'red', percentage: @results[:incorrect] , text: 'Incorrect', size: 'large' %>
             </div>
-            <div class="col-sm-12 col-md-4">
+            <div class="col-sm-12 col-md-3">
               <%= render 'shared/arc', color: 'grey', percentage: @results[:unsure] , text: 'Unsure', size: 'large' %>
             </div>
           </div>
 
-          <div class="row py-3">
-            <div class="col-12">
+          <div class="row mb-3">
+            <div class="col-sm-9">
               <div class="deck-info d-flex align-items-center">
                 <div class="deck-data">
                   <p><i class="far fa-calendar-plus"></i> <strong>Created</strong> <%= time_ago_in_words(@deck.created_at) %> ago</p>
@@ -34,7 +33,7 @@
           </div>
 
           <div class="row">
-            <div class="col-sm-12 col-md-6">
+            <div class="col-sm-12 col-md-5">
               <div class="section">
                 <% @section.users.each do |student| %>
                 <div class="student-list-item">
@@ -66,7 +65,7 @@
 
               </div>
             </div>
-            <div class="col-sm-12 col-md-6">
+            <div class="col-sm-12 col-md-4">
               <div class="section">
                 <% @results_by_card.each do |result| %>
                   <div class="student-info">
@@ -92,6 +91,5 @@
           </div>
         </div>
       </div>
-    </div>
   </div>
 
