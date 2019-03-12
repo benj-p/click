@@ -41,10 +41,7 @@
                       <%= cl_image_tag(student.photo.url, class: "avatar-small") %>
                     <div class="student-name">
                         <p><%= link_to (student.first_name + " " + student.last_name), deck_results_section_deck_user_path(@section, @deck, student) %></p>
-                    </div>
-                  </div>
-
-                  <div class="attempts-bar">
+                        <div class="attempts-bar">
                     <% student.deck_attempts(@deck).each do |attempt| %>
                       <% if attempt.response == "Correct" %>
                         <div class="attempt attempt-green" data-toggle="tooltip" title="<%= attempt.card.question %>"></div>
@@ -55,6 +52,11 @@
                       <% end %>
                     <% end %>
                   </div>
+                    </div>
+
+                  </div>
+
+
 
                 </div>
                 <% end %>

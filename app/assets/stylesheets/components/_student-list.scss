@@ -30,6 +30,14 @@
 		padding-left: 8px;
     margin: 0px;
 	}
+  .student-name {
+    a {
+      color: #000;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
 }
 
 .student-list-content {
@@ -39,7 +47,6 @@
   .student-name {
      flex-grow: 1;
     p {
-
       font-weight: bold;
     }
   }
