@@ -52,38 +52,7 @@ ActiveRecord::Schema.define(version: 2019_03_11_115003) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "curriculum_id"
-    t.boolean "shared", default: false
     t.index ["curriculum_id"], name: "index_decks_on_curriculum_id"
-  end
-
-  create_table "event_types", force: :cascade do |t|
-    t.string "name"
-    t.boolean "active", default: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "feed_events", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "title"
-    t.bigint "deck_id"
-    t.bigint "event_type_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "about_user_id"
-    t.index ["deck_id"], name: "index_feed_events_on_deck_id"
-    t.index ["event_type_id"], name: "index_feed_events_on_event_type_id"
-    t.index ["user_id"], name: "index_feed_events_on_user_id"
-  end
-
-  create_table "follows", force: :cascade do |t|
-    t.integer "following_id", null: false
-    t.integer "follower_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["follower_id"], name: "index_follows_on_follower_id"
-    t.index ["following_id", "follower_id"], name: "index_follows_on_following_id_and_follower_id", unique: true
-    t.index ["following_id"], name: "index_follows_on_following_id"
   end
 
   create_table "registrations", force: :cascade do |t|
@@ -112,15 +81,6 @@ ActiveRecord::Schema.define(version: 2019_03_11_115003) do
     t.index ["curriculum_id"], name: "index_sections_on_curriculum_id"
   end
 
-  create_table "todo_items", force: :cascade do |t|
-    t.string "name"
-    t.bigint "user_id"
-    t.boolean "completed", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_todo_items_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -143,12 +103,7 @@ ActiveRecord::Schema.define(version: 2019_03_11_115003) do
   add_foreign_key "cards", "resources"
   add_foreign_key "curriculums", "users"
   add_foreign_key "decks", "curriculums"
-  add_foreign_key "feed_events", "decks"
-  add_foreign_key "feed_events", "event_types"
-  add_foreign_key "feed_events", "users"
-  add_foreign_key "feed_events", "users", column: "about_user_id"
   add_foreign_key "registrations", "sections"
   add_foreign_key "registrations", "users"
   add_foreign_key "sections", "curriculums"
-  add_foreign_key "todo_items", "users"
 end
