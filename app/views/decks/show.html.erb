@@ -9,19 +9,19 @@
           </div>
 
           <div class="row">
-            <div class="col-sm-12 col-md-3">
+            <div class="col-sm-12 col-md-4">
               <%= render 'shared/arc', color: 'green', percentage: @results[:correct] , text: 'Correct', size: 'large' %>
             </div>
-            <div class="col-sm-12 col-md-3">
+            <div class="col-sm-12 col-md-4">
               <%= render 'shared/arc', color: 'red', percentage: @results[:incorrect] , text: 'Incorrect', size: 'large' %>
             </div>
-            <div class="col-sm-12 col-md-3">
+            <div class="col-sm-12 col-md-4">
               <%= render 'shared/arc', color: 'grey', percentage: @results[:unsure] , text: 'Unsure', size: 'large' %>
             </div>
           </div>
 
           <div class="row mb-3 py-9">
-            <div class="col-sm-9">
+            <div class="col-sm-12">
               <div class="deck-info d-flex align-items-center">
                 <div class="deck-data">
                   <p><i class="far fa-calendar-plus"></i> <strong>Created</strong> <%= time_ago_in_words(@deck.created_at) %> ago</p>
@@ -33,7 +33,7 @@
           </div>
 
           <div class="row">
-            <div class="col-sm-12 col-md-5">
+            <div class="col-sm-12 col-md-6">
               <div class="section">
                 <% @section.users.each do |student| %>
                 <div class="student-list-item">
@@ -41,10 +41,7 @@
                       <%= cl_image_tag(student.photo.url, class: "avatar-small") %>
                     <div class="student-name">
                         <p><%= link_to (student.first_name + " " + student.last_name), deck_results_section_deck_user_path(@section, @deck, student) %></p>
-                    </div>
-                  </div>
-
-                  <div class="attempts-bar">
+                        <div class="attempts-bar">
                     <% student.deck_attempts(@deck).each do |attempt| %>
                       <% if attempt.response == "Correct" %>
                         <div class="attempt attempt-green" data-toggle="tooltip" title="<%= attempt.card.question %>"></div>
@@ -55,13 +52,18 @@
                       <% end %>
                     <% end %>
                   </div>
+                    </div>
+
+                  </div>
+
+
 
                 </div>
                 <% end %>
 
               </div>
             </div>
-            <div class="col-sm-12 col-md-4">
+            <div class="col-sm-12 col-md-6">
               <div class="section">
                 <% @results_by_card.each do |result| %>
                   <div class="student-info">
