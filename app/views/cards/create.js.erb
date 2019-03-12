@@ -1,0 +1,16 @@
+// Show add new resource form if selected whan making new card
+const checkbox = document.querySelector("#new_resource");
+const fakeButton = document.querySelector("#fake-button");
+const modal = document.querySelector(".modal-header");
+
+if (checkbox.checked === true) {
+      // '<% @cards << Card.last %>'
+      console.log("second hi!!");
+      // modal.insertAdjacentHTML('beforeend', '<% j render "cards/new_resource" %>')
+      fakeButton.click();
+      console.log('<%= @cards.last.question %>')
+    }
+
+// if (window.location.pathname.includes('/cards')) {
+//   showResourceForm()
+// }

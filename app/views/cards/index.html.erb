@@ -59,7 +59,7 @@
 </div>
 
 <!-- hidden new resource modal button -->
-<button type="button" id="fake-button" class="btn" data-toggle="modal" data-target="#myResourceModal"><i class="fas fa-plus-circle"></i></button>
+<button hidden type="button" id="fake-button" class="btn" data-toggle="modal" data-target="#myResourceModal"><i class="fas fa-plus-circle"></i></button>
 
 <!-- New resource modal content-->
 <div id="myResourceModal" class="modal fade" role="dialog">
@@ -75,7 +75,7 @@
         <%= f.input :name %>
         <%= f.input :text %>
         <%= f.input :url %>
-        <%= f.input :card, collection: @cards,  label_method: :question%>
+        <%= f.input :card, collection: @cards, label_method: :question %>
       </div>
       <div class="form-actions">
         <%= f.submit "Create Resource", class: "btn-yellow new-card" %>

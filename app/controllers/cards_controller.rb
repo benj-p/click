@@ -25,6 +25,7 @@ class CardsController < ApplicationController
     @curriculum = @deck.curriculum
     authorize @card
     if @card.save
+      @cards = Deck.find(params[:deck_id]).cards
       respond_to do |format|
         format.js
         format.html {redirect_to curriculum_deck_cards_path(@curriculum, @deck)}
