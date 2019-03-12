@@ -19,10 +19,10 @@
           <% elsif deck.due_date - Date.today() < 3 %>
             <p class="short-due-date">Due: <%= deck.due_date.strftime("%b %d") %></p>
           <% else %>
-            <p class="long-due-date">Due: <%= deck.due_date.strftime("%b %d") %></p>
+            <p>Due: <%= deck.due_date.strftime("%b %d") %></p>
           <% end %>
         </div>
-        <div class="row">
+        <div class="row help" style="margin-bottom: 8px;">
           <div class="col-8 px-0">
             <p class="deck-name"><%= deck.curriculum.name %></p>
           </div>
@@ -48,7 +48,7 @@
           <p><i class="fas fa-book"></i> <%= deck.name %></p>
           <p class="completed-due-date">Completed</p>
         </div>
-        <div class="row">
+        <div class="row" style="margin-bottom: 8px;">
           <div class="col-9 px-0">
             <p class="deck-name"><%= deck.curriculum.name %></p>
           </div>

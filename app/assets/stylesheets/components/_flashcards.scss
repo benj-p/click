@@ -9,21 +9,41 @@
   grid-gap: 20px;
 }
 
-.flashcard, .resource,  {
+.flashcard, .resources,  {
   display: flex;
   flex-wrap: wrap;
-  background-color: white;
   border-radius: 8px;
-  height: 160px;
-  margin-top: 15px;
-  padding: 10px;
-  box-shadow: 2px 3px 5px 0px rgba(10,9,10,0.1);
+  box-shadow: 2px 3px 5px 0px rgba(10,9,10,0.05);
   position: relative;
-  .text, .resource-text {
+  .text {
     height: 100px;
+    margin: 10px;
     text-overflow: ellipsis;
     overflow: hidden;
     width: 100%;
+  }
+}
+
+.flashcard {
+  background-color: white;
+  height: 160px;
+  margin-top: 15px;
+}
+
+.flashcard:hover {
+  box-shadow: 2px 5px 8px 0px rgba(10,9,10,0.1);
+}
+
+.resources {
+  background: rgba(196, 196, 196, 0.24);
+  width: 100%;
+  border-radius: 0px 0px 8px 8px;
+  position: absolute;
+  bottom: 0;
+  .resources-text {
+    padding: 8px;
+    font-size: 14px;
+    height: 40px;
   }
 }
 
@@ -31,22 +51,19 @@
   text-align: center;
   justify-content: center;
   vertical-align: center;
-  background-color: #F9F9F9;
+  background-color: white;
 }
 
 .fa-plus-circle,{
-  font-size: 64px;
-  margin-top: 36px;
-  color: #A8A3A0;
+  font-size: 32px;
+  position: absolute;
+  bottom: 45%;
+  right: 45%;
 }
-
-.fa-plus-circle:hover {
-    color: #998D8C;
-  }
 
 .edit-link-icon, {
   position: absolute;
-  bottom: 12px;
+  bottom: 8px;
   right: 12px;
 }
 
@@ -59,4 +76,8 @@
 .heading-edit{
   padding-left: 15px;
   font-size: 14px;
+}
+
+.add-resource:hover {
+  color: #4A4A4A;
 }
