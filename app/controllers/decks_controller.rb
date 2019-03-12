@@ -10,7 +10,7 @@ class DecksController < ApplicationController
     @section = Section.find(params[:section_id])
     @results_by_student = []
     @results_by_card = {}
-    @results = { correct: 0, incorrect: 0, unsure: 0 }
+    @results = @deck.deck_results(@section)
     attempts = @section.users.map { |user| user.attempts.select { |attempt| attempt.card.deck == @deck } }
     @attempts_count = attempts.count
 
@@ -38,13 +38,13 @@ class DecksController < ApplicationController
         @results_by_card[attempt.card.id][:results][:attempts] += 1
         case attempt.response
         when "Correct"
-          @results[:correct] += 1
+          # @results[:correct] += 1
           @results_by_card[attempt.card.id][:results][:correct] += 1
         when "Incorrect"
-          @results[:incorrect] += 1
+          # @results[:incorrect] += 1
           @results_by_card[attempt.card.id][:results][:incorrect] += 1
         when "I don't know"
-          @results[:unsure] += 1
+          # @results[:unsure] += 1
           @results_by_card[attempt.card.id][:results][:unsure] += 1
         end
       end
