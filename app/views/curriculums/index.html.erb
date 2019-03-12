@@ -23,12 +23,13 @@
                     </div>
 
                     <div class="avatars">
-                      <img src="https://www.gannett-cdn.com/presto/2018/11/02/PMOR/b8cfb6be-d5d7-4c36-8f2e-16acb2d38eaf-MissingMorris1.jpg?width=534&height=712&fit=bounds&auto=webp" class="img-circle">
-                      <img src="https://www.gannett-cdn.com/presto/2018/11/02/PMOR/b8cfb6be-d5d7-4c36-8f2e-16acb2d38eaf-MissingMorris1.jpg?width=534&height=712&fit=bounds&auto=webp" class="img-circle">
+                      <% section.users.take(4).each do |student| %>
+                        <%= cl_image_tag(student.photo.url, class: "img-circle") %>
+                      <% end %>
                     </div>
                   </div>
                 </div>
-              <% end %> 
+              <% end %>
 
                <%= link_to section_path(section) do %>
                 <div class="p-bar">
