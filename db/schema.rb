@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2019_03_11_154742) do
 
   # These are extensions that must be enabled in order to support this database
@@ -53,7 +52,6 @@ ActiveRecord::Schema.define(version: 2019_03_11_154742) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "curriculum_id"
-    t.boolean "shared", default: false
     t.index ["curriculum_id"], name: "index_decks_on_curriculum_id"
   end
 
@@ -76,16 +74,6 @@ ActiveRecord::Schema.define(version: 2019_03_11_154742) do
     t.index ["deck_id"], name: "index_feed_events_on_deck_id"
     t.index ["event_type_id"], name: "index_feed_events_on_event_type_id"
     t.index ["user_id"], name: "index_feed_events_on_user_id"
-  end
-
-  create_table "follows", force: :cascade do |t|
-    t.integer "following_id", null: false
-    t.integer "follower_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["follower_id"], name: "index_follows_on_follower_id"
-    t.index ["following_id", "follower_id"], name: "index_follows_on_following_id_and_follower_id", unique: true
-    t.index ["following_id"], name: "index_follows_on_following_id"
   end
 
   create_table "registrations", force: :cascade do |t|
