@@ -59,11 +59,7 @@
                 <p><%= pluralize(@section.users.count, 'student') %> enrolled</p>
                 <% @section.users.each do |user| %>
                   <div class="student-info pl-0">
-                    <% if user.photo.file %>
-                      <%= cl_image_tag(user.photo, class: "avatar-small") %>
-                    <% else %>
-                      <%= cl_image_tag("man-157699__340.png", class: "avatar-small") %>
-                    <% end %>
+                      <%= cl_image_tag(user.photo.url, class: "avatar-small") %>
                     <div class="student-list-content">
                       <div class="student-name">
                         <p><%= user.first_name %> <%= user.last_name %></p>
