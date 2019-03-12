@@ -51,7 +51,7 @@
         <% if @section.users.empty? %>
           <span>There are no registered students for this section</span>
         <% else %>
-          <p><%= pluralize(@section.users.count, 'student') %> enrolled</p>
+          <h4><%= pluralize(@section.users.count, 'student') %> enrolled</h4>
           <% @section.users.each do |user| %>
             <div class="student-info pl-0">
                 <%= cl_image_tag(user.photo.url, class: "avatar-small") %>
