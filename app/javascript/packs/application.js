@@ -88,7 +88,7 @@ if (window.location.pathname.includes('/takedeck')) {
 // Celebration
 
 
-if (window.location.pathname.includes('/takedeck')) {
+if (document.referrer.includes('/takedeck') && window.location.pathname.includes('/decksummary')) {
   var Point = 0;
   var Particle = 0;
 
