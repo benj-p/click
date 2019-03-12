@@ -53,14 +53,14 @@
 }
 
 .page-content {
-  padding-top: 52px;
+  padding-top: 6vh;
   flex: 1 1 auto;
   overflow: auto;
 }
 
 @media(max-width: 575.98px) {
   .page-content {
-    padding-top: 48px;
+    padding-top: 6vh;
   }
 
   .btn-container-homepage-mobile {
