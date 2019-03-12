@@ -2,13 +2,17 @@
     <h1><span> <%= @deck.name %></span><%= link_to '<i class="fas fa-pen heading-edit"></i>'.html_safe, edit_curriculum_deck_path(@curriculum, @deck) %> </h1>
     <button type="button" class="btn btn-yellow" data-toggle="modal" data-target="#myResourceModal">+ New Resource</button>
     <div class="flashcard-grid column col-lg-3 col-6">
-
+      <a data-toggle="modal" href="#myModal">
       <div class="flashcard flashcard-new">
+        <div class="text d-flex align-items-center justify-content-center">
+          <i class="fas fa-plus-circle"></i>
+        </div>
         <div class="resources">
           <div class="resources-text">
           </div>
         </div>
       </div>
+      </a>
       <% @deck.cards.each do |card| %>
         <div class="flashcard">
           <div class="text">
