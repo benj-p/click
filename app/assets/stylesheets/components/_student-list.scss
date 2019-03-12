@@ -28,6 +28,7 @@
   padding: 8px;
 	p{
 		padding-left: 8px;
+    margin: 0px;
 	}
 }
 
@@ -36,9 +37,9 @@
   align-items: center;
   width: 100%;
   .student-name {
-    /* flex-grow: 1; */
+     flex-grow: 1;
     p {
-      margin: 0;
+
       font-weight: bold;
     }
   }
