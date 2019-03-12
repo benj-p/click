@@ -252,6 +252,6 @@ if (document.referrer.includes('/takedeck') && window.location.pathname.includes
     return p;
   }
 
-  setTimeout(function() { $("canvas").fadeOut("slow"); }, 2000);
+  setTimeout(function() { $("canvas").fadeOut(2000); }, 2000);
 
 }
