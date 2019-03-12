@@ -1,4 +1,5 @@
 class Card < ApplicationRecord
+  attr_accessor :new_resource
   has_many :attempts
   belongs_to :deck
   belongs_to :resource, optional: true

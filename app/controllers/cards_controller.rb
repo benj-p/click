@@ -6,6 +6,8 @@ class CardsController < ApplicationController
     @cards = policy_scope(Card).where(deck: Deck.find(params[:deck_id]))
     @deck = Deck.find(params[:deck_id])
     @curriculum = Curriculum.find(params[:curriculum_id])
+    @card = Card.new
+    @resource = Resource.new
   end
 
   def new
@@ -23,7 +25,11 @@ class CardsController < ApplicationController
     @curriculum = @deck.curriculum
     authorize @card
     if @card.save
-      redirect_to curriculum_deck_cards_path(@curriculum, @deck)
+      @cards = Deck.find(params[:deck_id]).cards
+      respond_to do |format|
+        format.js
+        format.html {redirect_to curriculum_deck_cards_path(@curriculum, @deck)}
+      end
     else
       render :new
     end

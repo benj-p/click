@@ -1,10 +1,12 @@
-<div class="main">
   <div class="container">
     <h1><span> <%= @deck.name %></span><%= link_to '<i class="fas fa-pen heading-edit"></i>'.html_safe, edit_curriculum_deck_path(@curriculum, @deck) %> </h1>
-    <h2>Cards</h2>
     <div class="flashcard-grid column col-lg-3 col-6">
       <div class="flashcard flashcard-new">
-        <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_curriculum_deck_card_path(@curriculum, @deck) %>
+        <button type="button" class="btn" data-toggle="modal" data-target="#myModal"><i class="fas fa-plus-circle"></i></button>
+        <div class="resources">
+          <div class="resources-text">
+          </div>
+        </div>
       </div>
       <% @deck.cards.each do |card| %>
         <div class="flashcard">
@@ -12,37 +14,74 @@
             <%= truncate(card.question, length: 100) %>
           </div>
           <div class="resources">
-            <% if card.resource %>
-              <%= card.resource.name %>
-            <% end %>
-          </div>
-          <div class="edit-link-icon">
-            <%= link_to '<i class="fas fa-pen"></i>'.html_safe, edit_curriculum_deck_card_path(@curriculum, @deck, card) %>
+            <div class="resources-text">
+              <% if card.resource %>
+                <%= card.resource.name %>
+              <% end %>
+            </div>
+            <div class="edit-link-icon">
+              <%= link_to '<i class="fas fa-pen"></i>'.html_safe, edit_curriculum_deck_card_path(@curriculum, @deck, card) %>
+            </div>
           </div>
         </div>
       <% end %>
     </div>
-    <h2>Deck Resources</h2>
-    <div class="deck-resources column col-lg-3 col-6">
-      <div class="flashcard flashcard-new">
-        <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_curriculum_deck_resource_path(@curriculum, @deck) %>
+  </div>
+
+<!-- New card modal content-->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>New Card</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-          <% @resources.each do |resource| %>
-        <div class="resource">
-          <div class="name">
-            <p><%= resource.name %></p>
-          </div>
-          <div class="resource-text">
-            <%= truncate(resource.text, length: 80) %>
-          </div>
-          <div class="resource-url">
-            <%= link_to '<i class="fas fa-external-link-alt"></i>'.html_safe, resource.url, target: :_blank %>
-          </div>
-          <div class="edit-link-icon">
-            <%= link_to '<i class="fas fa-pen"></i>'.html_safe, edit_curriculum_deck_resource_path(@curriculum, @deck, resource) %>
-          </div>
-        </div>
-      <% end %>
+      <div class="modal-body">
+        <%= simple_form_for [@curriculum, @deck, @card], remote: true, :method => :post do |f| %>
+      <div class="form-inputs">
+        <%= f.input :question%>
+        <%= f.input :correct_answer %>
+        <%= f.input :wrong_answer %>
+        <%= f.input :resource, collection: @resources%>
+        <p class="add-resource">
+          <%= f.input :new_resource, :label => false do  %>
+          <%= check_box_tag :new_resource  %> Add a resouce after card creation?
+          <% end %>
+        </p>
+      </div>
+      <div class="form-actions">
+        <%= f.submit "Create Card", class: "btn-yellow new-card" %>
+      </div>
+    <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- hidden new resource modal button -->
+<button hidden type="button" id="fake-button" class="btn" data-toggle="modal" data-target="#myResourceModal"><i class="fas fa-plus-circle"></i></button>
+
+<!-- New resource modal content-->
+<div id="myResourceModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>New Resource</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [@curriculum, @deck, @resource], :method => :post do |f| %>
+      <div class="form-inputs">
+        <%= f.input :name %>
+        <%= f.input :text %>
+        <%= f.input :url %>
+        <%= f.input :card, collection: @cards, label_method: :question %>
+      </div>
+      <div class="form-actions">
+        <%= f.submit "Create Resource", class: "btn-yellow new-card" %>
+      </div>
+    <% end %>
+      </div>
     </div>
   </div>
 </div>
