@@ -1,0 +1,31 @@
+<div class="feed-item">
+  <div class="feed-item-icon">
+    <i class="fas fa-check-circle"></i>
+  </div>
+  <% if feed_event.about_user %>
+    <div class="feed-item-user">
+      <% if feed_event.about_user.photo.file %>
+        <%= cl_image_tag(result[:student].photo, class: "avatar-small") %>
+      <% else %>
+        <%= cl_image_tag("ptvra7owhsunxrse9zut.png", class: "avatar-small") %>
+      <% end %>
+      <span><strong><%= feed_event.about_user.first_name %> <%= feed_event.about_user.last_name %></strong></span>
+    </div>
+  <% end%>
+  <div class="feed-item-content">
+    <p><%= feed_event.title %></p>
+    <% unless feed_event.reminder_created %>
+      <%= simple_form_for(TodoItem.new) do |f| %>
+        <%= f.hidden_field :name, :value => feed_event.title %>
+        <%= f.hidden_field :feed_event, :value => feed_event.id %>
+        <%= f.submit "Create reminder", class: 'btn btn-yellow' %>
+      <% end %>
+    <% end %>
+    <!-- <button type="button" class="btn btn-yellow" data-toggle="modal" data-target="#myModal">Create reminder</button> -->
+  </div>
+  <div class="feed-item-date">
+    <%= time_ago_in_words(feed_event.created_at) %> ago
+  </div>
+</div>
+
+
