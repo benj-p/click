@@ -23,15 +23,21 @@ class CardsController < ApplicationController
     @card.deck = Deck.find(params[:deck_id])
     @deck = @card.deck
     @curriculum = @deck.curriculum
+    if params[:resource]
+      @card.resource = Resource.find(params[:resource])
+    elsif params[:resource_name] && params[:resource_text] && params[:resource_url]
+      resource = Resource.new(name: params[:resource_name], text: params[:resource_text], url: params[:resource_url] )
+      if Resource.save
+        @card.resource = resource
+      end
+    end
     authorize @card
     if @card.save
-      @cards = Deck.find(params[:deck_id]).cards
-      respond_to do |format|
-        format.js
-        format.html {redirect_to curriculum_deck_cards_path(@curriculum, @deck)}
-      end
+      flash[:notice] = "Card created"
+      redirect_to curriculum_deck_cards_path(@curriculum, @deck)
     else
-      render :new
+      flash[:notice] = "Card not created"
+      redirect_to curriculum_deck_cards_path(@curriculum, @deck)
     end
   end
 
@@ -44,8 +50,11 @@ class CardsController < ApplicationController
   def update
     @card = Card.find(params[:id])
     @card.update(card_params)
-    @resource = Resource.find(params[:card][:resource])
+    if Resource.find(params[:card][:resource])
+      @resource = Resource.find(params[:card][:resource])
+    end
     @card.resource = @resource
+    raise
     @card.save
     authorize @card
     @deck = @card.deck
@@ -64,7 +73,7 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:name, :question, :correct_answer, :wrong_answer)
+    params.require(:card).permit(:name, :question, :correct_answer, :wrong_answer, resource_attributes: [:name, :url, :text])
   end
 
   def deck_resources

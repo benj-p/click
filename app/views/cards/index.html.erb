@@ -37,17 +37,22 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for [@curriculum, @deck, @card], remote: true, :method => :post do |f| %>
+        <%= simple_form_for [@curriculum, @deck, @card], :method => :post do |f| %>
       <div class="form-inputs">
         <%= f.input :question%>
         <%= f.input :correct_answer %>
         <%= f.input :wrong_answer %>
         <%= f.input :resource, collection: @resources%>
-        <p class="add-resource">
-          <%= f.input :new_resource, :label => false do  %>
-          <%= check_box_tag :new_resource  %> Add a resouce after card creation?
-          <% end %>
-        </p>
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          Add resource?
+        </a>
+        <div class="collapse" id="collapseExample">
+          <p class="add-resource">
+              <%= f.input :resource_name %>
+              <%= f.input :resource_text %>
+              <%= f.input :resource_url %>
+          </p>
+        </div>
       </div>
       <div class="form-actions">
         <%= f.submit "Create Card", class: "btn-yellow new-card" %>
