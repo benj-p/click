@@ -3,12 +3,15 @@
   	border: none;
 	overflow: hidden;
 	box-shadow: 2px 2px 8px rgba(10,10,10,0.1);
+}
 
-	// &:hover {
-	// 	box-shadow: 2px 2px 8px rgba(10,10,10,0.5);
-	// }
+.col-12 {
+  padding-left: 0;
+  padding-right: 0;
+}
 
-
+.sections h2 {
+  margin-top: 24px;
 }
 
 .card-rating:hover .card,
@@ -98,7 +101,7 @@
 	}
 
 	a{
-		color: black; 
+		color: black;
 	}
 
 	a:hover{
