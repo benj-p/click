@@ -46,7 +46,6 @@ end
 
 
 puts "creating curriculums..."
-#Curriculums
 image_counter = 0
 User.where(is_teacher: true).each do |teacher|
   3.times do
@@ -67,21 +66,6 @@ Curriculum.all.each do |curriculum|
   end
 end
 
-# students.each_with_index do |student, index|
-#   a = (1..5).to_a.shuffle
-#   b = (6..10).to_a.shuffle
-#   (1..2).to_a.sample.times do |indextimes|
-#     registration = Registration.new
-#     registration.user = students[index+1]
-#     if indextimes == 1
-#       registration.section = sections[a.pop]
-#     else
-#       registration.section = sections[b.pop]
-#     end
-#     registration.save!
-#   end
-# end
-
 puts "creating registrations..."
 def rand_section
   offset = rand(Section.count)
@@ -89,12 +73,11 @@ def rand_section
 end
 
 User.where(is_teacher: false).each do |student|
-  3.times do
+  2.times do
     Registration.create(user: student, section: rand_section)
   end
 end
 
-#Deck
 puts "creating decks..."
 Curriculum.all.each do |curriculum|
   5.times do
@@ -102,12 +85,10 @@ Curriculum.all.each do |curriculum|
   end
 end
 
-#Resources
 puts "creating resources..."
 r1 = Resource.create!({name: "Review Video", text: "Check out this video review of historical taxes in the UK.", url: "https://www.youtube.com/watch?v=vnJY_vO-xDU"})
 r2 = Resource.create({name: "Review Reading", text: "Did you review the reading assignment? Check it out here.", url: "https://londonlovesbusiness.com/5-genuinely-interesting-tax-facts-no-really/"})
 
-#Card
 
 puts "creating answers..."
 answers = ["True", "False"]
@@ -117,37 +98,6 @@ Deck.all.each do |deck|
     Card.create(deck: deck, question: Faker::Quote.famous_last_words, correct_answer: answers[0], wrong_answer: answers[1])
   end
 end
-
-# #Answer
-
-# Attempt.create({user: students[1], card: a_1, response: "Correct"})
-# Attempt.create({user: students[2], card: a_1, response: "Incorrect"})
-# Attempt.create({user: students[3], card: a_1, response: "Correct"})
-# Attempt.create({user: students[1], card: a_2, response: "Correct"})
-# Attempt.create({user: students[2], card: a_2, response: "Incorrect"})
-# Attempt.create({user: students[3], card: a_2, response: "Incorrect"})
-# Attempt.create({user: students[1], card: a_3, response: "I don't know"})
-# Attempt.create({user: students[2], card: a_3, response: "Correct"})
-# Attempt.create({user: students[3], card: a_3, response: "Correct"})
-# Attempt.create({user: students[1], card: b_1, response: "Correct"})
-# Attempt.create({user: students[2], card: b_1, response: "Incorrect"})
-# Attempt.create({user: students[3], card: b_1, response: "Correct"})
-# Attempt.create({user: students[1], card: b_2, response: "Correct"})
-# Attempt.create({user: students[2], card: b_2, response: "Incorrect"})
-# Attempt.create({user: students[3], card: b_2, response: "Correct"})
-# Attempt.create({user: students[1], card: b_3, response: "Correct"})
-# Attempt.create({user: students[2], card: b_3, response: "Correct"})
-# Attempt.create({user: students[3], card: b_3, response: "Correct"})
-# Attempt.create({user: students[1], card: c_1, response: "Correct"})
-# Attempt.create({user: students[2], card: c_1, response: "Incorrect"})
-# Attempt.create({user: students[3], card: c_1, response: "Correct"})
-# Attempt.create({user: students[1], card: c_2, response: "Correct"})
-# Attempt.create({user: students[2], card: c_2, response: "Correct"})
-# Attempt.create({user: students[3], card: c_2, response: "Correct"})
-# Attempt.create({user: students[1], card: c_3, response: "I don't know"})
-# Attempt.create({user: students[2], card: c_3, response: "Incorrect"})
-# Attempt.create({user: students[3], card: c_3, response: "Correct"})
-
 
 puts "creating demo users..."
 teacher = User.create(email: "izzyweber@gmail.com", first_name: "Izzy", last_name: "Weber" , password: "secret", is_teacher: true)
