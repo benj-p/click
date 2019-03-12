@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   def feed
-    @feed_events = current_user.feed
+    @feed_events = current_user.feed.paginate(page: params[:page])
     authorize  current_user
   end
 
