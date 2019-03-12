@@ -58,3 +58,10 @@
     }
   }
 }
+
+@media (min-width: 576px) {
+  .navbar-expand-sm .navbar-nav .dropdown-menu {
+      position: absolute;
+      margin-top: 20px;
+  }
+}
