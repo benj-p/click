@@ -31,6 +31,11 @@ class UsersController < ApplicationController
   def feed
     @feed_events = current_user.feed.paginate(page: params[:page])
     authorize  current_user
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private
