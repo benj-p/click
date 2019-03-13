@@ -91,27 +91,27 @@ Deck.all.each do |deck|
   end
 end
 
-puts "creating demo users..."
+puts "creating demo seeds..."
 teacher = User.create(email: "izzyweber@gmail.com", first_name: "Izzy", last_name: "Weber" , password: "secret", is_teacher: true)
 
 
-intro_to_accounting = Curriculum.create({user: teacher, name: "Intro to Accounting", image: curriculum_images[-1]})
+# intro_to_accounting = Curriculum.create({user: teacher, name: "Intro to Accounting", image: curriculum_images[-1]})
 intro_to_tax = Curriculum.create({user: teacher, name: "Intro to Taxation", image: curriculum_images[-2]})
-geography = Curriculum.create({user: teacher, name: "Elementary Geography", image: curriculum_images[3]})
+geography = Curriculum.create({user: teacher, name: "Elementary Geography", image: curriculum_images[4]})
 
-financial_statement_basics = Deck.create({curriculum: intro_to_accounting, name: "Financial Statement Basics", due_date: Date.today()-10})
-journal_entry_basics = Deck.create({curriculum: intro_to_accounting, name: "Basic Journal Entries", due_date: Date.today()+3})
+# financial_statement_basics = Deck.create({curriculum: intro_to_accounting, name: "Financial Statement Basics", due_date: Date.today()-10})
+# journal_entry_basics = Deck.create({curriculum: intro_to_accounting, name: "Basic Journal Entries", due_date: Date.today()+3})
 fun_facts_taxes = Deck.create({curriculum: intro_to_tax, name: "Fun Facts About Taxes", due_date: Date.today()-2})
 europe = Deck.create({curriculum: geography, name: "Europe Review", due_date: Date.today()-8})
 asia = Deck.create({curriculum: geography, name: "Fun Facts About Asia", due_date: Date.today()-3})
 americas = Deck.create({curriculum: geography, name: "American Geography", due_date: Date.today()+5})
 
-a_1 = Card.create({deck: financial_statement_basics, question: 'One of the three sections of the statement of cash flows is called "Cash Flows from Manufacturing Activities."', correct_answer: "False" , wrong_answer: "True" })
-a_2 = Card.create({deck: financial_statement_basics, question: 'The act of declaring and paying a cash dividend affects both the income statement and the statement of cash flows.', correct_answer: "False" , wrong_answer: "True" })
-a_3 = Card.create({deck: financial_statement_basics, question: 'Form 10-Q is the quarterly report publicly traded companies int he US must file with the SEC.', correct_answer: "True" , wrong_answer: "False" })
-b_1 = Card.create({deck: journal_entry_basics, question: 'REI receives $500 cash from a customer for a rock-climbing class that will take place in two months. This transaction increases two balance sheet accounts.', correct_answer: "True" , wrong_answer: "False" })
-b_2 = Card.create({deck: journal_entry_basics, question: 'On August 2nd 2018, the Seahawks (an NFL team) receive cash in advance from fans purchasing tickets to the Seahawks vs. Packers game which will take place in September 2018. The August 2nd journal entry will cause total stockholder’s equity to decrease.', correct_answer: "False" , wrong_answer: "True" })
-b_3 = Card.create({deck: journal_entry_basics, question: 'When a company pays an employee’s salary in advance of the time that the employee earns the salary, prepaid salary is recorded as an asset.  Then, as the employee earns the salary, both expenses and liabilities will increase.', correct_answer: "False" , wrong_answer: "True" })
+# a_1 = Card.create({deck: financial_statement_basics, question: 'One of the three sections of the statement of cash flows is called "Cash Flows from Manufacturing Activities."', correct_answer: "False" , wrong_answer: "True" })
+# a_2 = Card.create({deck: financial_statement_basics, question: 'The act of declaring and paying a cash dividend affects both the income statement and the statement of cash flows.', correct_answer: "False" , wrong_answer: "True" })
+# a_3 = Card.create({deck: financial_statement_basics, question: 'Form 10-Q is the quarterly report publicly traded companies int he US must file with the SEC.', correct_answer: "True" , wrong_answer: "False" })
+# b_1 = Card.create({deck: journal_entry_basics, question: 'REI receives $500 cash from a customer for a rock-climbing class that will take place in two months. This transaction increases two balance sheet accounts.', correct_answer: "True" , wrong_answer: "False" })
+# b_2 = Card.create({deck: journal_entry_basics, question: 'On August 2nd 2018, the Seahawks (an NFL team) receive cash in advance from fans purchasing tickets to the Seahawks vs. Packers game which will take place in September 2018. The August 2nd journal entry will cause total stockholder’s equity to decrease.', correct_answer: "False" , wrong_answer: "True" })
+# b_3 = Card.create({deck: journal_entry_basics, question: 'When a company pays an employee’s salary in advance of the time that the employee earns the salary, prepaid salary is recorded as an asset.  Then, as the employee earns the salary, both expenses and liabilities will increase.', correct_answer: "False" , wrong_answer: "True" })
 c_1 = Card.create({deck: fun_facts_taxes, question: "During the Middle Ages, European governments placed a tax on soap. France didn't repeal its soap tax until 1835", correct_answer: "False" , wrong_answer: "True", resource: r2})
 c_2 = Card.create({deck: fun_facts_taxes, question: 'In 1712, England imposed a tax on printed wallpaper. Builders avoided the tax by hanging plain wallpaper and then painting patterns on the walls."', correct_answer: "True" , wrong_answer: "False", resource: r1})
 c_3 = Card.create({deck: fun_facts_taxes, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
@@ -142,13 +142,8 @@ f_7 = Card.create({deck: americas, question: 'Alaska is the easternmost state in
 f_8 = Card.create({deck: americas, question: 'California has more residents than all of Canada.', correct_answer: "True" , wrong_answer: "False", resource: r2})
 
 teacher_sections = []
-sections = (1..8).each_with_object({}) do |i, section|
-  if i <= 4
-    teacher_sections << Section.create(name: ('A'..'D').to_a[i-1], curriculum: intro_to_accounting)
-  else
-    x = i - 4
-    teacher_sections << Section.create(name: ('A'..'D').to_a[x-1], curriculum: intro_to_tax)
-  end
+sections = (1..4).each_with_object({}) do |i, section|
+    teacher_sections << Section.create(name: ('A'..'D').to_a[i-1], curriculum: intro_to_tax)
 end
 
 Section.create(name: 'A', curriculum: geography)
@@ -163,7 +158,7 @@ teacher_sections.each do |section|
   end
 end
 
-student1 = User.create(email: "jonny@email.com", first_name: "Jonny", last_name: "Gates", password: "secret")
+student1 = User.create(email: "jonnygates@gmail.com", first_name: "Jonny", last_name: "Gates", password: "secret")
 student2 = User.create(email: "leti@email.com", first_name: "Letizia", last_name: "Ackaouy", password: "secret")
 student3 = User.create(email: "ben@email.com", first_name: "Ben", last_name: "Pham", password: "secret")
 student4 = User.create(email: "kitty@email.com", first_name: "Kitty", last_name: "Mayo", password: "secret")
