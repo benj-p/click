@@ -46,6 +46,6 @@ class AttemptsController < ApplicationController
   end
 
   def calculate_percent(attempts, total)
-    (attempts / total) * 100
+    (attempts.to_f / total) * 100
   end
 end
