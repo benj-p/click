@@ -29,6 +29,9 @@
           <%= f.submit "Create reminder", class: 'btn btn-yellow' %>
         <% end %>
       <% end %>
+      <% if feed_event.deck && feed_event.section %>
+        <%= link_to "View results", deck_results_section_deck_user(feed_event.section, feed_event.deck, feed_event.about_user), class: 'btn btn grey' %>
+      <% end %>
       </div>
     <div class="feed-item-date">
       <%= time_ago_in_words(feed_event.created_at) %> ago
