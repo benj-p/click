@@ -194,16 +194,16 @@ User.where(is_teacher: false).each do |student|
   end
 end
 
-student1 = User.create(email: "jonnygates@gmail.com", first_name: "Jonny", last_name: "Gates", password: "secret", photo: jonny_pic)
-student2 = User.create(email: "leti@email.com", first_name: "Letizia", last_name: "Ackaouy", password: "secret", photo: leti_pic)
-student3 = User.create(email: "ben@email.com", first_name: "Ben", last_name: "Pham", password: "secret", photo: ben_pic)
-student4 = User.create(email: "kitty@email.com", first_name: "Kitty", last_name: "Mayo", password: "secret", photo: kitty_pic)
-student5 = User.create(email: "sahar@email.com", first_name: "Sahar", last_name: "Khan", password: "secret", photo: sahar_pic)
-student6 = User.create(email: "shopie@email.com", first_name: "Sophie", last_name: "Spratley", password: "secret", photo: sophie_pic)
-student7 = User.create(email: "taniya@email.com", first_name: "Taniya", last_name: "Amidon", password: "secret", photo: taniya_pic)
-student8 = User.create(email: "chai@email.com", first_name: "Chai", last_name: "Chai", password: "secret", photo: chai_pic)
-student9 = User.create(email: "janie@email.com", first_name: "Janie", last_name: "Amero", password: "secret", photo: janie_pic)
-student10 = User.create(email: "jack@email.com", first_name: "Jack", last_name: "Burke", password: "secret", photo: jack_pic)
+student1 = User.create(email: "jonnygates@gmail.com", first_name: "Jonny", last_name: "Gates", password: "secret", remote_photo_url: jonny_pic)
+student2 = User.create(email: "leti@email.com", first_name: "Letizia", last_name: "Ackaouy", password: "secret", remote_photo_url: leti_pic)
+student3 = User.create(email: "ben@email.com", first_name: "Ben", last_name: "Pham", password: "secret", remote_photo_url: ben_pic)
+student4 = User.create(email: "kitty@email.com", first_name: "Kitty", last_name: "Mayo", password: "secret", remote_photo_url: kitty_pic)
+student5 = User.create(email: "sahar@email.com", first_name: "Sahar", last_name: "Khan", password: "secret", remote_photo_url: sahar_pic)
+student6 = User.create(email: "shopie@email.com", first_name: "Sophie", last_name: "Spratley", password: "secret", remote_photo_url: sophie_pic)
+student7 = User.create(email: "taniya@email.com", first_name: "Taniya", last_name: "Amidon", password: "secret", remote_photo_url: taniya_pic)
+student8 = User.create(email: "chai@email.com", first_name: "Chai", last_name: "Chai", password: "secret", remote_photo_url: chai_pic)
+student9 = User.create(email: "janie@email.com", first_name: "Janie", last_name: "Amero", password: "secret", remote_photo_url: janie_pic)
+student10 = User.create(email: "jack@email.com", first_name: "Jack", last_name: "Burke", password: "secret", remote_photo_url: jack_pic)
 
 izzys_geography_class = [student1, student2, student3, student4, student5, student6, student7, student8, student9, student10]
 izzys_geography_class.each do |student|
