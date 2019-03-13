@@ -27,6 +27,17 @@ curriculum_images= ["https://images.pexels.com/photos/7366/startup-photos.jpg?au
 "https://images.pexels.com/photos/53621/calculator-calculation-insurance-finance-53621.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
 "https://images.pexels.com/photos/33692/coins-currency-investment-insurance.jpg?auto=compress&cs=tinysrgb&dpr=2&w=500"]
 
+izzy_pic = "https://avatars1.githubusercontent.com/u/40670298?s=400&u=1548eda59e882bcc68d46407c5df2417f27c0ea8&v=4"
+jonny_pic = "https://avatars1.githubusercontent.com/u/40580116?s=460&v=4"
+leti_pic = "https://avatars2.githubusercontent.com/u/45164755?s=400&v=4"
+kitty_pic = "https://avatars1.githubusercontent.com/u/24207615?s=400&v=4"
+sahar_pic = "https://avatars1.githubusercontent.com/u/37933922?s=400&v=4"
+ben_pic = "https://avatars2.githubusercontent.com/u/43788107?s=400&v=4"
+sophie_pic = "https://avatars2.githubusercontent.com/u/30593507?s=400&v=4"
+jack_pic = "https://avatars1.githubusercontent.com/u/39552144?s=400&v=4"
+janie_pic = "https://avatars2.githubusercontent.com/u/43782388?s=400&v=4"
+chai_pic = "https://avatars2.githubusercontent.com/u/44784077?s=400&v=4"
+taniya_pic = "https://avatars0.githubusercontent.com/u/43338205?s=400&v=4"
 
 puts "creating students..."
 students = (1..20).each_with_object({}) do |i, student|
