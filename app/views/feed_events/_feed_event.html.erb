@@ -1,0 +1,41 @@
+<div class="feed-item">
+
+  <% if feed_event.about_user %>
+    <div class="feed-item-user">
+      <% if feed_event.about_user.photo.file %>
+        <%= cl_image_tag(result[:student].photo, class: "avatar-small") %>
+      <% else %>
+        <%= cl_image_tag("ptvra7owhsunxrse9zut.png", class: "avatar-small") %>
+      <% end %>
+      <div class="feed-item-user-name">
+        <span><strong><%= feed_event.about_user.first_name %> <%= feed_event.about_user.last_name %></strong></span>
+      </div>
+      <div class="feed-item-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+    </div>
+  <% end%>
+  <div class="feed-item-content">
+    <p><%= feed_event.title %></p>
+  </div>
+  <div class="feed-item-footer">
+    <div class="feed-item-reminder d-flex">
+      <% if feed_event.reminder_created %>
+        <%= link_to "View reminder", todo_items_path, class: 'btn btn-grey' %>
+      <% else %>
+        <%= simple_form_for(TodoItem.new) do |f| %>
+          <%= f.hidden_field :name, :value => feed_event.title %>
+          <%= f.hidden_field :feed_event, :value => feed_event.id %>
+          <%= f.submit "Create reminder", class: 'btn btn-yellow' %>
+        <% end %>
+      <% end %>
+      <% if feed_event.deck && feed_event.section %>
+        <%= link_to "View results", deck_results_section_deck_user_path(feed_event.section, feed_event.deck, feed_event.about_user), class: 'btn btn grey' %>
+      <% end %>
+      </div>
+    <div class="feed-item-date">
+      <%= time_ago_in_words(feed_event.created_at) %> ago
+    </div>
+  </div>
+
+</div>

@@ -7,6 +7,8 @@ puts "starting to seed..."
 
 puts "destroying current records..."
 Attempt.destroy_all
+FeedEvent.destroy_all
+EventType.destroy_all
 Card.destroy_all
 Resource.destroy_all
 Deck.destroy_all
@@ -33,8 +35,9 @@ curriculum_images= ["https://images.pexels.com/photos/7366/startup-photos.jpg?au
 "https://images.pexels.com/photos/33692/coins-currency-investment-insurance.jpg?auto=compress&cs=tinysrgb&dpr=2&w=500"]
 
 
+
 puts "creating students..."
-students = (1..20).each_with_object({}) do |i, student|
+students = (1..30).each_with_object({}) do |i, student|
   student[i] = User.create(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , password: "secret")
 end
 
@@ -43,7 +46,10 @@ teachers = (1..3).each_with_object({}) do |i, teacher|
   teacher[i] = User.create(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , password: "secret", is_teacher: true)
 end
 
-
+puts "creating event types"
+EventType.create(name: "Completed deck")
+EventType.create(name: "Shared deck")
+EventType.create(name: "Extreme score")
 
 puts "creating curriculums..."
 image_counter = 0
@@ -201,5 +207,28 @@ User.where(is_teacher: false).each do |student|
 end
 
 end_time = Time.now()
+students_array = User.where(is_teacher: false)
+
+puts "creating feed items..."
+
+def random_title(student, deck)
+  score = rand(25) + 76
+  result = rand(3)
+
+  case result
+  when 0 then "#{ student.first_name } completed #{ deck.name } and scored #{ score }%! Don't forget to say well done!"
+  when 1 then "#{ student.first_name } completed #{ deck.name } and scored #{ score - 75 }%! Don't forget to follow up!"
+  when 2 then "#{ student.first_name } completed #{ deck.name } and answered #{ score }% as unsure. Make sure you check in."
+  end
+end
+
+20.times do
+  student = students_array.offset(rand(students_array.count)).first
+  deck = Deck.offset(rand(Deck.count)).first
+  FeedEvent.create(user: teacher, about_user: student, title: random_title(student,deck), event_type: EventType.last)
+end
+
+
+
 
 puts "Seeding complete!! Done in #{ end_time - start_time } seconds."
