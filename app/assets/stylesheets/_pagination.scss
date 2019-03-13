@@ -1,0 +1,11 @@
+.pagination a {
+  margin: 0px 8px;
+  color: #000;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: #ebebeb;
+  transition: 0.3s;
+  &:hover {
+    opacity: 0.5;
+  }
+}
