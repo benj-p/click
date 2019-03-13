@@ -8,20 +8,22 @@
   </div>
 
   <div class="row mb-3">
-    <div class="col-sm-12 col-md-6">
+    <div class="col-sm-12 col-md-9">
       <h4>Decks</h4>
       <% @section.curriculum.decks.each do |deck| %>
         <% if deck.due_date > Date.today %>
-          <div class="deck-list-item">
-            <div class="deck-list-item-image"></div>
-            <div class="deck-list-item-info">
-              <span> <%= link_to deck.name, section_deck_path(@section, deck) %> </span>
+          <%= link_to section_deck_path(@section, deck) do %>
+            <div class="deck-list-item">
+              <div class="deck-list-item-image"></div>
+              <div class="deck-list-item-info">
+                <span> <%= deck.name %> </span>
+              </div>
+              <div class="progress-bar">
+                <% results = deck.deck_results(@section) %>
+                 <%= render 'shared/progress_bar', correct: results[:correct], incorrect: results[:incorrect] %>
+              </div>
             </div>
-            <div class="progress-bar">
-              <% results = deck.deck_results(@section) %>
-               <%= render 'shared/progress_bar', correct: results[:correct], incorrect: results[:incorrect] %>
-            </div>
-          </div>
+          <% end %>
         <% end %>
       <% end %>
 
@@ -29,16 +31,18 @@
         <h4>Past</h4>
         <% @section.curriculum.decks.each do |deck| %>
           <% if deck.due_date < Date.today %>
-            <div class="deck-list-item completed-deck">
-              <div class="deck-list-item-image d-flex align-items-center justify-content-center"><i class="fas fa-check"></i></div>
-              <div class="deck-list-item-info">
-                <span> <%= link_to deck.name, section_deck_path(@section, deck) %> </span>
+          <%= link_to section_deck_path(@section, deck) do %>
+              <div class="deck-list-item completed-deck">
+                <div class="deck-list-item-image d-flex align-items-center justify-content-center"><i class="fas fa-check"></i></div>
+                <div class="deck-list-item-info">
+                  <span> <%= deck.name %> </span>
+                </div>
+                <div class="progress-bar">
+                  <% results = deck.deck_results(@section) %>
+                 <%= render 'shared/progress_bar', correct: results[:correct], incorrect: results[:incorrect] %>
+                </div>
               </div>
-              <div class="progress-bar">
-                <% results = deck.deck_results(@section) %>
-               <%= render 'shared/progress_bar', correct: results[:correct], incorrect: results[:incorrect] %>
-              </div>
-            </div>
+            <% end %>
           <% end %>
         <% end %>
       <% else %>
@@ -51,7 +55,7 @@
         <% if @section.users.empty? %>
           <span>There are no registered students for this section</span>
         <% else %>
-          <p><%= pluralize(@section.users.count, 'student') %> enrolled</p>
+          <h4><%= pluralize(@section.users.count, 'student') %> enrolled</h4>
           <% @section.users.each do |user| %>
             <div class="student-info pl-0">
                 <%= cl_image_tag(user.photo.url, class: "avatar-small") %>

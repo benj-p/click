@@ -6,7 +6,7 @@
       </div>
       <% @curriculums.each do |curriculum| %>
         <div class="row mb-3">
-          <h2><%= curriculum.name %></h2>
+          <h2 class="curriculum-subheader"><%= curriculum.name %></h2>
           <div class="col-12">
           <div class="cards">
           <% curriculum.sections.first(4).each do |section| %>
@@ -23,18 +23,22 @@
                     </div>
 
                     <div class="avatars">
-                      <img src="https://www.gannett-cdn.com/presto/2018/11/02/PMOR/b8cfb6be-d5d7-4c36-8f2e-16acb2d38eaf-MissingMorris1.jpg?width=534&height=712&fit=bounds&auto=webp" class="img-circle">
-                      <img src="https://www.gannett-cdn.com/presto/2018/11/02/PMOR/b8cfb6be-d5d7-4c36-8f2e-16acb2d38eaf-MissingMorris1.jpg?width=534&height=712&fit=bounds&auto=webp" class="img-circle">
+                      <% section.users.take(4).each do |student| %>
+                        <%= cl_image_tag(student.photo.url, class: "img-circle") %>
+                      <% end %>
                     </div>
                   </div>
                 </div>
-              <% end %> 
+              <% end %>
 
-               <%= link_to section_path(section) do %>
+                <%= link_to section_path(section) do %>
+                <% @attempts = Section.find(section.id).users.includes(:attempts).map(&:attempts).flatten %>
+                <% @correct_attempts = @attempts.select { |attempt| attempt.response == "Correct" }.count / @attempts.count.to_f * 100 %>
+                <% @incorrect_attempts = @attempts.select { |attempt| attempt.response == "Incorrect" }.count / @attempts.count.to_f * 100  %>
                 <div class="p-bar">
                   <div class="p-bar-margin">
                     <div class="progress" style="height: 10px">
-                      <div class="progress-bar progress-bar-striped bg-success progress-bar-margin" role="progressbar" style="width: 20%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      <%= render 'shared/progress_bar', correct: @correct_attempts, incorrect: @incorrect_attempts %>
                     </div>
                   </div>
                 </div>
@@ -54,7 +58,7 @@
           <div class="card">
             <div class="background-image" style="background-image: url(<%= curriculum.image %>)">
             </div>
-              <h2 class="title-style"> <%=curriculum.name %></h2>
+              <h2 class="title-style curriculum-subheader"> <%=curriculum.name %></h2>
               <div class="card-bottom curriculum">
                 <div class="description">
                   <% curriculum.decks.each do |deck|%>

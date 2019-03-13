@@ -30,6 +30,18 @@
 		padding-left: 8px;
     margin: 0px;
 	}
+  .student-name {
+    a {
+      color: #000;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.question-text {
+  max-width: 300px;
 }
 
 .student-list-content {
@@ -38,10 +50,6 @@
   width: 100%;
   .student-name {
      flex-grow: 1;
-    p {
-
-      font-weight: bold;
-    }
   }
 }
 

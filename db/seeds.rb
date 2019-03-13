@@ -52,7 +52,6 @@ EventType.create(name: "Shared deck")
 EventType.create(name: "Extreme score")
 
 puts "creating curriculums..."
-#Curriculums
 image_counter = 0
 User.where(is_teacher: true).each do |teacher|
   3.times do
@@ -73,21 +72,6 @@ Curriculum.all.each do |curriculum|
   end
 end
 
-# students.each_with_index do |student, index|
-#   a = (1..5).to_a.shuffle
-#   b = (6..10).to_a.shuffle
-#   (1..2).to_a.sample.times do |indextimes|
-#     registration = Registration.new
-#     registration.user = students[index+1]
-#     if indextimes == 1
-#       registration.section = sections[a.pop]
-#     else
-#       registration.section = sections[b.pop]
-#     end
-#     registration.save!
-#   end
-# end
-
 puts "creating registrations..."
 def rand_section
   offset = rand(Section.count)
@@ -95,12 +79,11 @@ def rand_section
 end
 
 User.where(is_teacher: false).each do |student|
-  3.times do
+  2.times do
     Registration.create(user: student, section: rand_section)
   end
 end
 
-#Deck
 puts "creating decks..."
 Curriculum.all.each do |curriculum|
   5.times do
@@ -108,12 +91,10 @@ Curriculum.all.each do |curriculum|
   end
 end
 
-#Resources
 puts "creating resources..."
 r1 = Resource.create!({name: "Review Video", text: "Check out this video review of historical taxes in the UK.", url: "https://www.youtube.com/watch?v=vnJY_vO-xDU"})
 r2 = Resource.create({name: "Review Reading", text: "Did you review the reading assignment? Check it out here.", url: "https://londonlovesbusiness.com/5-genuinely-interesting-tax-facts-no-really/"})
 
-#Card
 
 puts "creating answers..."
 answers = ["True", "False"]
@@ -124,52 +105,20 @@ Deck.all.each do |deck|
   end
 end
 
-# #Answer
-
-# Attempt.create({user: students[1], card: a_1, response: "Correct"})
-# Attempt.create({user: students[2], card: a_1, response: "Incorrect"})
-# Attempt.create({user: students[3], card: a_1, response: "Correct"})
-# Attempt.create({user: students[1], card: a_2, response: "Correct"})
-# Attempt.create({user: students[2], card: a_2, response: "Incorrect"})
-# Attempt.create({user: students[3], card: a_2, response: "Incorrect"})
-# Attempt.create({user: students[1], card: a_3, response: "I don't know"})
-# Attempt.create({user: students[2], card: a_3, response: "Correct"})
-# Attempt.create({user: students[3], card: a_3, response: "Correct"})
-# Attempt.create({user: students[1], card: b_1, response: "Correct"})
-# Attempt.create({user: students[2], card: b_1, response: "Incorrect"})
-# Attempt.create({user: students[3], card: b_1, response: "Correct"})
-# Attempt.create({user: students[1], card: b_2, response: "Correct"})
-# Attempt.create({user: students[2], card: b_2, response: "Incorrect"})
-# Attempt.create({user: students[3], card: b_2, response: "Correct"})
-# Attempt.create({user: students[1], card: b_3, response: "Correct"})
-# Attempt.create({user: students[2], card: b_3, response: "Correct"})
-# Attempt.create({user: students[3], card: b_3, response: "Correct"})
-# Attempt.create({user: students[1], card: c_1, response: "Correct"})
-# Attempt.create({user: students[2], card: c_1, response: "Incorrect"})
-# Attempt.create({user: students[3], card: c_1, response: "Correct"})
-# Attempt.create({user: students[1], card: c_2, response: "Correct"})
-# Attempt.create({user: students[2], card: c_2, response: "Correct"})
-# Attempt.create({user: students[3], card: c_2, response: "Correct"})
-# Attempt.create({user: students[1], card: c_3, response: "I don't know"})
-# Attempt.create({user: students[2], card: c_3, response: "Incorrect"})
-# Attempt.create({user: students[3], card: c_3, response: "Correct"})
-
-
 puts "creating demo users..."
 teacher = User.create(email: "izzyweber@gmail.com", first_name: "Izzy", last_name: "Weber" , password: "secret", is_teacher: true)
 
 
 intro_to_accounting = Curriculum.create({user: teacher, name: "Intro to Accounting", image: curriculum_images[-1]})
 intro_to_tax = Curriculum.create({user: teacher, name: "Intro to Taxation", image: curriculum_images[-2]})
-fake_curric1 = Curriculum.create(user: teacher, name: Faker::Educator.course_name, image: curriculum_images[image_counter])
-fake_curric2 = Curriculum.create(user: teacher, name: Faker::Educator.course_name, image: curriculum_images[image_counter+1])
-
-Deck.create(curriculum: fake_curric1, name: "Intro to #{fake_curric1.name}")
-Deck.create(curriculum: fake_curric2, name: "Intro to #{fake_curric2.name}")
+geography = Curriculum.create({user: teacher, name: "Elementary Geography", image: curriculum_images[-3]})
 
 financial_statement_basics = Deck.create({curriculum: intro_to_accounting, name: "Financial Statement Basics", due_date: Date.today()-10})
 journal_entry_basics = Deck.create({curriculum: intro_to_accounting, name: "Basic Journal Entries", due_date: Date.today()+3})
-fun_facts_taxes = Deck.create({curriculum: intro_to_tax, name: "Fun Facts About Taxes", due_date: Date.today()+5})
+fun_facts_taxes = Deck.create({curriculum: intro_to_tax, name: "Fun Facts About Taxes", due_date: Date.today()-2})
+europe = Deck.create({curriculum: geography, name: "Europe Review", due_date: Date.today()-8})
+asia = Deck.create({curriculum: geography, name: "Fun Facts About Asia", due_date: Date.today()-3})
+americas = Deck.create({curriculum: geography, name: "American Geography", due_date: Date.today()+5})
 
 a_1 = Card.create({deck: financial_statement_basics, question: 'One of the three sections of the statement of cash flows is called "Cash Flows from Manufacturing Activities."', correct_answer: "False" , wrong_answer: "True" })
 a_2 = Card.create({deck: financial_statement_basics, question: 'The act of declaring and paying a cash dividend affects both the income statement and the statement of cash flows.', correct_answer: "False" , wrong_answer: "True" })
@@ -180,6 +129,31 @@ b_3 = Card.create({deck: journal_entry_basics, question: 'When a company pays an
 c_1 = Card.create({deck: fun_facts_taxes, question: "During the Middle Ages, European governments placed a tax on soap. France didn't repeal its soap tax until 1835", correct_answer: "False" , wrong_answer: "True", resource: r2})
 c_2 = Card.create({deck: fun_facts_taxes, question: 'In 1712, England imposed a tax on printed wallpaper. Builders avoided the tax by hanging plain wallpaper and then painting patterns on the walls."', correct_answer: "True" , wrong_answer: "False", resource: r1})
 c_3 = Card.create({deck: fun_facts_taxes, question: 'In 1705, Russian Emperor Peter the Great placed a tax on beards, hoping to force men to adopt the clean-shaven look that was common in Western Europe.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+d_1 = Card.create({deck: europe, question: 'The UK is comprised of 5 countries.', correct_answer: "False" , wrong_answer: "True", resource: r2})
+d_2 = Card.create({deck: europe, question: 'Germany borders France.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+d_3 = Card.create({deck: europe, question: 'Norway is part of the European Union.', correct_answer: "False" , wrong_answer: "True", resource: r2})
+d_4 = Card.create({deck: europe, question: 'Ljubljana is the capital of Lithuania', correct_answer: "False" , wrong_answer: "True"})
+d_5 = Card.create({deck: europe, question: "Russia takes up 30 percent of Europe's land area", correct_answer: "False" , wrong_answer: "True"})
+d_6 = Card.create({deck: europe, question: 'Croissants were invented in Austria', correct_answer: "True" , wrong_answer: "False"})
+d_7 = Card.create({deck: europe, question: 'Per capita, Sweden has the most McDonalds in Europe ', correct_answer: "True" , wrong_answer: "False", resource: r2})
+d_8 = Card.create({deck: europe, question: 'Italy is the most visisted country in Europe', correct_answer: "False" , wrong_answer: "True"})
+d_9 = Card.create({deck: europe, question: 'Jonny gates is the worlds great football player', correct_answer: "True" , wrong_answer: "False", resource: r2})
+e_1 = Card.create({deck: asia, question: 'There are 60 countries in Asia.', correct_answer: "False" , wrong_answer: "True", resource: r2})
+e_2 = Card.create({deck: asia, question: 'Bhutan is the smallest country by land area and population.', correct_answer: "False" , wrong_answer: "True", resource: r2})
+e_3 = Card.create({deck: asia, question: 'Budhism is the oldest religion in Asia', correct_answer: "False" , wrong_answer: "True"})
+e_4 = Card.create({deck: asia, question: 'India is the country in the Asia with the cheapest labor ', correct_answer: "True" , wrong_answer: "False", resource: r2})
+e_5 = Card.create({deck: asia, question: 'English is the national language in Singapore', correct_answer: "False" , wrong_answer: "True", resource: r2})
+e_6 = Card.create({deck: asia, question: 'A law was enacted in China that requires adults to visit their elderly parents often.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+e_7 = Card.create({deck: asia, question: 'Apples were first dicovered in Asia', correct_answer: "False" , wrong_answer: "True", resource: r2})
+e_8 = Card.create({deck: asia, question: 'Pakistan is the 3rd most populated country in Asia after china and India', correct_answer: "False" , wrong_answer: "True", resource: r2})
+f_1 = Card.create({deck: americas, question: 'To visit the Grand Canyon, you can go to Arizona.', correct_answer: "True" , wrong_answer: "False", resource: r2})
+f_2 = Card.create({deck: americas, question: 'There are four Le Wagon schools in Latin America', correct_answer: "True" , wrong_answer: "False", resource: r2})
+f_3 = Card.create({deck: americas, question: 'Puerto Rico is the most populous Island in the Caribbean', correct_answer: "False" , wrong_answer: "True", resource: r2})
+f_4 = Card.create({deck: americas, question: 'Columbus sailed to American in 1492', correct_answer: "True" , wrong_answer: "False", resource: r2})
+f_5 = Card.create({deck: americas, question: 'Sao Paulo is the capital of Brazil.', correct_answer: "False" , wrong_answer: "True", resource: r2})
+f_6 = Card.create({deck: americas, question: 'Canada is the coutry with the most wild bears.', correct_answer: "False" , wrong_answer: "True", resource: r2})
+f_7 = Card.create({deck: americas, question: 'Alaska is the easternmost state in the US', correct_answer: "True" , wrong_answer: "False", resource: r2})
+f_8 = Card.create({deck: americas, question: 'California has more residents than all of Canada.', correct_answer: "True" , wrong_answer: "False", resource: r2})
 
 teacher_sections = []
 sections = (1..8).each_with_object({}) do |i, section|
@@ -191,6 +165,11 @@ sections = (1..8).each_with_object({}) do |i, section|
   end
 end
 
+Section.create(name: 'A', curriculum: geography)
+Section.create(name: 'B', curriculum: geography)
+Section.create(name: 'C', curriculum: geography)
+Section.create(name: 'D', curriculum: geography)
+
 teacher_sections.each do |section|
   15.times do
     reg = Registration.new(user: User.offset(rand(User.count)).first, section: section)
@@ -198,15 +177,23 @@ teacher_sections.each do |section|
   end
 end
 
-student = User.create(email: "jonny@email.com", first_name: "Jonny", last_name: "Gates", password: "secret")
+student1 = User.create(email: "jonny@email.com", first_name: "Jonny", last_name: "Gates", password: "secret")
+student2 = User.create(email: "leti@email.com", first_name: "Letizia", last_name: "Ackaouy", password: "secret")
+student3 = User.create(email: "ben@email.com", first_name: "Ben", last_name: "Pham", password: "secret")
+student4 = User.create(email: "kitty@email.com", first_name: "Kitty", last_name: "Mayo", password: "secret")
+student5 = User.create(email: "sahar@email.com", first_name: "Sahar", last_name: "Khan", password: "secret")
+student6 = User.create(email: "shopie@email.com", first_name: "Sophie", last_name: "Spratley", password: "secret")
+student7 = User.create(email: "taniya@email.com", first_name: "Taniya", last_name: "Amidon", password: "secret")
+student8 = User.create(email: "chai@email.com", first_name: "Chai", last_name: "Chai", password: "secret")
+student9 = User.create(email: "janie@email.com", first_name: "Janie", last_name: "Amero", password: "secret")
+student10 = User.create(email: "jack@email.com", first_name: "Jack", last_name: "Burke", password: "secret")
 
-Registration.create(user: student, section: Section.last)
-Registration.create(user: student, section: Section.first)
-
+izzys_geography_class = [student1, student2, student3, student4, student5, student6, student7, student8, student9, student10]
+izzys_geography_class.each do |student|
+  Registration.create(user: student, section: Section.last)
+end
 
 puts "creating attempts..."
-
-
 responses = ["Correct", "Incorrect", "I don't know"]
 
 User.where(is_teacher: false).each do |student|
