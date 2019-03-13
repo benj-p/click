@@ -1,20 +1,22 @@
 .progress-bar {
-  background: #fff;
+  background: #505050;
+  height: 20px;
   border-radius: 20px;
-  stroke-linecap: round;
+  flex-flow: row !important;
+  justify-content: flex-start;
   overflow: hidden;
-}
-
-/** TODO: Add animation **/
-
-/*.line {
-  stroke-dasharray: 1000;
-  stroke-dasharray: 1000;
-  animation: dash 1s ease-out forwards;
-}
-
-@keyframes dash {
-  0% {
-    stroke-dasharray: 0 100;
+  .bar {
+  height: 20px;
   }
-}*/
+  .green {
+    background: $green;
+  }
+  .red {
+    background: $red;
+  }
+
+}
+
+
+
+
