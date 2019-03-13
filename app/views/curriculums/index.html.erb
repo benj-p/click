@@ -2,12 +2,14 @@
   <div class="container">
     <div class="sections">
       <div class="row mb-3">
-        <h1><span>My Sections</span></h1>
+        <div class="col-sm-12">
+          <h1><span>My Sections</span></h1>
+        </div>
       </div>
       <% @curriculums.each do |curriculum| %>
         <div class="row mb-3">
+          <div class="col-sm-12">
           <h2 class="curriculum-subheader"><%= curriculum.name %></h2>
-          <div class="col-12">
           <div class="cards">
           <% curriculum.sections.first(4).each do |section| %>
             <div class="card-rating">
