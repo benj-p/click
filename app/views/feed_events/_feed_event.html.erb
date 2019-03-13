@@ -1,7 +1,5 @@
 <div class="feed-item">
-  <div class="feed-item-icon">
-    <i class="fas fa-check-circle"></i>
-  </div>
+
   <% if feed_event.about_user %>
     <div class="feed-item-user">
       <% if feed_event.about_user.photo.file %>
@@ -9,7 +7,12 @@
       <% else %>
         <%= cl_image_tag("ptvra7owhsunxrse9zut.png", class: "avatar-small") %>
       <% end %>
-      <span><strong><%= feed_event.about_user.first_name %> <%= feed_event.about_user.last_name %></strong></span>
+      <div class="feed-item-user-name">
+        <span><strong><%= feed_event.about_user.first_name %> <%= feed_event.about_user.last_name %></strong></span>
+      </div>
+      <div class="feed-item-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
     </div>
   <% end%>
   <div class="feed-item-content">

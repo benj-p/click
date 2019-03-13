@@ -8,7 +8,7 @@
   box-shadow: 0px 2px 5px rgba(0,0,0,0.05);
   padding: 16px;
   margin: 16px 0px;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .feed-item-content {
@@ -30,8 +30,11 @@
 }
 
 .feed-item-icon {
-  text-align: right;
   i {
     font-size: 32px;
   }
+}
+
+.feed-item-user-name {
+  flex-grow: 1;
 }
