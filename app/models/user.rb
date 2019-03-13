@@ -10,7 +10,8 @@ class User < ApplicationRecord
   has_many :sections, through: :registrations
   has_many :attempts
   has_many :curriculums, -> { where is_teacher: true }
-  has_many :feed_events
+  has_many :feed_events, dependent: :destroy
+  has_many :todo_items, dependent: :destroy
 
   mount_uploader :photo, PhotoUploader
 
