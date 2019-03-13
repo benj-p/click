@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="avatars">
-                      <% section.users.take(4).each do |student| %>
+                      <% section.users.take(4).shuffle.each do |student| %>
                         <%= cl_image_tag(student.photo.url, class: "img-circle") %>
                       <% end %>
                     </div>
