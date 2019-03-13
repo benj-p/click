@@ -19,7 +19,7 @@
     <p><%= feed_event.title %></p>
   </div>
   <div class="feed-item-footer">
-    <div class="feed-item-reminder">
+    <div class="feed-item-reminder d-flex">
       <% if feed_event.reminder_created %>
         <%= link_to "View reminder", todo_items_path, class: 'btn btn-grey' %>
       <% else %>
@@ -30,7 +30,7 @@
         <% end %>
       <% end %>
       <% if feed_event.deck && feed_event.section %>
-        <%= link_to "View results", deck_results_section_deck_user(feed_event.section, feed_event.deck, feed_event.about_user), class: 'btn btn grey' %>
+        <%= link_to "View results", deck_results_section_deck_user_path(feed_event.section, feed_event.deck, feed_event.about_user), class: 'btn btn grey' %>
       <% end %>
       </div>
     <div class="feed-item-date">
