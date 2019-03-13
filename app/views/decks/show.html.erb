@@ -69,7 +69,7 @@
                   <div class="student-info">
                     <div class="student-list-content">
                       <div class="student-name">
-                        <p><%= truncate(result[1][:card].question, length: 24) %></p>
+                        <p class="question-text"><%= truncate(result[1][:card].question, length: 200) %></p>
                         <% attempts = result[1][:results][:attempts].to_f %>
                         <% correct = result[1][:results][:correct] == 0 ? 0 : (result[1][:results][:correct] / attempts) * 100 %>
                         <% incorrect = result[1][:results][:incorrect] == 0 ? 0 : (result[1][:results][:incorrect] / attempts) * 100 %>

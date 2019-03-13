@@ -7,6 +7,8 @@ puts "starting to seed..."
 
 puts "destroying current records..."
 Attempt.destroy_all
+FeedEvent.destroy_all
+EventType.destroy_all
 Card.destroy_all
 Resource.destroy_all
 Deck.destroy_all
@@ -39,8 +41,9 @@ janie_pic = "https://avatars2.githubusercontent.com/u/43782388?s=400&v=4"
 chai_pic = "https://avatars2.githubusercontent.com/u/44784077?s=400&v=4"
 taniya_pic = "https://avatars0.githubusercontent.com/u/43338205?s=400&v=4"
 
+
 puts "creating students..."
-students = (1..20).each_with_object({}) do |i, student|
+students = (1..30).each_with_object({}) do |i, student|
   student[i] = User.create(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , password: "secret")
 end
 
@@ -48,6 +51,11 @@ puts "creating teachers..."
 teachers = (1..3).each_with_object({}) do |i, teacher|
   teacher[i] = User.create(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , password: "secret", is_teacher: true)
 end
+
+puts "creating event types"
+EventType.create(name: "Completed deck")
+EventType.create(name: "Shared deck")
+EventType.create(name: "Extreme score")
 
 puts "creating curriculums..."
 image_counter = 0
@@ -91,7 +99,12 @@ end
 puts "creating resources..."
 r1 = Resource.create!({name: "Review Video", text: "Check out this video review of historical taxes in the UK.", url: "https://www.youtube.com/watch?v=vnJY_vO-xDU"})
 r2 = Resource.create({name: "Review Reading", text: "Did you review the reading assignment? Check it out here.", url: "https://londonlovesbusiness.com/5-genuinely-interesting-tax-facts-no-really/"})
-
+r3 = Resource.create({name: "Review Map", text: "Did you review your map? Check it out here.", url: "https://www.google.com/search?q=map+of+uk+countries&rlz=1C5CHFA_enGB813GB813&source=lnms&tbm=isch&sa=X&ved=0ahUKEwissY75o__gAhUeSBUIHeCiCPEQ_AUIDigB&biw=1059&bih=636#imgrc=TGYdhNVbjW4I1M:"})
+r4 = Resource.create({name: "Review Map", text: "Check out this map of countries bordering France", url: "http://1.bp.blogspot.com/-v3vM7BxTBI4/VmZ13EEK9NI/AAAAAAAAFsg/y6rsSSIZ5uc/s1600/situation+g%C3%A9opolitique+de+la+France+et+ses+pays+voisins+Carte.gif"})
+r5 = Resource.create!({name: "Review Map", text: "Hey students! Those are all the countries in the EU", url: "https://www.schengenvisainfo.com/wp-content/uploads/2016/08/Member_States_of_the_European_Union.png"})
+r6 = Resource.create({name: "Review Map", text: "Check out this map of Lithuania", url: "https://www.local-life.com/vilnius/pages/m.1-795_12.jpg"})
+r7 = Resource.create({name: "Review Wikipedia", text: "Wikipedia is always a good place to start your research", url: "https://en.wikipedia.org/wiki/World_Tourism_rankings"})
+r8 = Resource.create({name: "Review Map", text: "Remember, per capita means for each person", url: "https://jakubmarian.com/wp-content/uploads/2014/11/mc-donalds-2016.jpg"})
 
 puts "creating answers..."
 answers = ["True", "False"]
@@ -104,7 +117,6 @@ end
 
 puts "creating demo seeds..."
 teacher = User.create(email: "izzyweber@gmail.com", first_name: "Izzy", last_name: "Weber" , password: "secret", is_teacher: true)
-
 
 # intro_to_accounting = Curriculum.create({user: teacher, name: "Intro to Accounting", image: curriculum_images[-1]})
 intro_to_tax = Curriculum.create({user: teacher, name: "Intro to Taxation", image: curriculum_images[-2]})
@@ -233,5 +245,25 @@ student1.sections.each do |section|
 end
 
 end_time = Time.now()
+students_array = User.where(is_teacher: false)
+
+puts "creating feed items..."
+
+def random_title(student, deck)
+  score = rand(25) + 76
+  result = rand(3)
+
+  case result
+  when 0 then "#{ student.first_name } completed #{ deck.name } and scored #{ score }%! Don't forget to say well done!"
+  when 1 then "#{ student.first_name } completed #{ deck.name } and scored #{ score - 75 }%! Don't forget to follow up!"
+  when 2 then "#{ student.first_name } completed #{ deck.name } and answered #{ score }% as unsure. Make sure you check in."
+  end
+end
+
+20.times do
+  student = students_array.offset(rand(students_array.count)).first
+  deck = Deck.offset(rand(Deck.count)).first
+  FeedEvent.create(user: teacher, about_user: student, title: random_title(student,deck), event_type: EventType.last)
+end
 
 puts "Seeding complete!! Done in #{ end_time - start_time } seconds."
