@@ -38,6 +38,16 @@ class UsersController < ApplicationController
     @unsure_answers = @deck.attempts.where(user: User.find(params[:id]), response: "I don't know")
   end
 
+  def feed
+    @feed_events = current_user.feed.paginate(page: params[:page])
+    authorize  current_user
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   private
 
   def set_user
