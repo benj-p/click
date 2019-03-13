@@ -17,8 +17,6 @@
   <% end%>
   <div class="feed-item-content">
     <p><%= feed_event.title %></p>
-
-    <!-- <button type="button" class="btn btn-yellow" data-toggle="modal" data-target="#myModal">Create reminder</button> -->
   </div>
   <div class="feed-item-footer">
     <div class="feed-item-reminder">
@@ -36,4 +34,5 @@
       <%= time_ago_in_words(feed_event.created_at) %> ago
     </div>
   </div>
+
 </div>

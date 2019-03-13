@@ -1,14 +1,13 @@
 <div class="container">
-  <div class="row justify-content-md-center">
-    <div class="col-sm-12 col-md-9">
+  <div class="row ">
+    <div class="col-sm-12">
       <div class="row">
-        <div class="col-12">
+        <div class="col-sm-12">
           <h1><span>My Reminders</span></h1>
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-12 col-md-6">
-          <div class="feed-container">
+        <div class="col-sm-12">
             <h4>Outstanding</h4>
             <% @todo_items.where(completed: false).each do |item| %>
               <div class="feed-item">
@@ -23,7 +22,6 @@
                 <i class="fas fa-check"></i> Complete
               </div>
             <% end %>
-          </div>
         </div>
       </div>
     </div>
