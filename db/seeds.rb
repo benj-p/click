@@ -98,7 +98,7 @@ r3 = Resource.create({name: "Review Map", text: "Did you review your map? Check 
 r4 = Resource.create({name: "Review Map", text: "Check out this map of countries bordering France", url: "http://1.bp.blogspot.com/-v3vM7BxTBI4/VmZ13EEK9NI/AAAAAAAAFsg/y6rsSSIZ5uc/s1600/situation+g%C3%A9opolitique+de+la+France+et+ses+pays+voisins+Carte.gif"})
 r5 = Resource.create!({name: "Review Map", text: "Hey students! Those are all the countries in the EU", url: "https://www.schengenvisainfo.com/wp-content/uploads/2016/08/Member_States_of_the_European_Union.png"})
 r6 = Resource.create({name: "Review Map", text: "Check out this map of Lithuania", url: "https://www.local-life.com/vilnius/pages/m.1-795_12.jpg"})
-r7 = Resource.create({name: "Review Wikipedia", text: "Wikipedia is always a good placee to start your research", url: "https://en.wikipedia.org/wiki/World_Tourism_rankings"})
+r7 = Resource.create({name: "Review Wikipedia", text: "Wikipedia is always a good place to start your research", url: "https://en.wikipedia.org/wiki/World_Tourism_rankings"})
 r8 = Resource.create({name: "Review Map", text: "Remember, per capita means for each person", url: "https://jakubmarian.com/wp-content/uploads/2014/11/mc-donalds-2016.jpg"})
 
 
