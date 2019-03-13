@@ -23,7 +23,7 @@
           <div class="resources">
             <div class="resources-text">
               <% if card.resource %>
-                <%= card.resource.name %>
+                <%= truncate(card.resource.name, length: 30) %>
               <% end %>
             </div>
             <div class="edit-link-icon">
