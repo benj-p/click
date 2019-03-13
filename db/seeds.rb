@@ -207,11 +207,15 @@ student10 = User.create(email: "jack@email.com", first_name: "Jack", last_name: 
 
 izzys_geography_class = [student1, student2, student3, student4, student5, student6, student7, student8, student9, student10]
 izzys_geography_class.each do |student|
-  Registration.create(user: student, section: Section.last)
-  Registration.create(user: student, section: Section.where(name: "A").last)
-  Registration.create(user: student, section: Section.where(name: "B").last)
-  Registration.create(user: student, section: Section.where(name: "C").last)
+  unless student.first_name == "Jonny"
+    Registration.create(user: student, section: Section.last)
+    Registration.create(user: student, section: Section.where(name: "A").last)
+    Registration.create(user: student, section: Section.where(name: "B").last)
+    Registration.create(user: student, section: Section.where(name: "C").last)
+  end
 end
+
+Registration.create(user: student1, section: Section.last)
 
 #random attempts for most decks cards and students
 Section.last.users.where.not(first_name: "Jonny").each do |student|
