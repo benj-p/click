@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row ">
+    <div class="col-sm-12">
+      <div class="row my-3">
+        <div class="col-sm-12">
+          <h1><span>My feed</span></h1>
+          <h2>Welcome, <%= current_user.first_name %></h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+            <%= render @feed_events %>
+            <div class="pagination-container">
+              <%= will_paginate @feed_events %>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
