@@ -13,3 +13,7 @@
 .pagination .disabled {
   display: none;
 }
+
+.pagination .active a {
+  background: $yellow;
+}
