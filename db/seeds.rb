@@ -88,6 +88,14 @@ end
 puts "creating resources..."
 r1 = Resource.create!({name: "Review Video", text: "Check out this video review of historical taxes in the UK.", url: "https://www.youtube.com/watch?v=vnJY_vO-xDU"})
 r2 = Resource.create({name: "Review Reading", text: "Did you review the reading assignment? Check it out here.", url: "https://londonlovesbusiness.com/5-genuinely-interesting-tax-facts-no-really/"})
+r3 = Resource.create({name: "Review Map", text: "Did you review your map? Check it out here.", url: "https://www.google.com/search?q=map+of+uk+countries&rlz=1C5CHFA_enGB813GB813&source=lnms&tbm=isch&sa=X&ved=0ahUKEwissY75o__gAhUeSBUIHeCiCPEQ_AUIDigB&biw=1059&bih=636#imgrc=TGYdhNVbjW4I1M:"})
+r4 = Resource.create({name: "Review Map", text: "Check out this map of countries bordering France", url: "http://1.bp.blogspot.com/-v3vM7BxTBI4/VmZ13EEK9NI/AAAAAAAAFsg/y6rsSSIZ5uc/s1600/situation+g%C3%A9opolitique+de+la+France+et+ses+pays+voisins+Carte.gif"})
+r5 = Resource.create!({name: "Review Map", text: "Hey students! Those are all the countries in the EU", url: "https://www.schengenvisainfo.com/wp-content/uploads/2016/08/Member_States_of_the_European_Union.png"})
+r6 = Resource.create({name: "Review Map", text: "Check out this map of Lithuania", url: "https://www.local-life.com/vilnius/pages/m.1-795_12.jpg"})
+r7 = Resource.create({name: "Review Wikipedia", text: "Wikipedia is always a good placee to start your research", url: "https://en.wikipedia.org/wiki/World_Tourism_rankings"})
+r8 = Resource.create({name: "Review Map", text: "Remember, per capita means for each person", url: "https://jakubmarian.com/wp-content/uploads/2014/11/mc-donalds-2016.jpg"})
+
+
 
 
 puts "creating answers..."
