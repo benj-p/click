@@ -12,7 +12,6 @@ class DecksController < ApplicationController
     @results = @deck.deck_results(@section)
     attempts = @section.users.map { |user| user.attempts.select { |attempt| attempt.card.deck == @deck } }
     @last_attempt = @deck.last_attempt(@section)
-    raise
     @deck.cards.each do |card|
       @results_by_card[card.id] = {card: card, results: { attempts: 0, correct: 0, incorrect: 0, unsure: 0 } }
     end

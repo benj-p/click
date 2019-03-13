@@ -24,7 +24,7 @@
             <div class="col-sm-12">
               <div class="deck-info d-flex align-items-center">
                 <div class="deck-data">
-                  <p><i class="far fa-calendar-plus"></i> <strong>Created</strong> <%= time_ago_in_words(@deck.created_at) %> ago</p>
+                  <p><i class="far fa-calendar-plus"></i> <strong>Last played</strong> <%= time_ago_in_words(@last_attempt) %> ago</p>
                   <p><i class="fas fa-layer-group"></i> <strong>Cards</strong> <%= @deck.cards.count %></p>
                 </div>
                 <%= link_to "Edit deck", curriculum_deck_cards_path(@deck.curriculum, @deck), class: 'btn btn-yellow' %>
