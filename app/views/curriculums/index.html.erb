@@ -6,7 +6,7 @@
       </div>
       <% @curriculums.each do |curriculum| %>
         <div class="row mb-3">
-          <h2><%= curriculum.name %></h2>
+          <h2 class="curriculum-subheader"><%= curriculum.name %></h2>
           <div class="col-12">
           <div class="cards">
           <% curriculum.sections.first(4).each do |section| %>
@@ -58,7 +58,7 @@
           <div class="card">
             <div class="background-image" style="background-image: url(<%= curriculum.image %>)">
             </div>
-              <h2 class="title-style"> <%=curriculum.name %></h2>
+              <h2 class="title-style curriculum-subheader"> <%=curriculum.name %></h2>
               <div class="card-bottom curriculum">
                 <div class="description">
                   <% curriculum.decks.each do |deck|%>
