@@ -5,6 +5,11 @@ class Deck < ApplicationRecord
 
   validates :name, presence: true
 
+  def last_attempt(section)
+    attempts = deck_attempts(self, section)
+    attempts.sort_by { |attempt| attempt.created_at }.last.created_at
+  end
+
   def deck_results(section)
     attempts = deck_attempts(self, section)
     total = attempts.count.to_f
