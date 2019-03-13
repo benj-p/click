@@ -17,16 +17,23 @@
   <% end%>
   <div class="feed-item-content">
     <p><%= feed_event.title %></p>
-    <% unless feed_event.reminder_created %>
-      <%= simple_form_for(TodoItem.new) do |f| %>
-        <%= f.hidden_field :name, :value => feed_event.title %>
-        <%= f.hidden_field :feed_event, :value => feed_event.id %>
-        <%= f.submit "Create reminder", class: 'btn btn-yellow' %>
-      <% end %>
-    <% end %>
+
     <!-- <button type="button" class="btn btn-yellow" data-toggle="modal" data-target="#myModal">Create reminder</button> -->
   </div>
-  <div class="feed-item-date">
-    <%= time_ago_in_words(feed_event.created_at) %> ago
+  <div class="feed-item-footer">
+    <div class="feed-item-reminder">
+      <% if feed_event.reminder_created %>
+        <%= link_to "View reminder", todo_items_path, class: 'btn btn-grey' %>
+      <% else %>
+        <%= simple_form_for(TodoItem.new) do |f| %>
+          <%= f.hidden_field :name, :value => feed_event.title %>
+          <%= f.hidden_field :feed_event, :value => feed_event.id %>
+          <%= f.submit "Create reminder", class: 'btn btn-yellow' %>
+        <% end %>
+      <% end %>
+      </div>
+    <div class="feed-item-date">
+      <%= time_ago_in_words(feed_event.created_at) %> ago
+    </div>
   </div>
 </div>
