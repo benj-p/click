@@ -1,5 +1,5 @@
 
- <div class="bar green" style="width:<%= correct %>%"></div>
- <div class="bar red" style="width:<%= incorrect %>%"></div>
- <div class="bar blue"></div>
+ <div class="bar green" data-toggle="tooltip" title="Correct" style="width:<%= correct %>%"></div>
+ <div class="bar red" data-toggle="tooltip" title="Incorrect" style="width:<%= incorrect %>%"></div>
+ <div class="bar" data-toggle="tooltip" title="Unsure" style="width:<%= 100 - correct - incorrect %>%"></div>
 
