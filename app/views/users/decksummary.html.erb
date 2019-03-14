@@ -16,7 +16,6 @@
       <%= render 'shared/arc', color: 'red', percentage: (@wrong_answers.count / @deck.cards.count.to_f) * 100,  size: 'medium', text: "Wrong" %>
     <% end %>
   </div>
-  <!-- <h2>Resources for you</h2> -->
 
   <% unless @wrong_answers.count == 0 %>
     <% if @correct_answers.count == @deck.cards.count && @deck.cards.count > 1 %>
