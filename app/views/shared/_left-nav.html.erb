@@ -2,7 +2,9 @@
   <div class="menu-list">
     <h2>Dashboard</h2>
     <div class="menu-item selected">
-      <a href="#"><i class="fas fa-user-graduate mr-2"></i>My Sections</a>
+      <%= link_to curriculums_path do %>
+        <i class="fas fa-user-graduate mr-2"></i>My Sections
+      <% end %>
     </div>
     <div class="menu-item">
       <a href="#"><i class="fas fa-book mr-2"></i>My Curriculums </a>
