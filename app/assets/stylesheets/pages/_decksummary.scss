@@ -42,6 +42,7 @@
 }
 
 canvas {
+  display: none;
   position: absolute;
   bottom: 0;
   width: 600px;
@@ -49,4 +50,9 @@ canvas {
   z-index: -1;
   left: -100px;
   top: -100px;
+}
+
+.resource-image {
+  width: 100%;
+  margin-bottom: 8px;
 }

@@ -89,6 +89,9 @@ if (window.location.pathname.includes('/takedeck')) {
 
 
 if (document.referrer.includes('/takedeck') && window.location.pathname.includes('/decksummary')) {
+
+  document.querySelector("canvas").style.display = 'block';
+
   var Point = 0;
   var Particle = 0;
 
