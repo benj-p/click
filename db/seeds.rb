@@ -270,4 +270,10 @@ end
   FeedEvent.create(user: teacher, about_user: student, title: random_title(student,deck), event_type: EventType.last)
 end
 
+2.times do
+  TodoItem.create(name: random_title(User.take(1).first, Deck.take(1).first), user: teacher, completed: true)
+end
+
+TodoItem.create(name: random_title(User.take(1).first, Deck.take(1).first), user: teacher)
+
 puts "Seeding complete!! Done in #{ end_time - start_time } seconds."
