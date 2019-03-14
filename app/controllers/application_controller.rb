@@ -34,6 +34,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    current_user.is_teacher ? curriculums_path : dashboard_user_path(@user)
+    current_user.is_teacher ? feed_path : dashboard_user_path(@user)
   end
 end
