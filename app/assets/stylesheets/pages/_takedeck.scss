@@ -55,6 +55,7 @@
   -o-transform: translateX(-500px);
   -ms-transform: translateX(-500px);
   transform: translateX(-500px);
+  box-shadow: 0px 0px 40px rgba(226, 134, 116, 0.3);
 }
 
 .transform-right {
@@ -63,6 +64,7 @@
   -o-transform: translateX(500px);
   -ms-transform: translateX(500px);
   transform: translateX(500px);
+  box-shadow: 0px 0px 40px rgba(80, 198, 163, 0.3);
 }
 
 .choice-container {
