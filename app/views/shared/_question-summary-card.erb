@@ -15,7 +15,7 @@
           <iframe src="http://www.youtube.com/embed/<%= video_id[2] %>"></iframe>
         </div>
       <% elsif responsestatus.card.resource.url.match(/.jpg/) %>
-        <%= image_tag '' %>
+      <%= image_tag responsestatus.card.resource.url, class: "resource-image" %>
       <% elsif responsestatus.card.resource.url %>
         <p><%= link_to '<i class="fas fa-link"></i> Click here to open'.html_safe, responsestatus.card.resource.url, target: :_blank %></p>
       <% end %>
