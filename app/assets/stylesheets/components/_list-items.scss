@@ -16,11 +16,13 @@
 
   }
 
-  .deck-list-item-image {
+  .deck-list-item-icon {
     width: 80px;
     height: 80px;
-    background-image: url('books.jpg');
     background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     i {
       font-size: 32px;
     }
@@ -37,7 +39,7 @@
 }
 
 .completed-deck {
-  background: #ebebeb;
+  background: #ededed;
 }
 
 

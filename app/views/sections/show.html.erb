@@ -14,7 +14,7 @@
         <% if deck.due_date > Date.today %>
           <%= link_to section_deck_path(@section, deck) do %>
             <div class="deck-list-item">
-              <div class="deck-list-item-image"></div>
+              <div class="deck-list-item-icon"><i class="far fa-circle"></i></div>
               <div class="deck-list-item-info">
                 <span> <%= deck.name %> </span>
               </div>
@@ -33,7 +33,7 @@
           <% if deck.due_date < Date.today %>
           <%= link_to section_deck_path(@section, deck) do %>
               <div class="deck-list-item completed-deck">
-                <div class="deck-list-item-image d-flex align-items-center justify-content-center"><i class="fas fa-check"></i></div>
+                <div class="deck-list-item-icon"><i class="far fa-check-circle"></i></div>
                 <div class="deck-list-item-info">
                   <span> <%= deck.name %> </span>
                 </div>
