@@ -158,7 +158,7 @@ d_4 = Card.create({deck: europe, question: 'Ljubljana is the capital of Lithuani
 d_5 = Card.create({deck: europe, question: "Russia takes up 30 percent of Europe's land area", correct_answer: "False" , wrong_answer: "True"})
 d_6 = Card.create({deck: europe, question: 'Croissants were invented in Austria.', correct_answer: "True" , wrong_answer: "False"})
 d_7 = Card.create({deck: europe, question: 'Per capita, which country has the most McDonalds in Europe?', correct_answer: "Sweden" , wrong_answer: "Germany", resource: r8})
-d_8 = Card.create({deck: europe, question: 'Italy is the most visisted country in Europe.', correct_answer: "False" , wrong_answer: "True", resource: r7})
+d_8 = Card.create({deck: europe, question: 'Italy is the most visited country in Europe.', correct_answer: "False" , wrong_answer: "True", resource: r7})
 d_9 = Card.create({deck: europe, question: 'Which country is not part of the European Union?', correct_answer: "Norway" , wrong_answer: "Finland", resource: r5})
 
 e_1 = Card.create({deck: asia, question: 'There are 60 countries in Asia.', correct_answer: "False" , wrong_answer: "True", resource: r2})

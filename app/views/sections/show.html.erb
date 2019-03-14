@@ -18,7 +18,7 @@
               <div class="deck-list-item-info">
                 <span> <%= deck.name %> </span>
               </div>
-              <div class="progress-bar">
+              <div class="progress-bar" style="margin-right: 32px;">
                 <% results = deck.deck_results(@section) %>
                  <%= render 'shared/progress_bar', correct: results[:correct], incorrect: results[:incorrect] %>
               </div>
@@ -37,7 +37,7 @@
                 <div class="deck-list-item-info">
                   <span> <%= deck.name %> </span>
                 </div>
-                <div class="progress-bar">
+                <div class="progress-bar" style="margin-right: 32px;">
                   <% results = deck.deck_results(@section) %>
                  <%= render 'shared/progress_bar', correct: results[:correct], incorrect: results[:incorrect] %>
                 </div>

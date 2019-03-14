@@ -29,14 +29,13 @@ class AttemptsController < ApplicationController
     unsure = calculate_percent(attempts.where(response: "I don't know").count, attempts.count)
     section = current_user.sections.select { |section| section.curriculum.decks.each { |check_deck| deck == check_deck } }.first
     feed_event = FeedEvent.new(user: teacher, event_type: EventType.first, about_user: current_user, deck: deck, section: section)
-    raise
-    if correct > 75
+    if correct > 60
       feed_event.title = "#{ current_user.first_name } completed #{ deck.name } and scored #{ correct.round }%! Don't forget to say well done!"
       feed_event.save
-    elsif incorrect > 75
+    elsif incorrect > 60
       feed_event.title = "#{ current_user.first_name } completed #{ deck.name } and scored #{ incorrect.round }%! Don't forget to follow up!"
       feed_event.save
-    elsif unsure > 75
+    elsif unsure > 60
       feed_event.title = "#{ current_user.first_name } completed #{ deck.name } and answered #{ unsure.round }% as unsure. Make sure you check in."
       feed_event.save
     end
