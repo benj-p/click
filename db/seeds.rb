@@ -262,7 +262,7 @@ end
 # Jonny wrong answers seed
 student1.sections.each do |section|
   section.curriculum.decks.each do |deck|
-    deck.cards.take(5).each do |card|
+    deck.cards.order(id: :asc).take(5).each do |card|
       Attempt.create(user: student1, card: card, response: "Incorrect")
     end
   end

@@ -15,8 +15,6 @@ class AttemptsController < ApplicationController
     end
   end
 
-
-
   private
 
   def attempt_params
