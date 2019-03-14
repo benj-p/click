@@ -42,11 +42,11 @@
 }
 
 .transform {
-  -webkit-transition: transform 0.5s ease 0s;
-  -moz-transition: transform 0.5s ease 0s;
-  -o-transition: transform 0.5s ease 0s;
-  -ms-transition: transform 0.5s ease 0s;
-  transition: transform 0.5s ease 0s;
+  -webkit-transition: transform 0.75s ease 0s;
+  -moz-transition: transform 0.75s ease 0s;
+  -o-transition: transform 0.75s ease 0s;
+  -ms-transition: transform 0.75s ease 0s;
+  transition: transform 0.75s ease 0s;
 }
 
 .transform-left {
@@ -55,6 +55,7 @@
   -o-transform: translateX(-500px);
   -ms-transform: translateX(-500px);
   transform: translateX(-500px);
+  background-color: rgba(226, 134, 116, 0.1);
 }
 
 .transform-right {
@@ -63,6 +64,7 @@
   -o-transform: translateX(500px);
   -ms-transform: translateX(500px);
   transform: translateX(500px);
+  background-color: rgba(80, 198, 163, 0.1);
 }
 
 .choice-container {
