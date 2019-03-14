@@ -20,6 +20,9 @@
     width: 80px;
     height: 80px;
     background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     i {
       font-size: 32px;
     }
@@ -36,7 +39,7 @@
 }
 
 .completed-deck {
-  background: #ebebeb;
+  background: #ededed;
 }
 
 
