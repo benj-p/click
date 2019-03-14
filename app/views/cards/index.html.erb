@@ -60,6 +60,7 @@
               <%= f.input :resource_url %>
           </p>
         </div>
+
       </div>
       <div class="form-actions">
         <%= f.submit "Create Card", class: "btn btn-yellow" %>
@@ -86,12 +87,14 @@
         <%= f.input :name %>
         <%= f.input :text %>
         <%= f.input :url %>
+        <div class="media-preview"></div>
         <%= f.input :card, collection: @cards, label_method: :question %>
       </div>
       <div class="form-actions">
         <%= f.submit "Create Resource", class: "btn btn-yellow new-card" %>
       </div>
     <% end %>
+
       </div>
     </div>
   </div>
