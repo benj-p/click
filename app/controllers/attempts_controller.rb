@@ -33,7 +33,7 @@ class AttemptsController < ApplicationController
       feed_event.title = "#{ current_user.first_name } completed #{ deck.name } and scored #{ correct.round }%! Don't forget to say well done!"
       feed_event.save
     elsif incorrect > 60
-      feed_event.title = "#{ current_user.first_name } completed #{ deck.name } and scored #{ incorrect.round }%! Don't forget to follow up!"
+      feed_event.title = "#{ current_user.first_name } completed #{ deck.name } and scored #{ correct.round }%! Don't forget to follow up!"
       feed_event.save
     elsif unsure > 60
       feed_event.title = "#{ current_user.first_name } completed #{ deck.name } and answered #{ unsure.round }% as unsure. Make sure you check in."
