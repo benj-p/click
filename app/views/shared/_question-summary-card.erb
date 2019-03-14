@@ -14,8 +14,10 @@
         <div class="video-container">
           <iframe src="http://www.youtube.com/embed/<%= video_id[2] %>"></iframe>
         </div>
+      <% elsif responsestatus.card.resource.url.match(/.jpg/) %>
+        <img src="<%= responsestatus.card.resource.url %>" alt="">
       <% elsif responsestatus.card.resource.url %>
-        <p><%= link_to '<i class="fas fa-link"></i> Click here to open'.html_safe, responsestatus.card.resource.url %></p>
+        <p><%= link_to '<i class="fas fa-link"></i> Click here to open'.html_safe, responsestatus.card.resource.url, target: :_blank %></p>
       <% end %>
     <% end %>
     <p class="collapse-card expand-card btn btn-yellow btn-details">Show less</p>
