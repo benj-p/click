@@ -41,14 +41,26 @@ janie_pic = "https://avatars2.githubusercontent.com/u/43782388?s=400&v=4"
 chai_pic = "https://avatars2.githubusercontent.com/u/44784077?s=400&v=4"
 taniya_pic = "https://avatars0.githubusercontent.com/u/43338205?s=400&v=4"
 
+fake_student_photos = ["","https://avatars2.githubusercontent.com/u/20525002?s=400&v=4", "https://avatars1.githubusercontent.com/u/33252472?s=400&v=4",
+                       "https://avatars0.githubusercontent.com/u/26303419?s=400&v=4", "https://avatars3.githubusercontent.com/u/26220481?s=400&v=4",
+                       "https://avatars2.githubusercontent.com/u/9754165?s=400&v=4", "https://avatars1.githubusercontent.com/u/46600044?s=400&v=4",
+                       "https://avatars2.githubusercontent.com/u/28908341?s=400&v=4", "https://avatars2.githubusercontent.com/u/45601799?s=400&v=4",
+                       "https://avatars1.githubusercontent.com/u/34004218?s=400&v=4", "https://avatars0.githubusercontent.com/u/8197176?s=400&v=4",
+                       "https://avatars2.githubusercontent.com/u/44532593?s=400&v=4", "https://avatars3.githubusercontent.com/u/45002552?s=400&v=4",
+                       "https://avatars1.githubusercontent.com/u/1092958?s=400&v=4", "https://avatars1.githubusercontent.com/u/30057590?s=400&v=4",
+                       "https://avatars0.githubusercontent.com/u/39322308?s=400&v=4", "https://avatars2.githubusercontent.com/u/16212592?s=400&v=4",
+                       "https://avatars0.githubusercontent.com/u/44875680?s=400&v=4", "https://avatars2.githubusercontent.com/u/45258443?s=400&v=4",
+                       "https://avatars3.githubusercontent.com/u/16183242?s=400&v=4", "https://avatars0.githubusercontent.com/u/44930318?s=400&v=4",
+                       "https://avatars2.githubusercontent.com/u/44314288?s=400&v=4", "https://avatars0.githubusercontent.com/u/40442483?s=400&v=4"
+                      ]
 
 puts "creating students..."
-students = (1..30).each_with_object({}) do |i, student|
-  student[i] = User.create(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , password: "secret")
+students = (1..22).each_with_object({}) do |i, student|
+  student[i] = User.create(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , password: "secret", remote_photo_url: fake_student_photos[i] )
 end
 
 puts "creating teachers..."
-teachers = (1..3).each_with_object({}) do |i, teacher|
+teachers = (1..2).each_with_object({}) do |i, teacher|
   teacher[i] = User.create(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , password: "secret", is_teacher: true)
 end
 
@@ -60,7 +72,7 @@ EventType.create(name: "Extreme score")
 puts "creating curriculums..."
 image_counter = 0
 User.where(is_teacher: true).each do |teacher|
-  3.times do
+  2.times do
     Curriculum.create(user: teacher, name: Faker::Educator.course_name, image: curriculum_images[image_counter])
     image_counter += 1
   end
@@ -84,7 +96,7 @@ def rand_section
 end
 
 User.where(is_teacher: false).each do |student|
-  2.times do
+  1.times do
     Registration.create(user: student, section: rand_section)
   end
 end
@@ -116,7 +128,7 @@ Deck.all.each do |deck|
 end
 
 puts "creating demo seeds..."
-teacher = User.create(email: "izzyweber@gmail.com", first_name: "Izzy", last_name: "Weber" , password: "secret", is_teacher: true)
+teacher = User.create(email: "izzyweber@gmail.com", first_name: "Izzy", last_name: "Weber" , password: "secret", is_teacher: true, remote_photo_url: izzy_pic)
 
 # intro_to_accounting = Curriculum.create({user: teacher, name: "Intro to Accounting", image: curriculum_images[-1]})
 intro_to_tax = Curriculum.create({user: teacher, name: "Intro to Taxation", image: curriculum_images[-2]})
@@ -142,8 +154,8 @@ c_3 = Card.create({deck: fun_facts_taxes, question: 'In 1705, Russian Emperor Pe
 d_1 = Card.create({deck: europe, question: 'The UK is comprised of 5 countries.', correct_answer: "False" , wrong_answer: "True", resource: r3})
 d_2 = Card.create({deck: europe, question: 'Germany borders France.', correct_answer: "True" , wrong_answer: "False", resource: r4})
 d_3 = Card.create({deck: europe, question: 'Jonny Gates is Europes top football player', correct_answer: "False" , wrong_answer: "True", resource: r2})
-d_4 = Card.create({deck: europe, question: 'Ljubljana is the capital of Lithuania', correct_answer: "False" , wrong_answer: "True"})
-d_5 = Card.create({deck: europe, question: "Russia takes up 30 percent of Europe's land area", correct_answer: "False" , wrong_answer: "True", resource: r6})
+d_4 = Card.create({deck: europe, question: 'Ljubljana is the capital of Lithuania', correct_answer: "False" , wrong_answer: "True", resource: r6})
+d_5 = Card.create({deck: europe, question: "Russia takes up 30 percent of Europe's land area", correct_answer: "False" , wrong_answer: "True"})
 d_6 = Card.create({deck: europe, question: 'Croissants were invented in Austria.', correct_answer: "True" , wrong_answer: "False"})
 d_7 = Card.create({deck: europe, question: 'Per capita, which country has the most McDonalds in Europe?', correct_answer: "Sweden" , wrong_answer: "Germany", resource: r8})
 d_8 = Card.create({deck: europe, question: 'Italy is the most visisted country in Europe.', correct_answer: "False" , wrong_answer: "True", resource: r7})
@@ -176,10 +188,16 @@ Section.create(name: 'B', curriculum: geography)
 Section.create(name: 'C', curriculum: geography)
 Section.create(name: 'D', curriculum: geography)
 
-teacher_sections.each do |section|
-  15.times do
-    reg = Registration.new(user: User.offset(rand(User.count)).first, section: section)
-    reg.save unless reg.user.is_teacher
+# teacher_sections.each do |section|
+#   10.times do
+#     reg = Registration.new(user: User.offset(rand(User.count)).first, section: section)
+#     reg.save unless reg.user.is_teacher
+#   end
+# end
+
+User.where(is_teacher: false).each do |student|
+  1.times do
+    Registration.create(user: student, section: teacher_sections.sample)
   end
 end
 
