@@ -258,3 +258,47 @@ if (document.referrer.includes('/takedeck') && window.location.pathname.includes
   setTimeout(function() { $("canvas").fadeOut(2000); }, 2000);
 
 }
+
+
+// Media preview
+
+$(document).ready(function() {
+  videoHandler()
+})
+
+function videoHandler() {
+  $('#resource_url').on('keyup', function(event) {
+    console.log(event);
+    if (event.keyCode == 91) {
+      clearMediaPreview()
+      var videoUrl = $('#resource_url').value
+      var videoId = parseVideoUrl(videoUrl)
+      console.log(videoId);
+      showVideoPreview(videoId)
+    }
+    if (event.keyCode == 8) {
+      if ($('#post_video_url').value == "") {
+        clearMediaPreview()
+        showImageUrl()
+      }
+    }
+  })
+}
+
+function clearMediaPreview() {
+  $('.media-preview').html('')
+}
+function showVideoPreview(videoId) {
+  $('.media-preview').html("<iframe width='560' height='315' src='https://www.youtube.com/embed/" + videoId + "?autoplay=1&enablejsapi=1' frameborder='0' allowfullscreen></iframe>")
+  }
+function showVideoUrl() {
+  $('#url').show()
+}
+function hideVideoUrl() {
+  $('#resource_url').hide()
+}
+function parseVideoUrl(videoUrl) {
+  var videoUrl = $('#resource_url').val()
+  var id = videoUrl.replace("https://www.youtube.com/watch?v=", "")
+  return id
+}
