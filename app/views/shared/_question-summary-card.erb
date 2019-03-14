@@ -9,7 +9,7 @@
     <p>The correct answer was <strong><%= responsestatus.card.correct_answer.downcase %></strong></p>
     <% unless responsestatus.card.resource.nil? %>
       <p><%= responsestatus.card.resource.text %></p>
-      <% if responsestatus.card.resource.name.include?("Video") %>
+      <% if responsestatus.card.resource.name.downcase.include?("video") %>
         <% video_id = responsestatus.card.resource.url.match(/^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/) %>
         <div class="video-container">
           <iframe src="http://www.youtube.com/embed/<%= video_id[2] %>"></iframe>
