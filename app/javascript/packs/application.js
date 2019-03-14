@@ -261,25 +261,26 @@ if (document.referrer.includes('/takedeck') && window.location.pathname.includes
 
 
 // Media preview
-
-$(document).ready(function() {
+if (window.location.pathname.includes('/cards')) {
   videoHandler()
-})
+}
+
+// $(document).ready(function() {
+//   videoHandler()
+// })
 
 function videoHandler() {
   $('#resource_url').on('keyup', function(event) {
-    console.log(event);
+    // console.log(event);
     if (event.keyCode == 91) {
       clearMediaPreview()
       var videoUrl = $('#resource_url').value
       var videoId = parseVideoUrl(videoUrl)
-      console.log(videoId);
       showVideoPreview(videoId)
     }
     if (event.keyCode == 8) {
-      if ($('#post_video_url').value == "") {
-        clearMediaPreview()
-        showImageUrl()
+      if ( document.getElementById('resource_url').value === "") {
+      clearMediaPreview()
       }
     }
   })
@@ -287,12 +288,14 @@ function videoHandler() {
 
 function clearMediaPreview() {
   $('.media-preview').html('')
+  $('.media-preview').hide()
 }
 function showVideoPreview(videoId) {
-  $('.media-preview').html("<iframe width='560' height='315' src='https://www.youtube.com/embed/" + videoId + "?autoplay=1&enablejsapi=1' frameborder='0' allowfullscreen></iframe>")
+  $('.media-preview').css("display", "block");
+  $('.media-preview').html("<iframe src='https://www.youtube.com/embed/" + videoId + "?autoplay=1&enablejsapi=1' frameborder='0' allowfullscreen></iframe>")
   }
 function showVideoUrl() {
-  $('#url').show()
+  $('#resource_url').show()
 }
 function hideVideoUrl() {
   $('#resource_url').hide()
