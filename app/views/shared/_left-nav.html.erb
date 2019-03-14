@@ -23,16 +23,14 @@
 
   <div class="section-list sections">
     <h2>Sections</h2>
-    <% counter = 0 %>
-    <% @curriculums.each do |curriculum| %>
-       <a data-toggle="collapse" href="#collapseLeftNav<%= counter %>" role="button" aria-expanded="false" aria-controls="collapseExample" style="font-size:16px;"> <i class="fas fa-caret-down"></i> <%= curriculum.name %> </a>
+    <% @curriculums.each_with_index do |curriculum , index| %>
+       <a data-toggle="collapse" href="#collapseLeftNav<%= index %>" role="button" aria-expanded="false" aria-controls="collapseExample" style="font-size:16px;"> <i class="fas fa-caret-down"></i> <%= curriculum.name %> </a>
 
-       <div class="collapse" id="collapseLeftNav<%= counter %>">
+       <div class="collapse" id="collapseLeftNav<%= index %>">
         <% curriculum.sections.each do |section| %>
           <%= link_to "<i class='fas fa-angle-double-right'></i> Section #{section.name}".html_safe, section_path(section), class: "sections-list-item"%>
         <% end %>
       </div>
-      <% counter += 1 %>
     <% end %>
   </div>
 </div>
