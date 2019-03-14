@@ -25,9 +25,10 @@
 
   <div class="section-list sections">
     <h2>Sections</h2>
-    <% @curriculums.each do |curriculum| %>
-       <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="font-size:16px;"> <i class="fas fa-caret-down"></i> <%= curriculum.name %> </a>
-       <div class="collapse" id="collapseExample">
+    <% @curriculums.each_with_index do |curriculum , index| %>
+       <a data-toggle="collapse" href="#collapseLeftNav<%= index %>" role="button" aria-expanded="false" aria-controls="collapseExample" style="font-size:16px;"> <i class="fas fa-caret-down"></i> <%= curriculum.name %> </a>
+
+       <div class="collapse" id="collapseLeftNav<%= index %>">
         <% curriculum.sections.each do |section| %>
           <%= link_to "<i class='fas fa-angle-double-right'></i> Section #{section.name}".html_safe, section_path(section), class: "sections-list-item"%>
         <% end %>
