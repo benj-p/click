@@ -76,11 +76,11 @@ if (window.location.pathname.includes('/takedeck')) {
   hammer.on('swipe', function(e) {
     if (e.offsetDirection === 2) {
       $(".question-card").toggleClass("transform-left");
-      document.querySelector(".left").click();
+      setTimeout(function() { document.querySelector(".left").click(); }, 750);
     };
     if (e.offsetDirection === 4) {
       $(".question-card").toggleClass("transform-right");
-      document.querySelector(".right").click();
+      setTimeout(function() { document.querySelector(".right").click(); }, 750);
     };
 });
 }
